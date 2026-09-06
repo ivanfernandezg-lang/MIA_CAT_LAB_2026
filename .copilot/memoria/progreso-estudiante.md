@@ -62,6 +62,13 @@
 - Introducción del informe: agregada mención explícita de **QRP** (prácticas de investigación cuestionables) junto a autoría y FFP, vía `TEXT_TWEAKS` en `docx2tex.py` (sin tocar el Word). `main.tex` regenerado y compilado ✔.
 - **Presentación NO se hará** (decisión del estudiante): `T1/presentation/` queda vacía por ahora.
 
+## 2026-09-06 — Normas gráficas USACH descargadas y analizadas
+
+- Descargados a `catedra/template/`: MNG 2024-2S (PDF), guía de titulación (PDF), sets de imagotipos (principales/secundarios/AV, ZIP extraídos), plantillas PPT 16:9 A/B y hojas carta/oficio Word.
+- Colores oficiales: rojo `#C8102E` (P186C) + gris `#394049` (P432C) principales; PEI 2030: `#EAAA00`, `#8C4799`, `#498BCA`, `#00A499`, `#E77500`.
+- Tipografías: Bebas Neue (titulares), Nunito Sans / Atkinson Hyperlegible / Helvetica (cuerpos); contraste WCAG AA 4,5:1.
+- Resumen y plan de adecuación LaTeX en `catedra/template/README.md` (pendiente de aprobación del estudiante para aplicarlo a `main.tex`).
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).
