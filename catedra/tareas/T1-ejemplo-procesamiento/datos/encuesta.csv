@@ -1,0 +1,13 @@
+id,edad,genero,nivel_estudios,puntaje
+1,22,femenino,universitaria,78
+2,25,masculino,universitaria,81
+3,21,femenino,media,66
+4,24,masculino,tecnica,90
+5,23,femenino,universitaria,72
+6,26,masculino,universitaria,85
+7,20,femenino,media,61
+8,27,masculino,tecnica,88
+9,22,femenino,universitaria,74
+10,24,masculino,universitaria,83
+11,21,masculino,media,69
+12,23,femenino,tecnica,76

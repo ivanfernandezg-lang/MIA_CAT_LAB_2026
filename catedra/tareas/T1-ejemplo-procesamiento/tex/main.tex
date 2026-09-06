@@ -1,0 +1,63 @@
+% T1 — Ejemplo: procesamiento de una encuesta
+% Compilar SIEMPRE en build/:
+%   pdflatex -output-directory=build main.tex
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nolists]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+% Los gráficos generados por los scripts viven en ../resultados
+\graphicspath{{../resultados/}}
+
+\title{\textbf{T1 — Ejemplo: procesamiento de una encuesta}}
+\author{[Nombre del estudiante] \\ Metodologías de Investigación Aplicada (13854.0 M-40)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Ejemplo del flujo completo de una tarea: datos crudos en \texttt{datos/},
+procesamiento con un script Python y tablas de resultados para el informe.
+\end{abstract}
+
+\section{Introducción}
+Esta carpeta es una plantilla de referencia. Al crear la tarea real, se copia
+esta estructura y se reemplazan los datos y scripts de ejemplo.
+
+\section{Metodología}
+El script \texttt{scripts/procesar\_encuesta.py} lee
+\texttt{datos/encuesta.csv} (solo lectura) con el helper
+\texttt{utilidades/leer\_excel.py}, calcula estadísticas descriptivas usando
+solo la biblioteca estándar y escribe tablas limpias en \texttt{resultados/}.
+
+\section{Resultados}
+
+La Tabla~\ref{tab:genero} muestra la frecuencia por género generada por el
+script (ver \texttt{resultados/frecuencia\_por\_genero.csv}).
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        Género & n & \% \\
+        \midrule
+        Femenino & 6 & 50.0 \\
+        Masculino & 6 & 50.0 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Frecuencia por género (datos de ejemplo).}
+    \label{tab:genero}
+\end{table}
+
+\section{Conclusiones}
+El flujo funciona de punta a cabo: datos $\rightarrow$ script $\rightarrow$
+resultados $\rightarrow$ informe.
+
+\end{document}

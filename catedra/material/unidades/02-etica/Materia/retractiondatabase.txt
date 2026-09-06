@@ -1,0 +1,37 @@
+https://retractiondatabase.org/RetractionSearch.aspx?&AspxAutoDetectCookieSupport=1
+
+
+Version: 1.0.8.0
+
+ISSN 2692-465X
+The Retraction Watch Database
+PLEASE NOTE: The best way to make use of this database is to download it from here, thanks to the acquisition of the database by Crossref.
+We have also made changes to the search functionality to maintain reliability. For more information, read our User Guide.
+
+Please consider a U.S. tax-deductible donation to help us to continue to update and improve this important resource.
+Author(s):	
+Type to search
+Country(s):	
+Drop
+Title:	
+Type to search
+Article Type(s):	
+Drop
+Journal:	
+Drop
+Publisher:	
+Drop
+Affiliation(s):	
+Original Paper
+From Date:	
+To:	
+PubMedID:	
+mm/dd/yyyy
+DOI:	
+Retraction or Other Notices
+From Date:	
+To:	
+PubMedID:	
+mm/dd/yyyy
+DOI:	
+Clear Search

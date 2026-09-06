@@ -161,6 +161,16 @@ venv.bak/
 .spyderproject
 .spyproject
 
+# LaTeX (compilar SIEMPRE en build/ para mantener limpio el fuente)
+*.aux
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
 # Rope project settings
 .ropeproject
 

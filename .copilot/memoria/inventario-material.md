@@ -1,0 +1,44 @@
+# Inventario de material — Cátedra
+
+Curso: **Metodologías de Investigación Aplicada** (13854.0 M-40), 2.º semestre 2026, USACH.
+
+## Estado actual (2026-09-06)
+
+- Archivos del estudiante subidos y procesados ✔.
+- Calendario oficial extraído del `Clase a Clase` (`2025_02 Clase a Clase MIA.xlsx`).
+- **Pendiente**: listado oficial de grupos de cátedra, `Ejemplos de Proyectos…`,
+  `Modelos de Documentos Comité de Ética USACH/`, unidades 03–05 y scripts de
+  `utilidades/`.
+
+## Material por carpeta
+
+| Carpeta                                                                            | Contenido                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Estado        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `material/programa/`                                                               | `Programa de la Asignatura/Metodologías de Investigación Aplicada V4.pdf` (6 págs.); `Glosario/` (vacía)                                                                                                                                                                                                                                                                                                                                                         | ✔ subido      |
+| `material/unidades/01-fundamentos-introduccion-historia/`                          | `01a - Lor (2011) - Metatheory, Theory.pdf`; `01b - Sousa (2010) - Isms in research.pdf`; `02 - Mirada general, Historia y Metateorías` (`.pptx`/`.pdf`/`.txt`)                                                                                                                                                                                                                                                                                                  | ✔ subido      |
+| `material/unidades/02-etica/`                                                      | `Actividad-1/` y `Actividad-2/` (enunciado `.docx`/`.pdf`/`.txt` + inscripción `.csv`/`.xlsx`); `Materia/` (17 archivos: Declaración de Singapur, Singapore Statement, On Being a Scientist, código de ética BPS, ethics-for-researchers, «Ética en investigación (Rol del Investigador)», lista Beall, Retraction Watch + base de retractaciones, Plagiarism, PlagioSOS, detección de plagio en arXiv, `0702012v1.pdf`, imagen Gebrechorkos et al. Nature 2025) | ✔ subido      |
+| `material/unidades/03-revision-literatura/`                                        | por poblar (semana 7)                                                                                                                                                                                                                                                                                                                                                                                                                                            | pendiente     |
+| `material/unidades/04-metodos-cuantitativos/`                                      | por poblar (semana 9)                                                                                                                                                                                                                                                                                                                                                                                                                                            | pendiente     |
+| `material/unidades/05-metodos-cualitativos/`                                       | por poblar (semana 13)                                                                                                                                                                                                                                                                                                                                                                                                                                           | pendiente     |
+| `material/lectura-critica/`                                                        | Meltzoff & Cooper (2018) completo y pp. 1–38; Meltzoff Critical Reading pp. 3–12; Critical for graduate students (EN + ES-419); `01b - Critical Reading` (`.pptx`/`.pdf`/`.txt`); captura de pantalla                                                                                                                                                                                                                                                            | ✔ subido      |
+| `material/registro-sesiones/Clase a Clase/`                                        | `2025_02 Clase a Clase MIA.xlsx` + `.csv`                                                                                                                                                                                                                                                                                                                                                                                                                        | ✔ subido      |
+| `informacion-usach/Ejemplos de Proyectos Semestres anteriores (Solo ideas)Página/` | —                                                                                                                                                                                                                                                                                                                                                                                                                                                                | pendiente     |
+| `informacion-usach/Modelos de Documentos Comité de Ética USACH/`                   | —                                                                                                                                                                                                                                                                                                                                                                                                                                                                | pendiente     |
+| `proyecto/`                                                                        | documentación del proyecto de laboratorio                                                                                                                                                                                                                                                                                                                                                                                                                        | por confirmar |
+| `tareas/T1-ejemplo-procesamiento/`                                                 | plantilla de flujo completo (`datos/` → `scripts/` → `resultados/` → `tex/`)                                                                                                                                                                                                                                                                                                                                                                                     | ✔             |
+
+## Datos relevantes extraídos
+
+- **Grupos de cátedra**: 5 grupos en la inscripción de la Actividad 2 (TUSKEGEE, monos de Cali, ITS Guatemala, etc.). Grupo propio por confirmar.
+- **Calendario**: 17 semanas (17-8 → 14-12); receso 14-9 (Fiestas Patrias); feriado 31-10; entrega final del proyecto 7-12.
+
+## Libros y papers
+
+- Meltzoff, J., & Cooper, H. (2018). _Critical thinking about research: Psychology and related fields_. APA.
+- Lor, P. J. (2011). _Metatheory, theory_. (`01a`)
+- Sousa (2010). _Isms in research_. (`01b`)
+- Hernández, Fernández & Baptista (2010), cap. 1 — base de «Mirada general».
+
+## Links útiles
+
+- (por poblar)

@@ -1,0 +1,201 @@
+Ética en investigación
+Basado en la Presentación de Prashant V. Kamat y la guía Ethics in Research & Publication
+
+Aspectos a cubrir
+Autoría
+Plagio
+Conflictos de Interés
+Sometimiento simultáneo de publicaciones
+Fraude
+
+Decisiones éticas … ¿Cómo las aprendemos?
+Familia
+Escuela
+Mentor
+Amigos
+Profesores
+Discusiones en cursos
+Organizaciones profesionales
+Cursos de ética
+Otros
+ignorelimits.com
+
+Conjunto de obligaciones de un investigador
+Obligación de honrar la confianza depositada por colegas en nuestra persona
+Obligación consigo mismo. Una conducta irresponsable en investigación puede hacer que alcanzar una meta sea imposible.
+Obligación de actuar en formas que sirvan al público
+Un recurso interesante para estudiar mas del tema:
+
+National Academy of Sciences, N. A. (2009). On being a scientist: a guide to responsible conduct in research. National Academies Press (US).
+
+Ética al compartir el conocimiento científico
+Práctica en el laboratorio y Conflictos de Interés
+Ética en la investigación con seres vivos/humanos
+Tres niveles de ética en investigación
+
+Ética al compartir el conocimiento científico
+Publicación científica
+Autoría
+Problemas de conducta (Fabricación, falsificación, plagio, conductas cuestionables: FFP y QRP)
+
+Tres niveles de ética en investigación
+
+Práctica en el laboratorio y Conflictos de Interés
+Manipulación de datos
+Propiedad de los datos
+Propiedad intelectual
+Conflictos de interés
+Compromiso
+Investigación financiada por gobierno e industria
+Compartir datos (papers y tesis)
+Tres niveles de ética en investigación
+
+Conocimiento científico
+“La ciencia es el conocimiento compartido basado en un entendimiento común de algún aspecto del mundo físico o social”
+“Hacer ciencia apunta a la generación de conocimiento nuevo. Sin embargo ese conocimiento generado por un individuo o por un grupo de individuos se contextualiza en la ciencia solo cuando se presenta a otros, quienes tienen entonces la posibilidad de juzgar su validez de forma independiente”
+Traducción y adaptación desde
+National Academy of Sciences, N. A. (2009). On being a scientist: a guide to responsible conduct in research. National Academies Press (US).
+Prashant V. Kamat (2006). Research Ethics
+
+
+Conocimiento científico
+El conocimiento científico se difunde de varias maneras:
+
+Presentaciones en conferencias, convenciones sociales, workshops
+Publicaciones en revistas revisadas por pares
+Tesis y Memorias
+Libros
+
+
+
+La importancia de publicar
+“Si no se ha publicado, no se ha hecho” E.H. Miller, 1993
+
+
+
+Publicación como un trabajo en equipo
+Involucrados en el proceso:
+Autores
+Comité editorial revista o comité de alguna conferencia
+Evaluadores
+
+
+
+Responsabilidad
+Crédito
+Contribuciones:
+Intelectuales
+Diseño
+Interpretación de los datos
+Redacción del documento
+
+Reconocimiento
+Se otorga a quienes indirectamente contribuyeron al trabajo (ej: quienes financian el proyecto, participantes)
+
+Autoría
+
+Autoría
+Responsabilidad de los autores
+Asegurar que el trabajo es nuevo/original
+Todos están conscientes del trabajo y están de acuerdo con su contenido y lo respaldan
+Están de acuerdo que el trabajo sea revisado por revisores anónimos
+Proveen copias del trabajo relacionado o publicado en otras partes
+Obtienen el permiso para usar figuras y tablas de otros trabajos
+Incluyen su afiliación correcta
+
+
+
+Lo que es publicable
+Trabajos originales 
+Resultados significativos
+De interés para los lectores
+Trabajos bien organizados y presentados
+Trabajos concisos y a la vez completos
+
+
+Lo que no es aceptable
+Extensiones de reportes anteriores
+Reportes fragmentados o incrementales
+Trabajos verbosos, mal estructurados, mal presentados
+Violaciones a convenciones éticas (ej., plagio)
+
+
+Malas conductas en prácticas en investigación (QRP)
+
+FFP
+Fabricación
+Falsificación
+Plagio
+
+
+Los errores honestos no se consideran como parte de las malas conductas
+
+
+Plagio
+Tomar ideas de otros y presentarlas como propias sin dar crédito explícito al trabajo y autores originales
+blaugh.com Fitz and Pirillo, 2015
+
+Plagio
+https://www.planetminecraft.com/blog/plagiarism-a-worldwide-problem-a-thoughtful-blog/
+
+Auto Plagio
+Tomar ideas propias, reutilizarlas y presentarlas como nuevas
+
+Plagio y Autoplagio
+https://www.fastcompany.com/3039921/a-map-of-scientific-plagiarism-around-the-world
+“... among the 767,000 papers submitted from arXiv’s inception in 1991 until 2012, one in 16 authors were found to have copied long phrases and sentences from their own previously published work, and about one out of every 1,000 authors copied about a paragraph’s worth of text from other people’s papers without citing them.” (pf. 4)
+
+Plagio y Autoplagio
+https://www.researchgate.net/publication/231742591_Misconduct_accounts_for_the_majority_of_retracted_scientific_publications
+
+Duplicación
+Enviar una misma publicación a distintas revistas, conferencias, etc no es considera ético
+	Excepción: Espacios de difusión con material no archivado (ej: pre-presentaciones, algunos workshops, algunas conferencias) donde la publicación en términos formales “no existe” (tema difuso ….)
+
+Conflictos de Interés
+Sesgos en la investigación producto de algún sponsor o patrocinante
+Ej: Estudio financiado por una empresa (farmacéutica, tecnológica, alimentaria, etc.) X sobre uno de sus productos demostrando la bondad del producto
+“No revelar los conflictos de interés podría afectar la interpretación de los resultados” (revelarlos también)
+
+Mala representación de los datos
+Representación sesgada, incompleta, selectiva de los resultados para soportar una hipótesis.
+
+Manipulación de los datos
+Manipular datos para engañar a otros
+Viola estándares de lo que se considera estándares profesionales estándares en ciencia
+No respeta las tres obligaciones
+Lleva a conclusiones erróneas por parte de colegas
+Potencialmente impide progreso
+Indirectamente puede implicar desgaste de recursos, afectar otras investigaciones
+Afecta la autoridad e integridad como investigador
+
+Consecuencias
+Las violaciones éticas en algún momento salen a la luz
+
+Algunas recomendaciones
+Mantener un buen registro de los datos
+Mantener un buen registro del proceso de investigación (documentación)
+Mantener un buen registro de la literatura que revisamos
+Citar, citar, citar…. (en reportes, presentaciones, etc.)
+No dejar lo importante para el último
+Apuro
+Presión
+Stress
+
+
+
+Temas relacionados
+Plagio y autoplagio
+Fabricación, falseo de datos y resultados
+Revistas depredadoras
+Conflicto de intereses
+Compromiso
+Investigación patrocinada
+Compartir datos
+Investigación colaborativa
+Autoría (crédito y responsabilidad. Contribuciones intelectuales sustanciales)
+Reconocimientos
+Derechos de autor
+Afiliación
+
+
