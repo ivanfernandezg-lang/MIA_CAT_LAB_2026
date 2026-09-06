@@ -57,6 +57,11 @@
 - VS Code auto-compiló `main.tex` en la carpeta fuente con LaTeX Workshop, dejando auxiliares sueltos en `report/tex/`. Limpiados.
 - Creada `.vscode/settings.json` con `latex-workshop.latex.outDir: %DIR%/build` y receta `latexmk` (`-outdir=build`, biber automático). Verificado: `tex/` queda limpio y todo cae en `build/`.
 
+## 2026-09-06 — Ajuste QRP y decisión de presentación
+
+- Introducción del informe: agregada mención explícita de **QRP** (prácticas de investigación cuestionables) junto a autoría y FFP, vía `TEXT_TWEAKS` en `docx2tex.py` (sin tocar el Word). `main.tex` regenerado y compilado ✔.
+- **Presentación NO se hará** (decisión del estudiante): `T1/presentation/` queda vacía por ahora.
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).
