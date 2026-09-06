@@ -26,6 +26,14 @@
 - `T1-ejemplo-procesamiento/` reemplazado por `T1/` con estructura base: `data/`, `enunciado/`, `script/`, `results/`, `presentation/` y `report/tex/`.
 - Convención de entregas actualizada en `catedra/tareas/README.md`, `catedra/README.md` y `README.md` raíz.
 
+## 2026-09-06 — Informe Actividad 1 a LaTeX
+
+- Convertido `data/docs/Informe_Actividad_1_Etica_Investigacion.docx` → `report/tex/main.tex` con `script/docx2tex.py` (solo stdlib).
+- Estructura generada: portada + 6 secciones + 4 tablas (tabularx/booktabs) + listas; babel español con `es-noquoting`, `xurl` para URLs.
+- Compilado en `report/tex/build/` (15 págs., sin errores).
+- **Actualización del docx detectada** (2026-09-06): el `.docx` ahora incluye el escudo USACH en la portada (`report/tex/img/image1.png`) y la tabla de tortured phrases ampliada a 7 filas.
+- Convertidor mejorado: extrae imágenes incrustadas, respeta numeración decimal continua (enumitem `series/resume`, ítems 1–29) y anida viñetas por nivel (`ilvl`).
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).
