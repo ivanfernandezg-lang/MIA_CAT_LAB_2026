@@ -5,18 +5,45 @@
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{setspace}
 \onehalfspacing
+\usepackage{microtype}
+\usepackage{tgtermes}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{graphicx}
 \graphicspath{{img/}}
+\usepackage[tableposition=top]{caption}
+\captionsetup[table]{name=Tabla,labelsep=period,font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,skip=4pt}
 \usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt,parsep=0pt}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.6em}{}[\vspace{3pt}\titlerule]
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection.}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\contentsname}{Índice}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Informe de Evaluación — Unidad de Ética en Investigación (Parte 1)}
+\fancyhead[R]{\small\itshape Metodologías de Investigación Aplicada}
+\fancyfoot[C]{\small Página \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[style=apa,sorting=nyt,backend=biber]{biblatex}
+\addbibresource{referencias.bib}
 \usepackage{hyperref}
 \usepackage{xurl}
-\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\hypersetup{hidelinks,urlcolor=blue}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{4pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.25}
 
 \begin{document}
+\thispagestyle{empty}
 \begin{center}
 \includegraphics[width=3cm]{image1.png}\par
 \vspace{12pt}
@@ -45,8 +72,11 @@ Informe presentado en la asignatura Metodologías de Investigación Aplicada, co
 Santiago – Chile\par
 \vspace{10pt}
 2026\par
-\vspace{14pt}
+\vspace{16pt}
+\rule{\textwidth}{0.4pt}
 \end{center}
+\newpage
+\tableofcontents
 \newpage
 \section{INTRODUCCIÓN Y MARCO DE REFERENCIA}
 La integridad científica constituye el pilar fundamental sobre el cual se sustenta el avance del conocimiento. En la investigación contemporánea, la \textbf{publicación científica} no es únicamente un vehículo de difusión, sino el producto formal y acreditable que certifica la validez, novedad y rigor de los hallazgos. No obstante, las crecientes presiones por productividad académica (la cultura del \textit{\textquotedbl{}publish or perish\textquotedbl{}}), los incentivos económicos y el prestigio profesional han generado escenarios propicios para la proliferación de malas conductas científicas (\textit{scientific misconduct}).
@@ -66,11 +96,11 @@ En estricta observancia de los lineamientos de esta primera evaluación, el pres
 \textbf{\textquotedbl{}El Escándalo de Jan Hendrik Schön: Fabricación y Falsificación Masiva en Nanotecnología y Superconductividad\textquotedbl{}}
 \begin{table}[htbp]
 \centering
+\caption{Síntesis ejecutiva del caso Schön}
 \begin{tabularx}{\linewidth}{X}
 \toprule
-\textbf{\textbf{SÍNTESIS EJECUTIVA DEL CASO SCHÖN}} \\
-\midrule
 Disciplina: Física de la Materia Condensada / Nanotecnología \\
+\midrule
 Foco del Fraude: Fabricación sistemática de datos y destrucción de registros \\
 Instituciones: Bell Laboratories (EE. UU.) y Universidad de Konstanz (Alemania) \\
 Impacto Editorial: Más de 25 artículos investigados en Science, Nature y APL \\
@@ -149,11 +179,11 @@ El caso no fue detectado por los revisores de \textit{Nature} o \textit{Science}
 \textbf{\textquotedbl{}El Escándalo de Retracciones Masivas de ACM: 'Tortured Phrases', Paper Mills y Secuestro de la Revisión por Pares en Conferencias de Computación\textquotedbl{}}
 \begin{table}[htbp]
 \centering
+\caption{Síntesis ejecutiva del caso Informática (ACM)}
 \begin{tabularx}{\linewidth}{X}
 \toprule
-\textbf{\textbf{SÍNTESIS EJECUTIVA DEL CASO INFORMÁTICA (ACM)}} \\
-\midrule
 Disciplina: Ciencias de la Computación / Inteligencia Artificial / Redes \\
+\midrule
 Foco del Fraude: Paper mills, algoritmos de parafraseo y redes de revisión falsa \\
 Editorial/Organización: Association for Computing Machinery (ACM) \\
 Impacto Editorial: Más de 320 artículos retractados en bloque (ICICN, ICISS, etc.) \\
@@ -190,6 +220,7 @@ Este caso expone una degradación industrializada de la ética de publicación e
 Para sortear los detectores de similitud textual y antiplagio convencionales (como Turnitin o iThenticate), las redes de fraude (\textit{paper mills}) tomaron artículos científicos legítimos de informática y los procesaron con software de parafraseo automático (\textit{text spinners} de lenguaje inverso). Al carecer de comprensión semántica contextual en ciencias de la computación, el software reemplazó los términos técnicos estándar por sinónimos grotescos o \textquotedbl{}frases torturadas\textquotedbl{} (\textit{tortured phrases}):
 \begin{table}[htbp]
 \centering
+\caption{Ejemplos de ``tortured phrases'' detectadas en artículos de la ACM}
 \begin{tabularx}{\linewidth}{XXX}
 \toprule
 \textbf{\textbf{Término Informático Real}} & \textbf{\textbf{\textquotedbl{}Tortured Phrase\textquotedbl{} Generada en el Paper}} & \textbf{\textbf{Significado / Contexto Afectado}} \\
@@ -251,6 +282,7 @@ A pesar de que estos artículos carecían de sentido lógico y presentaban metod
 Para comprender la evolución del fraude en la publicación científica, la siguiente tabla sintetiza las diferencias y semejanzas críticas entre la transgresión individual histórica (Schön) y la transgresión industrializada computacional (ACM Paper Mills):
 \begin{table}[htbp]
 \centering
+\caption{Análisis comparativo entre el caso Schön y el caso ACM}
 \begin{tabularx}{\linewidth}{XXX}
 \toprule
 \textbf{\textbf{Criterio Evaluativo}} & \textbf{\textbf{Caso 1: Libre Histórico (Jan Hendrik Schön)}} & \textbf{\textbf{Caso 2: Informática (ACM Tortured Phrases)}} \\
@@ -276,13 +308,6 @@ El análisis de ambos casos ofrece conclusiones fundamentales para estudiantes d
 \item \textit{\textbf{Nuevos desafíos éticos con la IA generativa:}}\textit{\textbf{ En informática, el mal uso de herramientas generativas para redactar o parafrasear investigaciones sin aporte cognitivo real vulnera la esencia misma de la generación de conocimiento, alertando sobre la necesidad de aplicar marcos éticos rigurosos en el uso de modelos computacionales avanzados.}}
 \end{enumerate}
 \section{BIBLIOGRAFÍA GENERAL DEL INFORME}
-\begin{itemize}
-\item \textit{\textbf{National Academy of Sciences, National Academy of Engineering, and Institute of Medicine.}}\textit{\textbf{ (2009). }}\textit{\textbf{On Being a Scientist: A Guide to Responsible Conduct in Research: Third Edition}}\textit{\textbf{. Washington, DC: The National Academies Press. \url{https://doi.org/10.17226/12192.}}}
-\item \textit{\textbf{World Conferences on Research Integrity.}}\textit{\textbf{ (2010). }}\textit{\textbf{Declaración de Singapur sobre la Integridad en la Investigación}}\textit{\textbf{. 2ª Conferencia Mundial sobre Integridad en la Investigación, Singapur.}}
-\item \textit{\textbf{Beasley, M. R., Datta, S., Kogelnik, H., Kroemer, H., \& Monroe, D.}}\textit{\textbf{ (2002). }}\textit{\textbf{Report of the Investigation Committee on the Possibility of Scientific Misconduct in the Work of Hendrik Schön and Coauthors}}\textit{\textbf{. Lucent Technologies / Bell Labs.}}
-\item \textit{\textbf{Cabanac, G., Labbé, C., \& Magazinov, A.}}\textit{\textbf{ (2021). \textquotedbl{}Tortured phrases: A dubious writing style emerging in science. Possible symptoms of rapid-fire pseudo-science\textquotedbl{}. }}\textit{\textbf{arXiv:2107.06751}}\textit{\textbf{.}}
-\item \textit{\textbf{Marcus, A., \& Oransky, I.}}\textit{\textbf{ (2022). }}\textit{\textbf{Retraction Watch Database: A Comprehensive Tool for Monitoring Scientific Misconduct}}\textit{\textbf{. The Center for Scientific Integrity. \url{https://retractionwatch.com.}}}
-\item \textit{\textbf{Beall, J.}}\textit{\textbf{ (2016). }}\textit{\textbf{Beall's List of Potential Predatory Journals and Publishers}}\textit{\textbf{. \url{https://beallslist.net.}}}
-\item \textit{\textbf{European Commission.}}\textit{\textbf{ (2013). }}\textit{\textbf{Ethics for Researchers: Facilitating Research Excellence in FP7}}\textit{\textbf{. Directorate-General for Research and Innovation.}}
-\end{itemize}
+\nocite{*}
+\printbibliography[heading=none]
 \end{document}

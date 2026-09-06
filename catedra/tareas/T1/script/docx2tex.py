@@ -158,25 +158,50 @@ def cell_latex(tc) -> str:
     return r"\newline ".join(parts) if parts else ""
 
 
+TABLE_CAPTIONS = {
+    "SÍNTESIS EJECUTIVA DEL CASO SCHÖN": "Síntesis ejecutiva del caso Schön",
+    "SÍNTESIS EJECUTIVA DEL CASO INFORMÁTICA (ACM)": "Síntesis ejecutiva del caso Informática (ACM)",
+    "Término Informático Real": "Ejemplos de ``tortured phrases'' detectadas en artículos de la ACM",
+    "Criterio Evaluativo": "Análisis comparativo entre el caso Schön y el caso ACM",
+}
+
+
+def unwrap_bold(s):
+    s = s.strip()
+    if s.startswith(r"\textbf{") and s.endswith("}"):
+        return s[len(r"\textbf{"):-1]
+    return s
+
+
 def table_latex(tbl) -> str:
-    rows = tbl.findall(qn("tr"))
-    ncols = max(len(row.findall(qn("tc"))) for row in rows)
-    spec = "X" * ncols
-    lines = [
-        r"\begin{table}[htbp]",
-        r"\centering",
-        r"\begin{tabularx}{\linewidth}{" + spec + "}",
-        r"\toprule",
-    ]
-    for ri, row in enumerate(rows):
-        cells = []
-        for tc in row.findall(qn("tc")):
-            c = cell_latex(tc)
-            if ri == 0:
-                c = r"\textbf{" + c + "}"
-            cells.append(c)
+    rows = [[cell_latex(tc) for tc in row.findall(qn("tc"))] for row in tbl.findall(qn("tr"))]
+    ncols = max(len(r) for r in rows)
+
+    caption = None
+    first = rows[0] if rows else []
+    header_bold = True
+    if len(first) == 1 and len(rows) > 1:
+        # fila única al inicio = título de la tabla → pasa a caption y se descarta
+        title_raw = unwrap_bold(first[0])
+        caption = TABLE_CAPTIONS.get(title_raw, title_raw)
+        rows = rows[1:]
+        ncols = max(len(r) for r in rows)
+        header_bold = False
+    else:
+        key = unwrap_bold(first[0]) if first else ""
+        caption = TABLE_CAPTIONS.get(key)
+
+    lines = [r"\begin{table}[htbp]", r"\centering"]
+    if caption:
+        lines.append(r"\caption{" + caption + "}")
+    lines.append(r"\begin{tabularx}{\linewidth}{" + "X" * ncols + "}")
+    lines.append(r"\toprule")
+    for ri, cells in enumerate(rows):
+        cells = list(cells)
         while len(cells) < ncols:
             cells.append("")
+        if ri == 0 and header_bold:
+            cells = [r"\textbf{" + c + "}" for c in cells]
         lines.append(" & ".join(cells) + r" \\")
         if ri == 0:
             lines.append(r"\midrule")
@@ -257,19 +282,46 @@ def convert(docx_path: str, out_path: str):
     out.append(r"\usepackage[spanish,es-noquoting]{babel}")
     out.append(r"\usepackage[margin=2.5cm]{geometry}")
     out.append(r"\usepackage{setspace}")
-    out.append(r"\onehalfspacing")
+    out.append(r"\onehalfspacing")  # regla del curso: interlineado 1,5
+    out.append(r"\usepackage{microtype}")
+    out.append(r"\usepackage{tgtermes}")  # TeX Gyre Termes ~ Times New Roman (regla del curso)
     out.append(r"\usepackage{booktabs}")
     out.append(r"\usepackage{tabularx}")
     out.append(r"\usepackage{graphicx}")
     out.append(r"\graphicspath{{img/}}")
+    out.append(r"\usepackage[tableposition=top]{caption}")
+    out.append(r"\captionsetup[table]{name=Tabla,labelsep=period,font=small,labelfont=bf,justification=raggedright,singlelinecheck=false,skip=4pt}")
     out.append(r"\usepackage{enumitem}")
+    out.append(r"\setlist{itemsep=2pt,topsep=4pt,parsep=0pt}")
+    out.append(r"\usepackage{titlesec}")
+    out.append(r"\titleformat{\section}{\Large\bfseries}{\thesection.}{0.6em}{}[\vspace{3pt}\titlerule]")
+    out.append(r"\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.6em}{}")
+    out.append(r"\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection.}{0.6em}{}")
+    out.append(r"\titlespacing*{\section}{0pt}{16pt}{8pt}")
+    out.append(r"\titlespacing*{\subsection}{0pt}{12pt}{6pt}")
+    out.append(r"\usepackage{tocloft}")
+    out.append(r"\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}")
+    out.append(r"\renewcommand{\cftsecfont}{\bfseries}")
+    out.append(r"\renewcommand{\contentsname}{Índice}")
+    out.append(r"\usepackage{fancyhdr}")
+    out.append(r"\usepackage{lastpage}")
+    out.append(r"\pagestyle{fancy}")
+    out.append(r"\fancyhf{}")
+    out.append(r"\fancyhead[L]{\small\itshape Informe de Evaluación — Unidad de Ética en Investigación (Parte 1)}")
+    out.append(r"\fancyhead[R]{\small\itshape Metodologías de Investigación Aplicada}")
+    out.append(r"\fancyfoot[C]{\small Página \thepage\ de \pageref{LastPage}}")
+    out.append(r"\renewcommand{\headrulewidth}{0.4pt}")
+    out.append(r"\usepackage[style=apa,sorting=nyt,backend=biber]{biblatex}")
+    out.append(r"\addbibresource{referencias.bib}")
     out.append(r"\usepackage{hyperref}")
     out.append(r"\usepackage{xurl}")
-    out.append(r"\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}")
+    out.append(r"\hypersetup{hidelinks,urlcolor=blue}")
     out.append(r"\setlength{\parindent}{0pt}")
-    out.append(r"\setlength{\parskip}{4pt}")
+    out.append(r"\setlength{\parskip}{5pt}")
+    out.append(r"\renewcommand{\arraystretch}{1.25}")
     out.append("")
     out.append(r"\begin{document}")
+    out.append(r"\thispagestyle{empty}")
 
     # ---- Portada ----
     title_ps = [b[1] for b in blocks[:first_sec] if b[0] == "p"]
@@ -298,8 +350,11 @@ def convert(docx_path: str, out_path: str):
             out.append(r"\vspace{10pt}")
             out.append(txt + r"\par")
         tidx += 1
-    out.append(r"\vspace{14pt}")
+    out.append(r"\vspace{16pt}")
+    out.append(r"\rule{\textwidth}{0.4pt}")
     out.append(r"\end{center}")
+    out.append(r"\newpage")
+    out.append(r"\tableofcontents")
     out.append(r"\newpage")
 
     # ---- Cuerpo ----
@@ -330,6 +385,12 @@ def convert(docx_path: str, out_path: str):
             title = esc_txt(m.group(2))
             cmd = {1: "section", 2: "subsection", 3: "subsubsection"}[min(depth, 3)]
             out.append(r"\%s{%s}" % (cmd, title))
+            if depth == 1 and "BIBLIOGRAFÍA" in title.upper():
+                # la bibliografía general se gestiona con biblatex (APA) + referencias.bib
+                out.append(r"\nocite{*}")
+                out.append(r"\printbibliography[heading=none]")
+                i = len(body_blocks)
+                continue
             i += 1
             continue
         if meta["bold"] and LET_RE.match(raw) and not meta["numid"]:

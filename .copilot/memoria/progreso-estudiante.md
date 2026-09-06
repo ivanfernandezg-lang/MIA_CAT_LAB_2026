@@ -33,6 +33,13 @@
 - Compilado en `report/tex/build/` (15 págs., sin errores).
 - **Actualización del docx detectada** (2026-09-06): el `.docx` ahora incluye el escudo USACH en la portada (`report/tex/img/image1.png`) y la tabla de tortured phrases ampliada a 7 filas.
 - Convertidor mejorado: extrae imágenes incrustadas, respeta numeración decimal continua (enumitem `series/resume`, ítems 1–29) y anida viñetas por nivel (`ilvl`).
+- **Rediseño profesional aplicado** (sin tocar las reglas del curso: 12 pt, interlineado 1,5, márgenes 2,5 cm):
+  - Tipografía **TeX Gyre Termes** (equivalente Times New Roman) + microtype.
+  - Títulos con `titlesec` (bold + regla bajo `\section`), encabezado/pie con `fancyhdr` ("Página X de Y").
+  - Las 4 tablas ahora llevan caption estilo APA ("Tabla N.") sobre la tabla; filas de título convertidas en captions.
+  - Bibliografía general migrada a **biblatex + estilo APA + biber** con `referencias.bib` (7 referencias); compilar con pdflatex → biber → pdflatex ×2.
+  - Verificado en los documentos del curso: el programa usa APA en su bibliografía; los enunciados no imponen formato propio al informe.
+  - Índice automático agregado (`\tableofcontents` + `tocloft`, título «Índice», puntos guía, secciones en negrita).
 
 ## Siguientes pasos
 
