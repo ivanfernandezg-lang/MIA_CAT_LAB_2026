@@ -21,9 +21,14 @@
 - Detectados 5 grupos de cátedra en la inscripción de la Actividad 2; el grupo propio queda por confirmar.
 - `README.md` actualizado con calendario real y organización final de carpetas.
 
+## 2026-09-06 — Nueva estructura de tareas
+
+- `T1-ejemplo-procesamiento/` reemplazado por `T1/` con estructura base: `data/`, `enunciado/`, `script/`, `results/`, `presentation/` y `report/tex/`.
+- Convención de entregas actualizada en `catedra/tareas/README.md`, `catedra/README.md` y `README.md` raíz.
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).
 2. Subir `Ejemplos de Proyectos…` y `Modelos de Documentos Comité de Ética USACH/`.
 3. Poblar unidades 03–05 en las semanas 7, 9 y 13.
-4. Copiar los scripts de `utilidades/` desde el repo de laboratorio.
+4. Crear `T2/`–`T4/` al subir los enunciados y copiar los scripts de `utilidades/` desde el repo de laboratorio.

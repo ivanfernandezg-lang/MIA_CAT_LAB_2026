@@ -1,24 +1,34 @@
 # tareas — Entregas de cátedra
 
-Una subcarpeta `T<n>-<tema>/` por trabajo evaluado.
+Una subcarpeta `T<n>/` por trabajo evaluado.
 
 ## Trabajos planificados
 
-| Carpeta                     | Trabajo                              | Peso |
-| --------------------------- | ------------------------------------ | ---- |
-| `T1-etica/`                 | Ética: seres humanos + fraude/plagio | 15 % |
-| `T2-mini-review/`           | Mini Review                          | 25 % |
-| `T3-metodos-cuantitativos/` | Métodos cuantitativos                | 30 % |
-| `T4-metodos-cualitativos/`  | Métodos cualitativos                 | 30 % |
+| Carpeta | Trabajo                              | Peso |
+| ------- | ------------------------------------ | ---- |
+| `T1/`   | Ética: seres humanos + fraude/plagio | 15 % |
+| `T2/`   | Mini Review                          | 25 % |
+| `T3/`   | Métodos cuantitativos                | 30 % |
+| `T4/`   | Métodos cualitativos                 | 30 % |
 
-> `T1-ejemplo-procesamiento/` es la plantilla del flujo de trabajo (datos →
-> scripts → resultados → informe LaTeX). Las carpetas de las tareas reales se
-> crean al subir los enunciados; los nombres exactos se ajustarán al procesar
-> los archivos.
+> `T1/` ya está creada con la estructura base; `T2/`–`T4/` se crean al subir
+> los enunciados correspondientes.
 
-## Convención dentro de cada entrega
+## Estructura de cada entrega
 
-- `datos/` — solo lectura (enunciados, fuentes).
-- `resultados/` — todo lo generado/procesado.
-- `scripts/` — scripts autocontenidos (`python scripts/x.py` desde la carpeta).
-- `tex/` — si hay informe, compilar siempre en `tex/build/`.
+```
+T<n>/
+├── data/           — datos crudos (solo lectura)
+├── enunciado/      — enunciado de la tarea (solo lectura)
+├── script/         — scripts autocontenidos
+├── results/        — todo lo generado/procesado
+├── presentation/   — diapositivas de la presentación
+└── report/
+    └── tex/        — informe LaTeX (compilar en `report/tex/build/`)
+```
+
+## Convención
+
+- `data/` y `enunciado/` solo lectura; lo procesado va a `results/`.
+- Scripts autocontenidos, sin rutas absolutas: `python script/x.py` desde la carpeta.
+- LaTeX compilado **siempre** en `report/tex/build/` (ignorado en Git).

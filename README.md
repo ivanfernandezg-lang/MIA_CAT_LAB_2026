@@ -50,7 +50,7 @@ La **nota de cátedra** se compone de trabajos (80 %) y presentaciones
 | Métodos cualitativos                              | 30 % |
 
 Todas las evaluaciones deben ser ≥ 4,0. Cada entrega se organiza en
-`catedra/tareas/T<n>-<tema>/` (ver `catedra/tareas/README.md`).
+`catedra/tareas/T<n>/` (ver `catedra/tareas/README.md`).
 
 - Integridad académica: ante plagio u otra conducta deshonesta, nota 1,0 e
   investigación sumaria (Reglamento N°2563, N°723 y Decreto N°206).
@@ -116,7 +116,7 @@ Calendario oficial extraído de
   - `lectura-critica/` — Meltzoff & Cooper (2018), Critical Reading, Critical for graduate students ✔
   - `registro-sesiones/Clase a Clase/` — planificación clase a clase (`.csv`, `.xlsx`) ✔
   - `glosario.md` — términos del curso
-- `catedra/tareas/` — entregas de cátedra (`T<n>-<tema>/`; `T1-ejemplo-procesamiento/` es la plantilla de flujo de trabajo)
+- `catedra/tareas/` — entregas de cátedra (`T<n>/`; `T1/` ya creada con `data/`, `enunciado/`, `script/`, `results/`, `presentation/` y `report/tex/`)
 - `catedra/utilidades/` — scripts auxiliares (por copiar desde el repo de laboratorio)
 - `.copilot/memoria/` — memoria del curso (inventario, progreso, conceptos clave)
 
@@ -125,12 +125,12 @@ del **Grupo 3-Lab** (`MIA_LAB_2026`), no acá.
 
 ## Convenciones de trabajo
 
-- `datos/` solo lectura; lo procesado va a `resultados/`.
-- Scripts autocontenidos, sin rutas absolutas: `python scripts/procesar_x.py` desde la carpeta de la entrega.
+- `data/` solo lectura; lo procesado va a `results/`.
+- Scripts autocontenidos, sin rutas absolutas: `python script/procesar_x.py` desde la carpeta de la entrega.
 - LaTeX compilado **siempre** en `build/` (ignorado en Git):
 
 ```powershell
-cd <carpeta-de-entrega>/tex
+cd <carpeta-de-entrega>/report/tex
 pdflatex -output-directory=build main.tex
 ```
 
