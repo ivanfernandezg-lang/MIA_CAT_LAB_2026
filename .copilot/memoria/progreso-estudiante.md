@@ -69,6 +69,13 @@
 - Tipografías: Bebas Neue (titulares), Nunito Sans / Atkinson Hyperlegible / Helvetica (cuerpos); contraste WCAG AA 4,5:1.
 - Resumen y plan de adecuación LaTeX en `catedra/template/README.md` (pendiente de aprobación del estudiante para aplicarlo a `main.tex`).
 
+## 2026-09-06 — Normas gráficas USACH aplicadas al informe
+
+- **Escudo**: el imagotipo oficial `Usach P1.png` (vertical principal) reemplaza al escudo del docx en la portada (3,5 cm, ≥ 30 mm de margen según norma). Se copia a `report/tex/img/escudo-usach.png` en cada conversión.
+- **Colores** (`docx2tex.py`): `usachred #C8102E`, `usachgreen #00A499`, `usachgray #394049`, `usachblue #498BCA`. Títulos de sección en sans + gris; reglas de sección, línea de portada y encabezado en **verde azulado `#00A499`** (a juego con el imagotipo); enlaces azul institucional.
+- **Portada**: título principal ahora en _title case_ («Informe de Evaluación: Unidad de Ética en Investigación (Parte 1)») según la guía de titulación; autores ya en orden alfabético por apellido.
+- Compilado sin errores (14 págs.).
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).

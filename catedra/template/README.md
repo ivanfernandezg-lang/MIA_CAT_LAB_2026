@@ -5,17 +5,17 @@ Recursos oficiales de imagen institucional descargados desde la
 
 ## Estructura
 
-| Carpeta / archivo | Contenido |
-| ----------------- | --------- |
-| `standards/MNG 2024 2S[M1].pdf` | Manual de Normas Gráficas oficial (16 págs.) |
-| `standards/Guía para el formato de trabajo de titulación.pdf` | Guía de formato de trabajos de titulación (Bibliotecas USACH) |
-| `standards/imagotipos-principales/` | Set principal extraído: `Usach P1.png`, `Usach P2.png`, `Usach PB.png` (blanco), `Usach PN.png` (negro) |
-| `standards/imagotipos-secundarios/` | Set secundario (versiones horizontales y variantes) |
-| `standards/imagotipos-av/` | Set para audiovisual |
-| `presentation/` | Plantillas PPT oficiales 16:9 (`Plantilla PPT 16-9 A/B.pptx`) |
-| `report/` | Plantillas Word oficiales (`Hoja-Carta-2023.docx`, `Hoja-Oficio-2023.docx`) |
-| `links` | Lista de URLs de todos los recursos |
-| `analizar_plantillas.py` | Script de análisis de los recursos |
+| Carpeta / archivo                                             | Contenido                                                                                               |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `standards/MNG 2024 2S[M1].pdf`                               | Manual de Normas Gráficas oficial (16 págs.)                                                            |
+| `standards/Guía para el formato de trabajo de titulación.pdf` | Guía de formato de trabajos de titulación (Bibliotecas USACH)                                           |
+| `standards/imagotipos-principales/`                           | Set principal extraído: `Usach P1.png`, `Usach P2.png`, `Usach PB.png` (blanco), `Usach PN.png` (negro) |
+| `standards/imagotipos-secundarios/`                           | Set secundario (versiones horizontales y variantes)                                                     |
+| `standards/imagotipos-av/`                                    | Set para audiovisual                                                                                    |
+| `presentation/`                                               | Plantillas PPT oficiales 16:9 (`Plantilla PPT 16-9 A/B.pptx`)                                           |
+| `report/`                                                     | Plantillas Word oficiales (`Hoja-Carta-2023.docx`, `Hoja-Oficio-2023.docx`)                             |
+| `links`                                                       | Lista de URLs de todos los recursos                                                                     |
+| `analizar_plantillas.py`                                      | Script de análisis de los recursos                                                                      |
 
 > Las "SVG" (`PALETA DE COLORES 2023F.svg`, `Imagotipos USACH 2023.svg`)
 > descargadas son visores HTML del sitio; los colores oficiales están en el MNG
@@ -25,15 +25,15 @@ Recursos oficiales de imagen institucional descargados desde la
 
 ### Colores institucionales
 
-| Color | HEX | Pantone | Uso sugerido |
-| ----- | --- | ------- | ------------ |
-| Rojo | `#C8102E` | 186 C | Principal: acentos, reglas, plecas |
-| Gris oscuro | `#394049` | 432 C | Títulos y textos sobre blanco |
-| Amarillo | `#EAAA00` | 124 C | PEI 2030 (acentos secundarios) |
-| Púrpura | `#8C4799` | 258 C | PEI 2030 |
-| Azul | `#498BCA` | 279 C | PEI 2030 / enlaces |
-| Verde azulado | `#00A499` | 3272 C | PEI 2030 |
-| Naranjo | `#E77500` | 716 C | PEI 2030 |
+| Color         | HEX       | Pantone | Uso sugerido                       |
+| ------------- | --------- | ------- | ---------------------------------- |
+| Rojo          | `#C8102E` | 186 C   | Principal: acentos, reglas, plecas |
+| Gris oscuro   | `#394049` | 432 C   | Títulos y textos sobre blanco      |
+| Amarillo      | `#EAAA00` | 124 C   | PEI 2030 (acentos secundarios)     |
+| Púrpura       | `#8C4799` | 258 C   | PEI 2030                           |
+| Azul          | `#498BCA` | 279 C   | PEI 2030 / enlaces                 |
+| Verde azulado | `#00A499` | 3272 C  | PEI 2030                           |
+| Naranjo       | `#E77500` | 716 C   | PEI 2030                           |
 
 Contraste mínimo (WCAG AA): **4,5:1** texto normal, **3:1** texto grande.
 

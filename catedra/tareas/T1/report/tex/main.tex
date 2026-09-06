@@ -8,6 +8,11 @@
 \onehalfspacing
 \usepackage{microtype}
 \usepackage{tgtermes}
+\usepackage{xcolor}
+\definecolor{usachred}{HTML}{C8102E}
+\definecolor{usachgreen}{HTML}{00A499}
+\definecolor{usachgray}{HTML}{394049}
+\definecolor{usachblue}{HTML}{498BCA}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{graphicx}
@@ -17,9 +22,9 @@
 \usepackage{enumitem}
 \setlist{itemsep=2pt,topsep=4pt,parsep=0pt}
 \usepackage{titlesec}
-\titleformat{\section}{\Large\bfseries}{\thesection.}{0.6em}{}[\vspace{3pt}\titlerule]
-\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.6em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection.}{0.6em}{}
+\titleformat{\section}{\Large\bfseries\sffamily\color{usachgray}}{\thesection.}{0.6em}{}[\vspace{3pt}{\color{usachgreen}\titlerule}]
+\titleformat{\subsection}{\large\bfseries\sffamily\color{usachgray}}{\thesubsection.}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\sffamily\color{usachgray}}{\thesubsubsection.}{0.6em}{}
 \titlespacing*{\section}{0pt}{16pt}{8pt}
 \titlespacing*{\subsection}{0pt}{12pt}{6pt}
 \usepackage{tocloft}
@@ -30,16 +35,18 @@
 \usepackage{lastpage}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\itshape Informe de Evaluación — Unidad de Ética en Investigación (Parte 1)}
 \fancyhead[R]{\small\itshape Metodologías de Investigación Aplicada}
 \fancyfoot[C]{\small Página \thepage\ de \pageref{LastPage}}
 \renewcommand{\headrulewidth}{0.4pt}
+\makeatletter
+\renewcommand{\headrule}{{\color{usachgreen}\hrule\@height\headrulewidth\@width\headwidth\vskip-\headrulewidth}}
+\makeatother
 \setlength{\headheight}{14pt}
 \usepackage[style=ieee,sorting=none,backend=biber]{biblatex}
 \addbibresource{referencias.bib}
 \usepackage{hyperref}
 \usepackage{xurl}
-\hypersetup{hidelinks,urlcolor=blue}
+\hypersetup{hidelinks,urlcolor=usachblue}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \renewcommand{\arraystretch}{1.25}
@@ -48,7 +55,7 @@
 \begin{document}
 \thispagestyle{empty}
 \begin{center}
-\includegraphics[width=3cm]{image1.png}\par
+\includegraphics[width=3.5cm]{escudo-usach.png}\par
 \vspace{12pt}
 {\Large\bfseries \textbf{UNIVERSIDAD DE SANTIAGO DE CHILE}}\par
 \vspace{6pt}
@@ -56,7 +63,7 @@
 \vspace{6pt}
 {\large \textbf{MAGÍSTER EN INFORMÁTICA}}\par
 \vspace{18pt}
-{\LARGE\bfseries \textbf{INFORME DE EVALUACIÓN: UNIDAD DE ÉTICA EN INVESTIGACIÓN (PARTE 1)}}\par
+{\LARGE\bfseries Informe de Evaluación: Unidad de Ética en Investigación (Parte 1)}\par
 \vspace{8pt}
 {\large \textbf{Análisis de casos controversiales en publicación científica}}\par
 \vspace{10pt}
@@ -76,7 +83,7 @@ Santiago – Chile\par
 \vspace{10pt}
 2026\par
 \vspace{16pt}
-\rule{\textwidth}{0.4pt}
+{\color{usachgreen}\rule{\textwidth}{0.6pt}}
 \end{center}
 \newpage
 \tableofcontents
@@ -286,7 +293,7 @@ Para comprender la evolución del fraude en la publicación científica, la sigu
 \begin{table}[htbp]
 \centering
 \caption{Análisis comparativo entre el caso Schön y el caso ACM}
-\begin{tabularx}{\linewidth}{XXX}
+\begin{tabularx}{\linewidth}{>{\hsize=0.7\hsize}X >{\hsize=1.15\hsize}X >{\hsize=1.15\hsize}X}
 \toprule
 \textbf{\textbf{Criterio Evaluativo}} & \textbf{\textbf{Caso 1: Libre Histórico (Jan Hendrik Schön)}} & \textbf{\textbf{Caso 2: Informática (ACM Tortured Phrases)}} \\
 \midrule
