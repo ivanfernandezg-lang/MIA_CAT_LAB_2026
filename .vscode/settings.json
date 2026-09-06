@@ -1,0 +1,40 @@
+{
+  // LaTeX Workshop: compilar SIEMPRE en build/ (convención del repo).
+  // latexmk se encarga de biber (bibliografía APA) automáticamente.
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=build",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (build/, con biber)",
+      "tools": ["latexmk"]
+    },
+    {
+      "name": "pdflatex ×2 (sin biber)",
+      "tools": ["pdflatex", "pdflatex"]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "latexmk (build/, con biber)"
+}

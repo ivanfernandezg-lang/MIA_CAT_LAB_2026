@@ -29,7 +29,7 @@ Curso: **Metodologías de Investigación Aplicada** (13854.0 M-40), 2.º semestr
 
 ## Datos relevantes extraídos
 
-- **Grupos de cátedra**: 5 grupos en la inscripción de la Actividad 2 (TUSKEGEE, monos de Cali, ITS Guatemala, etc.). Grupo propio por confirmar.
+- **Grupos de cátedra**: 4 grupos. **Grupo propio: Grupo 1** → Gonzalo Ahumada F., Diego Fernández C., Iván Fernández G., Pablo Figueroa Z. Listado oficial guardado en `informacion-usach/Grupos Cátedra 2026 - listado oficial.md`.
 - **Calendario**: 17 semanas (17-8 → 14-12); receso 14-9 (Fiestas Patrias); feriado 31-10; entrega final del proyecto 7-12.
 
 ## Libros y papers

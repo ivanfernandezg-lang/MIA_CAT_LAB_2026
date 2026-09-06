@@ -37,9 +37,25 @@
   - Tipografía **TeX Gyre Termes** (equivalente Times New Roman) + microtype.
   - Títulos con `titlesec` (bold + regla bajo `\section`), encabezado/pie con `fancyhdr` ("Página X de Y").
   - Las 4 tablas ahora llevan caption estilo APA ("Tabla N.") sobre la tabla; filas de título convertidas en captions.
-  - Bibliografía general migrada a **biblatex + estilo APA + biber** con `referencias.bib` (7 referencias); compilar con pdflatex → biber → pdflatex ×2.
+  - Bibliografía general con **biblatex + estilo IEEE + biber** (`referencias.bib`, 12 referencias numeradas [1]–[12]); compilar con latexmk o pdflatex → biber → pdflatex ×2.
+  - **Fuentes por caso + bibliografía general**: las subsecciones 2.9 y 3.9 muestran sus 5 fuentes cada una en IEEE vía `\fullcite` (desde la misma `referencias.bib`, sin duplicar texto), y la bibliografía general conserva las 12 entradas numeradas `[1]`–`[12]`. Mapeo por caso en `CASE_REFS` de `docx2tex.py`.
+  - Enunciado oficial T1: `tareas/T1/enunciado/enunciado-email-t1.md` (email del profe): alcance = autoría, FFP y QRP (seres humanos/vivos quedan para la siguiente actividad, miércoles 30/9).
+
+## 2026-09-06 — Confirmaciones del estudiante
+
+- T1 = **Actividad 1 (Ética, parte 1)** de la plataforma ✔.
+- **Grupo propio de cátedra: Grupo 1** ✔ (README y memoria actualizados).
+- **Integrantes del Grupo 1** (listado oficial): Gonzalo Ahumada Figueroa, Diego Fernández Carrasco, Iván Fernández Gracia y Pablo Figueroa Zelaya. Coinciden con los autores del informe ✔.
+- Listado completo (15 estudiantes, 4 grupos) guardado en `catedra/informacion-usach/Grupos Cátedra 2026 - listado oficial.md`.
+- Copiado el enunciado oficial de la plataforma a `tareas/T1/enunciado/` (la tarea queda autocontenida).
   - Verificado en los documentos del curso: el programa usa APA en su bibliografía; los enunciados no imponen formato propio al informe.
   - Índice automático agregado (`\tableofcontents` + `tocloft`, título «Índice», puntos guía, secciones en negrita).
+  - Ítems de listas con **etiqueta en negrita** vía comando propio de 3 argumentos `\itemlabel{Etiqueta}{:}{Resto}` (57 ítems generados automáticamente; no aplica a ítems tipo referencia, que llevan punto en la etiqueta).
+
+## 2026-09-06 — Fix LaTeX Workshop (archivos fuera de build/)
+
+- VS Code auto-compiló `main.tex` en la carpeta fuente con LaTeX Workshop, dejando auxiliares sueltos en `report/tex/`. Limpiados.
+- Creada `.vscode/settings.json` con `latex-workshop.latex.outDir: %DIR%/build` y receta `latexmk` (`-outdir=build`, biber automático). Verificado: `tex/` queda limpio y todo cae en `build/`.
 
 ## Siguientes pasos
 

@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-noquoting]{babel}
+\usepackage{csquotes}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{setspace}
 \onehalfspacing
@@ -33,7 +34,8 @@
 \fancyhead[R]{\small\itshape Metodologías de Investigación Aplicada}
 \fancyfoot[C]{\small Página \thepage\ de \pageref{LastPage}}
 \renewcommand{\headrulewidth}{0.4pt}
-\usepackage[style=apa,sorting=nyt,backend=biber]{biblatex}
+\setlength{\headheight}{14pt}
+\usepackage[style=ieee,sorting=none,backend=biber]{biblatex}
 \addbibresource{referencias.bib}
 \usepackage{hyperref}
 \usepackage{xurl}
@@ -41,6 +43,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 \renewcommand{\arraystretch}{1.25}
+\newcommand{\itemlabel}[3]{\textbf{#1#2}~#3}
 
 \begin{document}
 \thispagestyle{empty}
@@ -82,15 +85,15 @@ Santiago – Chile\par
 La integridad científica constituye el pilar fundamental sobre el cual se sustenta el avance del conocimiento. En la investigación contemporánea, la \textbf{publicación científica} no es únicamente un vehículo de difusión, sino el producto formal y acreditable que certifica la validez, novedad y rigor de los hallazgos. No obstante, las crecientes presiones por productividad académica (la cultura del \textit{\textquotedbl{}publish or perish\textquotedbl{}}), los incentivos económicos y el prestigio profesional han generado escenarios propicios para la proliferación de malas conductas científicas (\textit{scientific misconduct}).
 Conforme a las directrices de la \textbf{Declaración de Singapur sobre la Integridad en la Investigación (2010)} y el reporte canónico \textbf{\textquotedbl{}On Being a Scientist: A Guide to Responsible Conduct in Research\textquotedbl{} (National Academy of Sciences, 3ª ed.)}, las conductas reprobables en la publicación se concentran primordialmente en la tríada \textbf{FFP}:
 \begin{itemize}
-\item \textit{\textbf{Fabricación:}}\textit{\textbf{ Invención deliberada de datos, mediciones o resultados.}}
-\item \textit{\textbf{Falsificación:}}\textit{\textbf{ Manipulación, adulteración, alteración u omisión intencionada de materiales, procesos, imágenes o registros de datos de modo que la investigación no quede representada con veracidad.}}
-\item \textit{\textbf{Plagio:}}\textit{\textbf{ Apropiación ilegítima de ideas, textos, procesos, algoritmos o resultados ajenos sin otorgar el debido crédito y citación.}}
+\item \itemlabel{Fabricación}{:}{Invención deliberada de datos, mediciones o resultados.}
+\item \itemlabel{Falsificación}{:}{Manipulación, adulteración, alteración u omisión intencionada de materiales, procesos, imágenes o registros de datos de modo que la investigación no quede representada con veracidad.}
+\item \itemlabel{Plagio}{:}{Apropiación ilegítima de ideas, textos, procesos, algoritmos o resultados ajenos sin otorgar el debido crédito y citación.}
 \end{itemize}
 A estas faltas se suman transgresiones emergentes y sistémicas: la autoría ficticia o mercantilizada (\textit{paper mills}), la manipulación coordinada de la revisión por pares (\textit{peer-review rings}) y el uso fraudulento de herramientas de inteligencia artificial y parafraseo algorítmico para engañar a los sistemas editoriales.
 En estricta observancia de los lineamientos de esta primera evaluación, el presente informe examina \textbf{dos casos reales y paradigmáticos centrados exclusivamente en la publicación como producto} (excluyendo transgresiones vinculadas a experimentación con seres vivos o humanos):
 \begin{enumerate}[series=lista]
-\item \textit{\textbf{Caso Histórico de Libre Elección:}}\textit{\textbf{ El fraude de Jan Hendrik Schön en física de la materia condensada y nanotecnología (Bell Labs).}}
-\item \textit{\textbf{Caso de Informática y Ciencias de la Computación:}}\textit{\textbf{ El escándalo de las }}\textit{\textbf{\textquotedbl{}Tortured Phrases\textquotedbl{}}}\textit{\textbf{, fábricas de artículos (}}\textit{\textbf{paper mills}}\textit{\textbf{) y manipulación de revisión por pares en conferencias de la }}\textit{\textbf{Association for Computing Machinery}}\textit{\textbf{ (ACM).}}
+\item \itemlabel{Caso Histórico de Libre Elección}{:}{El fraude de Jan Hendrik Schön en física de la materia condensada y nanotecnología (Bell Labs).}
+\item \itemlabel{Caso de Informática y Ciencias de la Computación}{:}{El escándalo de las \textquotedbl{}Tortured Phrases\textquotedbl{}, fábricas de artículos (paper mills) y manipulación de revisión por pares en conferencias de la Association for Computing Machinery (ACM).}
 \end{enumerate}
 \section{CASO 1: LIBRE ELECCIÓN (HISTÓRICO)}
 \textbf{\textquotedbl{}El Escándalo de Jan Hendrik Schön: Fabricación y Falsificación Masiva en Nanotecnología y Superconductividad\textquotedbl{}}
@@ -112,21 +115,21 @@ Estado Actual: Artículos retractados, doctorado revocado, despido fulminante \\
 Física del estado sólido, física de la materia condensada, nanotecnología y electrónica molecular.
 \subsection{Autores Involucrados}
 \begin{itemize}
-\item \textit{\textbf{Jan Hendrik Schön:}}\textit{\textbf{ Investigador principal, artífice directo de la manipulación y fabricación de datos.}}
-\item \textit{\textbf{Bertram Batlogg:}}\textit{\textbf{ Físico de renombre mundial, jefe de departamento en Bell Labs y coautor sénior de la gran mayoría de los artículos.}}
-\item \textit{\textbf{Coautores secundarios:}}\textit{\textbf{ Cerca de 20 investigadores y técnicos de Bell Labs y la Universidad de Konstanz (quienes sintetizaban materiales o colaboraban en montajes experimentales, pero confiaban ciegamente en las mediciones aportadas por Schön).}}
+\item \itemlabel{Jan Hendrik Schön}{:}{Investigador principal, artífice directo de la manipulación y fabricación de datos.}
+\item \itemlabel{Bertram Batlogg}{:}{Físico de renombre mundial, jefe de departamento en Bell Labs y coautor sénior de la gran mayoría de los artículos.}
+\item \itemlabel{Coautores secundarios}{:}{Cerca de 20 investigadores y técnicos de Bell Labs y la Universidad de Konstanz (quienes sintetizaban materiales o colaboraban en montajes experimentales, pero confiaban ciegamente en las mediciones aportadas por Schön).}
 \end{itemize}
 \subsection{Nacionalidades e Institución de los Autores}
 \begin{itemize}
-\item \textit{\textbf{Jan Hendrik Schön:}}\textit{\textbf{ Nacionalidad alemana. Afiliado a }}\textit{\textbf{Bell Laboratories (Lucent Technologies)}}\textit{\textbf{ en Murray Hill, New Jersey, Estados Unidos, y egresado doctoral de la }}\textit{\textbf{Universidad de Konstanz (Universität Konstanz)}}\textit{\textbf{, Alemania.}}
-\item \textit{\textbf{Bertram Batlogg:}}\textit{\textbf{ Nacionalidad austríaca. Afiliado a }}\textit{\textbf{Bell Laboratories}}\textit{\textbf{ (posteriormente transferido a ETH Zúrich, Suiza).}}
+\item \itemlabel{Jan Hendrik Schön}{:}{Nacionalidad alemana. Afiliado a Bell Laboratories (Lucent Technologies) en Murray Hill, New Jersey, Estados Unidos, y egresado doctoral de la Universidad de Konstanz (Universität Konstanz), Alemania.}
+\item \itemlabel{Bertram Batlogg}{:}{Nacionalidad austríaca. Afiliado a Bell Laboratories (posteriormente transferido a ETH Zúrich, Suiza).}
 \end{itemize}
 \subsection{Revista o Conferencia donde fue Presentada la Publicación}
 Los trabajos fraudulentos se publicaron entre 1998 y 2001 en las revistas científicas más prestigiosas del mundo:
 \begin{itemize}
-\item \textit{\textbf{Science}}\textit{\textbf{ (al menos 8 artículos fundamentales, incluyendo superconductividad en fulerenos y transistores moleculares).}}
-\item \textit{\textbf{Nature}}\textit{\textbf{ (múltiples publicaciones de alto impacto, como transistores monomoleculares).}}
-\item \textit{\textbf{Applied Physics Letters}}\textit{\textbf{ y }}\textit{\textbf{Physical Review B}}\textit{\textbf{.}}
+\item Science (al menos 8 artículos fundamentales, incluyendo superconductividad en fulerenos y transistores moleculares).
+\item Nature (múltiples publicaciones de alto impacto, como transistores monomoleculares).
+\item Applied Physics Letters y Physical Review B.
 \end{itemize}
 En su momento de mayor notoriedad (año 2001), Schön publicaba un artículo científico en promedio cada ocho días, llegando a ser postulado extraoficialmente como candidato al Premio Nobel de Física antes de los 35 años.
 \subsection{Aspectos donde se Denota Falta a la Ética en Investigación}
@@ -135,46 +138,46 @@ El comportamiento de Schön y el entorno de Bell Labs representan una vulneraci�
 \noindent\textbf{A. Vinculación con On Being a Scientist (National Academies of Sciences)}
 El caso Schön es examinado explícitamente como estudio de caso canónico en la página 35 de \textit{On Being a Scientist} bajo el título \textit{\textquotedbl{}A Breach of Trust\textquotedbl{}}. Se identifican tres transgresiones directas:
 \begin{enumerate}[resume*=lista]
-\item \textit{\textbf{Fabricación y Falsificación de Datos:}}\textit{\textbf{ Schön inventó curvas de conductividad eléctrica y transiciones de fase superconductora. Utilizó ecuaciones matemáticas ideales para generar gráficos y luego les añadió artificialmente \textquotedbl{}ruido\textquotedbl{} numérico para simular mediciones experimentales reales.}}
-\item \textit{\textbf{Destrucción y Negligencia en el Registro de Datos (}}\textit{\textbf{Treatment of Data}}\textit{\textbf{):}}\textit{\textbf{ La guía estipula que los científicos tienen la obligación ineludible de conservar bitácoras y datos primarios reproducibles. Al ser interrogado por el comité de investigación, Schön declaró que \textquotedbl{}no guardaba cuadernos de laboratorio de sus experimentos\textquotedbl{}, que había \textquotedbl{}desechado todas las muestras y dispositivos físicos porque ya no funcionaban\textquotedbl{} y que había \textquotedbl{}eliminado todos los archivos digitales crudos de su computador antiguo por falta de espacio en el disco duro\textquotedbl{}.}}
-\item \textit{\textbf{Falla en la Responsabilidad Compartida de Autoría (}}\textit{\textbf{Authorship}}\textit{\textbf{):}}\textit{\textbf{ La obra subraya que los coautores (especialmente figuras de alto rango como Bertram Batlogg) tienen el deber de velar por la verosimilitud de lo que firman. Batlogg prestó su reputación para validar papers revolucionarios sin haber presenciado jamás una sola medición en vivo ni haber verificado los datos brutos de Schön.}}
+\item \itemlabel{Fabricación y Falsificación de Datos}{:}{Schön inventó curvas de conductividad eléctrica y transiciones de fase superconductora. Utilizó ecuaciones matemáticas ideales para generar gráficos y luego les añadió artificialmente \textquotedbl{}ruido\textquotedbl{} numérico para simular mediciones experimentales reales.}
+\item \itemlabel{Destrucción y Negligencia en el Registro de Datos (Treatment of Data)}{:}{La guía estipula que los científicos tienen la obligación ineludible de conservar bitácoras y datos primarios reproducibles. Al ser interrogado por el comité de investigación, Schön declaró que \textquotedbl{}no guardaba cuadernos de laboratorio de sus experimentos\textquotedbl{}, que había \textquotedbl{}desechado todas las muestras y dispositivos físicos porque ya no funcionaban\textquotedbl{} y que había \textquotedbl{}eliminado todos los archivos digitales crudos de su computador antiguo por falta de espacio en el disco duro\textquotedbl{}.}
+\item \itemlabel{Falla en la Responsabilidad Compartida de Autoría (Authorship)}{:}{La obra subraya que los coautores (especialmente figuras de alto rango como Bertram Batlogg) tienen el deber de velar por la verosimilitud de lo que firman. Batlogg prestó su reputación para validar papers revolucionarios sin haber presenciado jamás una sola medición en vivo ni haber verificado los datos brutos de Schön.}
 \end{enumerate}
 \bigskip
 \noindent\textbf{B. Vinculación con la Declaración de Singapur sobre la Integridad en la Investigación}
 \begin{itemize}
-\item \textit{\textbf{Principio de Honestidad y Responsabilidad:}}\textit{\textbf{ Violación total al inventar resultados para obtener ventajas de carrera y financiamiento.}}
-\item \textit{\textbf{Responsabilidad N° 1 (Integridad):}}\textit{\textbf{ Schön no asumió la honradez de su investigación.}}
-\item \textit{\textbf{Responsabilidad N° 3 (Métodos de investigación):}}\textit{\textbf{ Los resultados no provinieron de un análisis crítico de evidencia real, sino de simulaciones gráficas adulteradas.}}
-\item \textit{\textbf{Responsabilidad N° 4 (Documentación de la investigación):}}\textit{\textbf{ Incumplimiento tajante de la obligación de \textquotedbl{}mantener una documentación clara y precisa de toda la investigación, de manera que otros puedan verificar y reproducir sus trabajos\textquotedbl{}.}}
-\item \textit{\textbf{Responsabilidad N° 6 (Autoría):}}\textit{\textbf{ Falta de los coautores en asumir la responsabilidad por sus contribuciones y verificar la consistencia del manuscrito conjunto.}}
+\item \itemlabel{Principio de Honestidad y Responsabilidad}{:}{Violación total al inventar resultados para obtener ventajas de carrera y financiamiento.}
+\item \itemlabel{Responsabilidad N° 1 (Integridad)}{:}{Schön no asumió la honradez de su investigación.}
+\item \itemlabel{Responsabilidad N° 3 (Métodos de investigación)}{:}{Los resultados no provinieron de un análisis crítico de evidencia real, sino de simulaciones gráficas adulteradas.}
+\item \itemlabel{Responsabilidad N° 4 (Documentación de la investigación)}{:}{Incumplimiento tajante de la obligación de \textquotedbl{}mantener una documentación clara y precisa de toda la investigación, de manera que otros puedan verificar y reproducir sus trabajos\textquotedbl{}.}
+\item \itemlabel{Responsabilidad N° 6 (Autoría)}{:}{Falta de los coautores en asumir la responsabilidad por sus contribuciones y verificar la consistencia del manuscrito conjunto.}
 \end{itemize}
 \subsection{Cómo se Reveló el Caso}
 El caso no fue detectado por los revisores de \textit{Nature} o \textit{Science}, sino por el mecanismo correctivo de la comunidad científica externa:
 \begin{enumerate}[resume*=lista]
-\item \textit{\textbf{Incapacidad de Replicación:}}\textit{\textbf{ Equipos líderes en nanotecnología de la Universidad de Cornell, Princeton, Harvard y Delft intentaron durante más de dos años replicar los transistores moleculares de Schön sin éxito alguno, invirtiendo millones de dólares y miles de horas de trabajo.}}
-\item \textit{\textbf{El Hallazgo Gráfico (2002):}}\textit{\textbf{ La física }}\textit{\textbf{Lydia Sohn}}\textit{\textbf{ (Universidad de Princeton) y }}\textit{\textbf{Paul McEuen}}\textit{\textbf{ (Universidad de Cornell) compararon dos artículos publicados por Schön en revistas y fechas diferentes que describían materiales distintos a temperaturas totalmente diferentes (uno sobre transistores monomoleculares en }}\textit{\textbf{Nature}}\textit{\textbf{ y otro sobre semiconductores orgánicos en }}\textit{\textbf{Science}}\textit{\textbf{). Descubrieron con asombro que }}\textit{\textbf{los gráficos de ruido experimental de fondo eran 100\% idénticos píxel por píxel}}\textit{\textbf{. El mismo ruido térmico aleatorio —físicamente imposible de duplicar en dos muestras reales distintas— demostró de forma matemática irrefutable que las curvas provenían de la misma función matemática duplicada mediante }}\textit{\textbf{copy-paste}}\textit{\textbf{.}}
-\item \textit{\textbf{Denuncia Formal:}}\textit{\textbf{ Sohn y McEuen alertaron de inmediato a la dirección de Bell Labs y a los editores de }}\textit{\textbf{Nature}}\textit{\textbf{ y }}\textit{\textbf{Science}}\textit{\textbf{.}}
+\item \itemlabel{Incapacidad de Replicación}{:}{Equipos líderes en nanotecnología de la Universidad de Cornell, Princeton, Harvard y Delft intentaron durante más de dos años replicar los transistores moleculares de Schön sin éxito alguno, invirtiendo millones de dólares y miles de horas de trabajo.}
+\item \itemlabel{El Hallazgo Gráfico (2002)}{:}{La física Lydia Sohn (Universidad de Princeton) y Paul McEuen (Universidad de Cornell) compararon dos artículos publicados por Schön en revistas y fechas diferentes que describían materiales distintos a temperaturas totalmente diferentes (uno sobre transistores monomoleculares en Nature y otro sobre semiconductores orgánicos en Science). Descubrieron con asombro que los gráficos de ruido experimental de fondo eran 100\% idénticos píxel por píxel. El mismo ruido térmico aleatorio —físicamente imposible de duplicar en dos muestras reales distintas— demostró de forma matemática irrefutable que las curvas provenían de la misma función matemática duplicada mediante copy-paste.}
+\item \itemlabel{Denuncia Formal}{:}{Sohn y McEuen alertaron de inmediato a la dirección de Bell Labs y a los editores de Nature y Science.}
 \end{enumerate}
 \subsection{Consecuencias del Caso}
 \begin{itemize}
-\item \textit{\textbf{Comisión Investigadora Externa (Comité Beasley):}}\textit{\textbf{ Bell Labs nombró un comité independiente presidido por el físico Malcolm Beasley (Stanford). En septiembre de 2002, el informe final concluyó que }}\textit{\textbf{Schön cometió mala conducta científica probada (fabricación o falsificación deliberada) en al menos 16 de los 25 artículos analizados}}\textit{\textbf{.}}
-\item \textit{\textbf{Retracciones Editoriales Masivas:}}\textit{\textbf{ }}\textit{\textbf{Science}}\textit{\textbf{ retractó 8 artículos; }}\textit{\textbf{Nature}}\textit{\textbf{ retractó 7; }}\textit{\textbf{Physical Review}}\textit{\textbf{ y }}\textit{\textbf{Applied Physics Letters}}\textit{\textbf{ retractaron decenas de publicaciones adicionales.}}
-\item \textit{\textbf{Despido y Sanciones Académicas:}}\textit{\textbf{ Schön fue despedido inmediatamente de Bell Labs. La Universidad de Konstanz le revocó formalmente su título de Doctor en Física (PhD) por conducta indigna, decisión ratificada por el Tribunal Federal Administrativo de Alemania en 2011. Además, la Fundación Alemana para la Investigación (DFG) le prohibió postular a fondos y ejercer cargos de evaluación científica durante 8 años.}}
-\item \textit{\textbf{Reformas Institucionales:}}\textit{\textbf{ Bell Labs reestructuró sus procedimientos internos, creando estrictas políticas de retención de datos crudos y revisiones de integridad previas al envío a revistas (}}\textit{\textbf{pre-publication internal review}}\textit{\textbf{).}}
+\item \itemlabel{Comisión Investigadora Externa (Comité Beasley)}{:}{Bell Labs nombró un comité independiente presidido por el físico Malcolm Beasley (Stanford). En septiembre de 2002, el informe final concluyó que Schön cometió mala conducta científica probada (fabricación o falsificación deliberada) en al menos 16 de los 25 artículos analizados.}
+\item \itemlabel{Retracciones Editoriales Masivas}{:}{Science retractó 8 artículos; Nature retractó 7; Physical Review y Applied Physics Letters retractaron decenas de publicaciones adicionales.}
+\item \itemlabel{Despido y Sanciones Académicas}{:}{Schön fue despedido inmediatamente de Bell Labs. La Universidad de Konstanz le revocó formalmente su título de Doctor en Física (PhD) por conducta indigna, decisión ratificada por el Tribunal Federal Administrativo de Alemania en 2011. Además, la Fundación Alemana para la Investigación (DFG) le prohibió postular a fondos y ejercer cargos de evaluación científica durante 8 años.}
+\item \itemlabel{Reformas Institucionales}{:}{Bell Labs reestructuró sus procedimientos internos, creando estrictas políticas de retención de datos crudos y revisiones de integridad previas al envío a revistas (pre-publication internal review).}
 \end{itemize}
 \subsection{Otros Aspectos Relevantes}
 \begin{itemize}
-\item \textit{\textbf{Efecto Halo y Prestigio Institucional:}}\textit{\textbf{ El prestigio histórico de Bell Labs (hogar del transistor y múltiples premios Nobel) operó como un escudo que inhibió el escepticismo inicial de revisores y editores.}}
-\item \textit{\textbf{El Debate sobre la Responsabilidad de los Coautores:}}\textit{\textbf{ El informe Beasley exoneró formalmente a Batlogg y demás coautores de mala conducta activa (concluyendo que Schön actuó en solitario), pero encendió un debate ético internacional: ¿Es ético figurar como autor sénior de descubrimientos históricos y cosechar premios si luego, ante el fraude, se alega desconocimiento total del origen de los datos?}}
+\item \itemlabel{Efecto Halo y Prestigio Institucional}{:}{El prestigio histórico de Bell Labs (hogar del transistor y múltiples premios Nobel) operó como un escudo que inhibió el escepticismo inicial de revisores y editores.}
+\item \itemlabel{El Debate sobre la Responsabilidad de los Coautores}{:}{El informe Beasley exoneró formalmente a Batlogg y demás coautores de mala conducta activa (concluyendo que Schön actuó en solitario), pero encendió un debate ético internacional: ¿Es ético figurar como autor sénior de descubrimientos históricos y cosechar premios si luego, ante el fraude, se alega desconocimiento total del origen de los datos?}
 \end{itemize}
 \subsection{Referencias y Fuentes de Información}
-\begin{enumerate}[resume*=lista]
-\item \textit{\textbf{National Academy of Sciences.}}\textit{\textbf{ (2009). }}\textit{\textbf{On Being a Scientist: A Guide to Responsible Conduct in Research}}\textit{\textbf{ (3rd ed.). The National Academies Press. [Estudio de Caso: \textquotedbl{}A Breach of Trust\textquotedbl{}, p. 35].}}
-\item \textit{\textbf{Beasley, M. R., et al.}}\textit{\textbf{ (2002). }}\textit{\textbf{Report of the Investigation Committee on the Possibility of Scientific Misconduct in the Work of Hendrik Schön and Coauthors}}\textit{\textbf{. Bell Laboratories.}}
-\item \textit{\textbf{Service, R. F.}}\textit{\textbf{ (2002). \textquotedbl{}Bell Labs Fires Star Physicist Found Guilty of Forging Data\textquotedbl{}. }}\textit{\textbf{Science}}\textit{\textbf{, 298(5591), 30–31.}}
-\item \textit{\textbf{Retraction Watch Database.}}\textit{\textbf{ Registros de retracción de Jan Hendrik Schön en }}\textit{\textbf{Nature}}\textit{\textbf{ y }}\textit{\textbf{Science}}\textit{\textbf{ (\url{https://retractionwatch.com}).}}
-\item \textit{\textbf{Reich, E. S.}}\textit{\textbf{ (2009). }}\textit{\textbf{Plastic Fantastic: How the Biggest Fraud in Physics Shook the Scientific World}}\textit{\textbf{. Palgrave Macmillan.}}
-\end{enumerate}
+\begin{itemize}
+\item \fullcite{nationalacademies2009}
+\item \fullcite{beasley2002}
+\item \fullcite{service2002}
+\item \fullcite{marcus2022}
+\item \fullcite{reich2009}
+\end{itemize}
 \section{CASO 2: INFORMÁTICA / CIENCIAS DE LA COMPUTACIÓN}
 \textbf{\textquotedbl{}El Escándalo de Retracciones Masivas de ACM: 'Tortured Phrases', Paper Mills y Secuestro de la Revisión por Pares en Conferencias de Computación\textquotedbl{}}
 \begin{table}[htbp]
@@ -195,23 +198,23 @@ Estado Actual: Auditoría integral de actas de congresos, cierre de publicacione
 Ciencias de la Computación (\textit{Computer Science}), Inteligencia Artificial (\textit{Artificial Intelligence / Deep Learning}), Minería de Datos, Sistemas de Información y Redes de Computadores.
 \subsection{Autores e Investigadores Involucrados}
 \begin{itemize}
-\item \textit{\textbf{Redes de Autores Fraudulentos y \textquotedbl{}Paper Mills\textquotedbl{}:}}\textit{\textbf{ Cientos de autores afiliados a diversas universidades internacionales (principalmente de Asia, Medio Oriente y Europa Oriental) que adquirieron autorías pagadas en artículos generados artificialmente o coordinaron revisiones recíprocas ilícitas.}}
-\item \textit{\textbf{Investigadores Denunciantes (Los Detectives de la Integridad en Informática):}}
-\item \textit{\textbf{Guillaume Cabanac:}}\textit{\textbf{ Profesor de Ciencias de la Computación en la Universidad de Toulouse III (Paul Sabatier), Francia. Creador del }}\textit{\textbf{Problematic Paper Screener}}\textit{\textbf{. Nombrado por }}\textit{\textbf{Nature}}\textit{\textbf{ como una de las diez personas más influyentes de la ciencia en 2021 (}}\textit{\textbf{Nature's 10}}\textit{\textbf{).}}
-\item \textit{\textbf{Cyril Labbé:}}\textit{\textbf{ Investigador en informática de la Universidad Grenoble Alpes, Francia (pionero en la detección de papers generados automáticamente con SCIgen).}}
-\item \textit{\textbf{Alexander Magazinov:}}\textit{\textbf{ Ingeniero de software e investigador independiente.}}
+\item \itemlabel{Redes de Autores Fraudulentos y \textquotedbl{}Paper Mills\textquotedbl{}}{:}{Cientos de autores afiliados a diversas universidades internacionales (principalmente de Asia, Medio Oriente y Europa Oriental) que adquirieron autorías pagadas en artículos generados artificialmente o coordinaron revisiones recíprocas ilícitas.}
+\item Investigadores Denunciantes (Los Detectives de la Integridad en Informática):
+\item \itemlabel{Guillaume Cabanac}{:}{Profesor de Ciencias de la Computación en la Universidad de Toulouse III (Paul Sabatier), Francia. Creador del Problematic Paper Screener. Nombrado por Nature como una de las diez personas más influyentes de la ciencia en 2021 (Nature's 10).}
+\item \itemlabel{Cyril Labbé}{:}{Investigador en informática de la Universidad Grenoble Alpes, Francia (pionero en la detección de papers generados automáticamente con SCIgen).}
+\item \itemlabel{Alexander Magazinov}{:}{Ingeniero de software e investigador independiente.}
 \end{itemize}
 \subsection{Nacionalidades e Institución Afectada}
 \begin{itemize}
-\item \textit{\textbf{Editorial Afectada:}}\textit{\textbf{ }}\textit{\textbf{ACM (Association for Computing Machinery)}}\textit{\textbf{, con sede en Nueva York, EE. UU. Es la sociedad científica y educativa de computación más antigua, grande e influyente del mundo (creadora del Premio Turing, el \textquotedbl{}Nobel de la Informática\textquotedbl{}).}}
-\item \textit{\textbf{Instituciones de los Autores Infractores:}}\textit{\textbf{ Centros universitarios e institutos tecnológicos de China, India, Irán, Irak, Malasia, entre otros, incentivados por políticas gubernamentales e institucionales de bonos económicos por publicar en repositorios indexados (como ACM Digital Library, Scopus o Web of Science).}}
+\item \itemlabel{Editorial Afectada}{:}{ACM (Association for Computing Machinery), con sede en Nueva York, EE. UU. Es la sociedad científica y educativa de computación más antigua, grande e influyente del mundo (creadora del Premio Turing, el \textquotedbl{}Nobel de la Informática\textquotedbl{}).}
+\item \itemlabel{Instituciones de los Autores Infractores}{:}{Centros universitarios e institutos tecnológicos de China, India, Irán, Irak, Malasia, entre otros, incentivados por políticas gubernamentales e institucionales de bonos económicos por publicar en repositorios indexados (como ACM Digital Library, Scopus o Web of Science).}
 \end{itemize}
 \subsection{Revista o Conferencia donde fue Presentada la Publicación}
 El fraude afectó directamente a las actas de congresos internacionales (\textit{Conference Proceedings}) publicadas en la biblioteca digital de la ACM (ACM Digital Library), destacando:
 \begin{itemize}
-\item \textit{\textbf{ICICN: Proceedings of the International Conference on Information and Computer Networks}}\textit{\textbf{ (Ediciones 2021 y 2022).}}
-\item \textit{\textbf{ICISS: Proceedings of the International Conference on Information Science and Systems}}\textit{\textbf{.}}
-\item \textit{\textbf{Series temáticas como los }}\textit{\textbf{ACM International Conference Proceeding Series (ICPS)}}\textit{\textbf{.}}
+\item \itemlabel{ICICN}{:}{Proceedings of the International Conference on Information and Computer Networks (Ediciones 2021 y 2022).}
+\item \itemlabel{ICISS}{:}{Proceedings of the International Conference on Information Science and Systems.}
+\item Series temáticas como los ACM International Conference Proceeding Series (ICPS).
 \end{itemize}
 \subsection{Aspectos donde se Denota Falta a la Ética en Investigación}
 Este caso expone una degradación industrializada de la ética de publicación en informática, violando de forma sistemática los códigos éticos de referencia:
@@ -239,45 +242,45 @@ A pesar de que estos artículos carecían de sentido lógico y presentaban metod
 \bigskip
 \noindent\textbf{B. Vinculación con On Being a Scientist}
 \begin{enumerate}[resume*=lista]
-\item \textit{\textbf{Plagio Encubierto y Falsificación Textual:}}\textit{\textbf{ El reporte define el plagio como la apropiación de textos e ideas ajenas. Los }}\textit{\textbf{text spinners}}\textit{\textbf{ constituyen una falsificación sofisticada del registro académico diseñada exprofeso para engañar los algoritmos de control editorial.}}
-\item \textit{\textbf{Corrupción de la Revisión por Pares (}}\textit{\textbf{Peer Review}}\textit{\textbf{):}}\textit{\textbf{ }}\textit{\textbf{On Being a Scientist}}\textit{\textbf{ recalca que la revisión por pares es el estándar de control de calidad esencial de la ciencia. En este caso, los organizadores de las conferencias y los operadores de }}\textit{\textbf{paper mills}}\textit{\textbf{ crearon }}\textit{\textbf{anillos de revisión falsa (}}\textit{\textbf{peer-review rings}}\textit{\textbf{)}}\textit{\textbf{, utilizando cuentas de correo apócrifas o ficticias de revisores para emitir dictámenes positivos automáticos en cuestión de horas.}}
-\item \textit{\textbf{Autoría como Mercancía Comercial (}}\textit{\textbf{Authorship}}\textit{\textbf{):}}\textit{\textbf{ La obra enfatiza que solo deben figurar como autores quienes realizaron aportes intelectuales sustanciales. En estos artículos, las posiciones de primer autor o coautor se comercializaban abiertamente en foros y redes sociales (Telegram, Facebook) por tarifas que oscilaban entre \$500 y \$3,000 USD.}}
+\item \itemlabel{Plagio Encubierto y Falsificación Textual}{:}{El reporte define el plagio como la apropiación de textos e ideas ajenas. Los text spinners constituyen una falsificación sofisticada del registro académico diseñada exprofeso para engañar los algoritmos de control editorial.}
+\item \itemlabel{Corrupción de la Revisión por Pares (Peer Review)}{:}{On Being a Scientist recalca que la revisión por pares es el estándar de control de calidad esencial de la ciencia. En este caso, los organizadores de las conferencias y los operadores de paper mills crearon anillos de revisión falsa (peer-review rings), utilizando cuentas de correo apócrifas o ficticias de revisores para emitir dictámenes positivos automáticos en cuestión de horas.}
+\item \itemlabel{Autoría como Mercancía Comercial (Authorship)}{:}{La obra enfatiza que solo deben figurar como autores quienes realizaron aportes intelectuales sustanciales. En estos artículos, las posiciones de primer autor o coautor se comercializaban abiertamente en foros y redes sociales (Telegram, Facebook) por tarifas que oscilaban entre \$500 y \$3,000 USD.}
 \end{enumerate}
 \bigskip
 \noindent\textbf{C. Vinculación con la Declaración de Singapur}
 \begin{itemize}
-\item \textit{\textbf{Responsabilidad N° 1 y 2 (Integridad y Cumplimiento de Normas):}}\textit{\textbf{ Desprecio total por la honradez científica y violación flagrante de los códigos éticos de la ACM y el COPE (}}\textit{\textbf{Committee on Publication Ethics}}\textit{\textbf{).}}
-\item \textit{\textbf{Responsabilidad N° 6 (Autoría):}}\textit{\textbf{ Venta y tráfico ilegítimo de firmas de autoría.}}
-\item \textit{\textbf{Responsabilidad N° 8 (Revisión por pares):}}\textit{\textbf{ Violación directa del principio de evaluaciones imparciales, rigurosas e independientes.}}
-\item \textit{\textbf{Responsabilidad N° 11 (Denuncia de prácticas irresponsables):}}\textit{\textbf{ Ejemplarmente ejercida por investigadores externos (Cabanac y Labbé) que auditaron públicamente las bases de datos de la ACM.}}
-\item \textit{\textbf{Responsabilidad N° 12 y 13 (Respuesta y Ambiente para la investigación):}}\textit{\textbf{ Obligación de las sociedades científicas (en este caso la ACM) de retractar las obras viciadas y sanear el registro bibliográfico.}}
+\item \itemlabel{Responsabilidad N° 1 y 2 (Integridad y Cumplimiento de Normas)}{:}{Desprecio total por la honradez científica y violación flagrante de los códigos éticos de la ACM y el COPE (Committee on Publication Ethics).}
+\item \itemlabel{Responsabilidad N° 6 (Autoría)}{:}{Venta y tráfico ilegítimo de firmas de autoría.}
+\item \itemlabel{Responsabilidad N° 8 (Revisión por pares)}{:}{Violación directa del principio de evaluaciones imparciales, rigurosas e independientes.}
+\item \itemlabel{Responsabilidad N° 11 (Denuncia de prácticas irresponsables)}{:}{Ejemplarmente ejercida por investigadores externos (Cabanac y Labbé) que auditaron públicamente las bases de datos de la ACM.}
+\item \itemlabel{Responsabilidad N° 12 y 13 (Respuesta y Ambiente para la investigación)}{:}{Obligación de las sociedades científicas (en este caso la ACM) de retractar las obras viciadas y sanear el registro bibliográfico.}
 \end{itemize}
 \subsection{Cómo se Reveló el Caso}
 \begin{enumerate}[resume*=lista]
-\item \textit{\textbf{Desarrollo del }}\textit{\textbf{Problematic Paper Screener}}\textit{\textbf{:}}\textit{\textbf{ El informático Guillaume Cabanac programó herramientas automáticas de minería de texto y expresiones regulares (}}\textit{\textbf{regex}}\textit{\textbf{) para rastrear la aparición de estas frases torturadas en millones de papers indexados en repositorios digitales.}}
-\item \textit{\textbf{Denuncias en PubPeer:}}\textit{\textbf{ Cabanac y su equipo comenzaron a registrar cientos de informes detallados en la plataforma comunitaria }}\textit{\textbf{PubPeer}}\textit{\textbf{, identificando lotes completos de actas de conferencias de la ACM con textos generados por máquinas o plagiados.}}
-\item \textit{\textbf{Difusión en }}\textit{\textbf{Retraction Watch}}\textit{\textbf{ y }}\textit{\textbf{Nature}}\textit{\textbf{:}}\textit{\textbf{ En 2021 y 2022, el portal }}\textit{\textbf{Retraction Watch}}\textit{\textbf{ y la revista }}\textit{\textbf{Nature}}\textit{\textbf{ publicaron reportajes exponiendo que la ACM estaba albergando cientos de publicaciones absurdas, lo que forzó a la directiva de la asociación a iniciar una auditoría forense inmediata.}}
+\item \itemlabel{Desarrollo del Problematic Paper Screener}{:}{El informático Guillaume Cabanac programó herramientas automáticas de minería de texto y expresiones regulares (regex) para rastrear la aparición de estas frases torturadas en millones de papers indexados en repositorios digitales.}
+\item \itemlabel{Denuncias en PubPeer}{:}{Cabanac y su equipo comenzaron a registrar cientos de informes detallados en la plataforma comunitaria PubPeer, identificando lotes completos de actas de conferencias de la ACM con textos generados por máquinas o plagiados.}
+\item \itemlabel{Difusión en Retraction Watch y Nature}{:}{En 2021 y 2022, el portal Retraction Watch y la revista Nature publicaron reportajes exponiendo que la ACM estaba albergando cientos de publicaciones absurdas, lo que forzó a la directiva de la asociación a iniciar una auditoría forense inmediata.}
 \end{enumerate}
 \subsection{Consecuencias del Caso}
 \begin{itemize}
-\item \textit{\textbf{Retracciones Masivas en Bloque:}}\textit{\textbf{ En abril de 2022, la ACM anunció la }}\textit{\textbf{retractación fulminante de más de 320 artículos}}\textit{\textbf{ pertenecientes a conferencias ICPS, seguida por tandas adicionales que superan los cientos de documentos eliminados de su biblioteca digital.}}
-\item \textit{\textbf{Sanciones y Veto a Autores:}}\textit{\textbf{ La ACM aplicó vetos de publicación de entre 3 y 10 años a los autores y organizadores de conferencias involucrados en las redes de arbitraje falso.}}
-\item \textit{\textbf{Intervención y Cierre de Actas de Conferencias:}}\textit{\textbf{ La ACM suspendió temporalmente la publicación de actas de congresos organizados por terceros y rediseñó por completo el proceso de aprobación de eventos satélites.}}
-\item \textit{\textbf{Implementación de Nuevos Algoritmos de Detección:}}\textit{\textbf{ Las principales editoriales de informática (ACM, IEEE, Springer, Elsevier) integraron herramientas de escaneo semántico de }}\textit{\textbf{tortured phrases}}\textit{\textbf{ en sus plataformas editoriales (ej. }}\textit{\textbf{ScholarOne}}\textit{\textbf{, }}\textit{\textbf{Editorial Manager}}\textit{\textbf{).}}
+\item \itemlabel{Retracciones Masivas en Bloque}{:}{En abril de 2022, la ACM anunció la retractación fulminante de más de 320 artículos pertenecientes a conferencias ICPS, seguida por tandas adicionales que superan los cientos de documentos eliminados de su biblioteca digital.}
+\item \itemlabel{Sanciones y Veto a Autores}{:}{La ACM aplicó vetos de publicación de entre 3 y 10 años a los autores y organizadores de conferencias involucrados en las redes de arbitraje falso.}
+\item \itemlabel{Intervención y Cierre de Actas de Conferencias}{:}{La ACM suspendió temporalmente la publicación de actas de congresos organizados por terceros y rediseñó por completo el proceso de aprobación de eventos satélites.}
+\item \itemlabel{Implementación de Nuevos Algoritmos de Detección}{:}{Las principales editoriales de informática (ACM, IEEE, Springer, Elsevier) integraron herramientas de escaneo semántico de tortured phrases en sus plataformas editoriales (ej. ScholarOne, Editorial Manager).}
 \end{itemize}
 \subsection{Otros Aspectos Relevantes}
 \begin{itemize}
-\item \textit{\textbf{Vínculo con Conferencias y Editoriales Depredadoras (}}\textit{\textbf{Beall's List}}\textit{\textbf{):}}\textit{\textbf{ El caso evidencia cómo la dinámica de las \textquotedbl{}conferencias predatorias\textquotedbl{} (conceptualmente documentadas en la lista de Jeffrey Beall) se infiltró en editoriales respetables como la ACM a través de la venta de actas (}}\textit{\textbf{proceedings outsourcing}}\textit{\textbf{).}}
-\item \textit{\textbf{Amenaza a la Inteligencia Artificial:}}\textit{\textbf{ La proliferación de estos textos sintéticos y fraudulentos en repositorios de informática \textquotedbl{}envenena\textquotedbl{} los datos de entrenamiento (}}\textit{\textbf{data contamination}}\textit{\textbf{) de futuros modelos de lenguaje (LLMs), amenazando con degradar la calidad del software y los modelos de IA del mañana.}}
+\item \itemlabel{Vínculo con Conferencias y Editoriales Depredadoras (Beall's List)}{:}{El caso evidencia cómo la dinámica de las \textquotedbl{}conferencias predatorias\textquotedbl{} (conceptualmente documentadas en la lista de Jeffrey Beall) se infiltró en editoriales respetables como la ACM a través de la venta de actas (proceedings outsourcing).}
+\item \itemlabel{Amenaza a la Inteligencia Artificial}{:}{La proliferación de estos textos sintéticos y fraudulentos en repositorios de informática \textquotedbl{}envenena\textquotedbl{} los datos de entrenamiento (data contamination) de futuros modelos de lenguaje (LLMs), amenazando con degradar la calidad del software y los modelos de IA del mañana.}
 \end{itemize}
 \subsection{Referencias y Fuentes de Información}
-\begin{enumerate}[resume*=lista]
-\item \textit{\textbf{Cabanac, G., Labbé, C., \& Magazinov, A.}}\textit{\textbf{ (2021). \textquotedbl{}Tortured phrases: A dubious writing style emerging in science. Possible symptoms of rapid-fire pseudo-science\textquotedbl{}. }}\textit{\textbf{arXiv preprint arXiv:2107.06751}}\textit{\textbf{.}}
-\item \textit{\textbf{Retraction Watch.}}\textit{\textbf{ (2022, Abril 18). }}\textit{\textbf{ACM retracts more than 320 papers from conferences}}\textit{\textbf{. [Enlace a portal Retraction Watch](\url{https://retractionwatch.com}).}}
-\item \textit{\textbf{Else, H.}}\textit{\textbf{ (2021). \textquotedbl{}'Tortured phrases' give away fabricated research papers\textquotedbl{}. }}\textit{\textbf{Nature}}\textit{\textbf{, 596(7873), 328–329.}}
-\item \textit{\textbf{Association for Computing Machinery (ACM).}}\textit{\textbf{ (2022). }}\textit{\textbf{ACM Policy on Plagiarism, Falsification, and Fabrication in ACM Publications}}\textit{\textbf{. ACM Ethics \& Plagiarism Committee.}}
-\item \textit{\textbf{Beall’s List of Potential Predatory Journals and Publishers.}}\textit{\textbf{ Criterios de evaluación de eventos académicos y actas comerciales (\url{https://beallslist.net}).}}
-\end{enumerate}
+\begin{itemize}
+\item \fullcite{cabanac2021}
+\item \fullcite{retractionwatch2022}
+\item \fullcite{else2021}
+\item \fullcite{acm2022}
+\item \fullcite{beall2016}
+\end{itemize}
 \section{ANÁLISIS COMPARATIVO ENTRE AMBOS CASOS}
 Para comprender la evolución del fraude en la publicación científica, la siguiente tabla sintetiza las diferencias y semejanzas críticas entre la transgresión individual histórica (Schön) y la transgresión industrializada computacional (ACM Paper Mills):
 \begin{table}[htbp]
@@ -301,11 +304,11 @@ Para comprender la evolución del fraude en la publicación científica, la sigu
 \section{CONCLUSIONES Y LECCIONES PARA LA INVESTIGACIÓN APLICADA}
 El análisis de ambos casos ofrece conclusiones fundamentales para estudiantes de posgrado e investigadores en ciencias aplicadas e informática:
 \begin{enumerate}[resume*=lista]
-\item \textit{\textbf{La replicabilidad es la prueba de fuego de la ciencia:}}\textit{\textbf{ La publicación no termina con la aceptación del paper; el verdadero juicio de la comunidad radica en la capacidad de otros investigadores independientes para verificar, auditar y reproducir los métodos y resultados.}}
-\item \textit{\textbf{La custodia de los datos crudos y el código fuente es un deber ético:}}\textit{\textbf{ Tanto en física experimental como en ciencias de la computación, un investigador debe ser capaz de abrir sus cuadernos, datasets y repositorios de código (}}\textit{\textbf{open data / open science}}\textit{\textbf{). La excusa de \textquotedbl{}haber perdido los archivos\textquotedbl{} equivale hoy a una confesión de negligencia o mala conducta.}}
-\item \textit{\textbf{La revisión por pares no es infalible y requiere vigilancia activa:}}\textit{\textbf{ Ni las revistas de más alto impacto (}}\textit{\textbf{Nature}}\textit{\textbf{, }}\textit{\textbf{Science}}\textit{\textbf{) ni las sociedades de mayor tradición en computación (ACM, IEEE) son inmunes al engaño. La comunidad académica depende crecientemente de plataformas de escrutinio posterior a la publicación (}}\textit{\textbf{post-publication peer review}}\textit{\textbf{) como }}\textit{\textbf{PubPeer}}\textit{\textbf{ y }}\textit{\textbf{Retraction Watch}}\textit{\textbf{.}}
-\item \textit{\textbf{La autoría implica responsabilidad solidaria:}}\textit{\textbf{ No existe la autoría \textquotedbl{}honoraria\textquotedbl{} inocua. El caso Schön demostró que los coautores sénior deben responder por la validez del trabajo que firman, y el caso ACM demostró que la venta de firmas descalifica moral y profesionalmente a quien participa en ella.}}
-\item \textit{\textbf{Nuevos desafíos éticos con la IA generativa:}}\textit{\textbf{ En informática, el mal uso de herramientas generativas para redactar o parafrasear investigaciones sin aporte cognitivo real vulnera la esencia misma de la generación de conocimiento, alertando sobre la necesidad de aplicar marcos éticos rigurosos en el uso de modelos computacionales avanzados.}}
+\item \itemlabel{La replicabilidad es la prueba de fuego de la ciencia}{:}{La publicación no termina con la aceptación del paper; el verdadero juicio de la comunidad radica en la capacidad de otros investigadores independientes para verificar, auditar y reproducir los métodos y resultados.}
+\item \itemlabel{La custodia de los datos crudos y el código fuente es un deber ético}{:}{Tanto en física experimental como en ciencias de la computación, un investigador debe ser capaz de abrir sus cuadernos, datasets y repositorios de código (open data / open science). La excusa de \textquotedbl{}haber perdido los archivos\textquotedbl{} equivale hoy a una confesión de negligencia o mala conducta.}
+\item \itemlabel{La revisión por pares no es infalible y requiere vigilancia activa}{:}{Ni las revistas de más alto impacto (Nature, Science) ni las sociedades de mayor tradición en computación (ACM, IEEE) son inmunes al engaño. La comunidad académica depende crecientemente de plataformas de escrutinio posterior a la publicación (post-publication peer review) como PubPeer y Retraction Watch.}
+\item \itemlabel{La autoría implica responsabilidad solidaria}{:}{No existe la autoría \textquotedbl{}honoraria\textquotedbl{} inocua. El caso Schön demostró que los coautores sénior deben responder por la validez del trabajo que firman, y el caso ACM demostró que la venta de firmas descalifica moral y profesionalmente a quien participa en ella.}
+\item \itemlabel{Nuevos desafíos éticos con la IA generativa}{:}{En informática, el mal uso de herramientas generativas para redactar o parafrasear investigaciones sin aporte cognitivo real vulnera la esencia misma de la generación de conocimiento, alertando sobre la necesidad de aplicar marcos éticos rigurosos en el uso de modelos computacionales avanzados.}
 \end{enumerate}
 \section{BIBLIOGRAFÍA GENERAL DEL INFORME}
 \nocite{*}

@@ -13,6 +13,10 @@ Una subcarpeta `T<n>/` por trabajo evaluado.
 
 > `T1/` ya está creada con la estructura base; `T2/`–`T4/` se crean al subir
 > los enunciados correspondientes.
+>
+> **T1 = Actividad 1 (Ética, parte 1)** de la plataforma. Enunciados en
+> `T1/enunciado/`: el email del profe (alcance: autoría, FFP, QRP) y el
+> enunciado oficial de la plataforma (informe + presentación máx. 10 min).
 
 ## Estructura de cada entrega
 

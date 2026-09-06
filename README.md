@@ -61,13 +61,17 @@ Todas las evaluaciones deben ser ≥ 4,0. Cada entrega se organiza en
 
 ## Grupo de cátedra
 
-| Integrante | Nombre | Apellido Paterno | Apellido Materno | Email |
-| ---------- | ------ | ---------------- | ---------------- | ----- |
-| —          | —      | —                | —                | —     |
+**Grupo 1** (listado oficial de cátedra):
 
-> **Pendiente**: completar con el listado oficial de integrantes. La
-> inscripción de la Actividad 2 registra 5 grupos de cátedra; el grupo
-> propio está por confirmar.
+| Integrante | Nombre               | Apellido Paterno | Apellido Materno | Email                      |
+| ---------- | -------------------- | ---------------- | ---------------- | -------------------------- |
+| 1          | Gonzalo Andrés       | Ahumada          | Figueroa         | gonzalo.ahumada@usach.cl   |
+| 2          | Diego Alonso         | Fernández        | Carrasco         | diego.fernandez.c@usach.cl |
+| 3          | Iván Alejandro       | Fernández        | Gracia           | ivan.fernandez.g@usach.cl  |
+| 4          | Pablo Alexander Iván | Figueroa         | Zelaya           | pablo.figueroa.z@usach.cl  |
+
+> Listado oficial completo en
+> `catedra/informacion-usach/Grupos Cátedra 2026 - listado oficial.md`.
 
 Los grupos de cátedra son distintos de los de laboratorio (el proyecto lo
 desarrolla el **Grupo 3-Lab** en el repo `MIA_LAB_2026`).

@@ -149,6 +149,21 @@ def esc_txt(s: str) -> str:
     return "".join(out)
 
 
+def item_to_latex(raw: str) -> str:
+    """Ítem de lista: separa la etiqueta (antes de ": ") y la pasa a
+    \\itemlabel{etiqueta}{:}{resto} para que vaya en negrita. Si no hay ": " o
+    la etiqueta contiene un punto (parece referencia), se deja en texto plano."""
+    text = raw.strip()
+    idx = text.find(": ")
+    if idx <= 0:
+        return esc_txt(text)
+    label = text[:idx]
+    rest = text[idx + 2:]
+    if "." in label:
+        return esc_txt(text)
+    return r"\itemlabel{" + esc_txt(label) + "}{:}{" + esc_txt(rest) + "}"
+
+
 def cell_latex(tc) -> str:
     parts = []
     for p in tc.findall(qn("p")):
@@ -163,6 +178,13 @@ TABLE_CAPTIONS = {
     "SÍNTESIS EJECUTIVA DEL CASO INFORMÁTICA (ACM)": "Síntesis ejecutiva del caso Informática (ACM)",
     "Término Informático Real": "Ejemplos de ``tortured phrases'' detectadas en artículos de la ACM",
     "Criterio Evaluativo": "Análisis comparativo entre el caso Schön y el caso ACM",
+}
+
+# Fuentes de cada caso (claves de referencias.bib) para las subsecciones
+# "Referencias y Fuentes de Información", renderizadas con \fullcite.
+CASE_REFS = {
+    1: ["nationalacademies2009", "beasley2002", "service2002", "marcus2022", "reich2009"],
+    2: ["cabanac2021", "retractionwatch2022", "else2021", "acm2022", "beall2016"],
 }
 
 
@@ -280,6 +302,7 @@ def convert(docx_path: str, out_path: str):
     out.append(r"\usepackage[utf8]{inputenc}")
     out.append(r"\usepackage[T1]{fontenc}")
     out.append(r"\usepackage[spanish,es-noquoting]{babel}")
+    out.append(r"\usepackage{csquotes}")
     out.append(r"\usepackage[margin=2.5cm]{geometry}")
     out.append(r"\usepackage{setspace}")
     out.append(r"\onehalfspacing")  # regla del curso: interlineado 1,5
@@ -311,7 +334,8 @@ def convert(docx_path: str, out_path: str):
     out.append(r"\fancyhead[R]{\small\itshape Metodologías de Investigación Aplicada}")
     out.append(r"\fancyfoot[C]{\small Página \thepage\ de \pageref{LastPage}}")
     out.append(r"\renewcommand{\headrulewidth}{0.4pt}")
-    out.append(r"\usepackage[style=apa,sorting=nyt,backend=biber]{biblatex}")
+    out.append(r"\setlength{\headheight}{14pt}")
+    out.append(r"\usepackage[style=ieee,sorting=none,backend=biber]{biblatex}")
     out.append(r"\addbibresource{referencias.bib}")
     out.append(r"\usepackage{hyperref}")
     out.append(r"\usepackage{xurl}")
@@ -319,6 +343,9 @@ def convert(docx_path: str, out_path: str):
     out.append(r"\setlength{\parindent}{0pt}")
     out.append(r"\setlength{\parskip}{5pt}")
     out.append(r"\renewcommand{\arraystretch}{1.25}")
+    # Etiqueta en negrita en ítems de lista (3 argumentos):
+    #   \itemlabel{Fabricación}{:}{Invención deliberada de datos...}
+    out.append(r"\newcommand{\itemlabel}[3]{\textbf{#1#2}~#3}")
     out.append("")
     out.append(r"\begin{document}")
     out.append(r"\thispagestyle{empty}")
@@ -360,6 +387,7 @@ def convert(docx_path: str, out_path: str):
     # ---- Cuerpo ----
     body_blocks = blocks[first_sec:]
     dec_state = {"first": True}
+    current_case = 0
     i = 0
     while i < len(body_blocks):
         b = body_blocks[i]
@@ -383,10 +411,31 @@ def convert(docx_path: str, out_path: str):
         if m:
             depth = m.group(1).count(".") + 1
             title = esc_txt(m.group(2))
+            if depth == 1:
+                up = title.upper()
+                if "CASO 1" in up:
+                    current_case = 1
+                elif "CASO 2" in up:
+                    current_case = 2
+            if depth == 2 and "REFERENCIAS" in title.upper():
+                # fuentes del caso en IEEE vía \fullcite (misma referencias.bib);
+                # la lista completa consolidada queda en la bibliografía general
+                out.append(r"\subsection{%s}" % title)
+                out.append(r"\begin{itemize}")
+                for key in CASE_REFS.get(current_case, []):
+                    out.append(r"\item \fullcite{%s}" % key)
+                out.append(r"\end{itemize}")
+                i += 1
+                while i < len(body_blocks):
+                    b2 = body_blocks[i]
+                    if b2[0] == "p" and SEC_RE.match(b2[1]["raw"].strip()):
+                        break
+                    i += 1
+                continue
             cmd = {1: "section", 2: "subsection", 3: "subsubsection"}[min(depth, 3)]
             out.append(r"\%s{%s}" % (cmd, title))
             if depth == 1 and "BIBLIOGRAFÍA" in title.upper():
-                # la bibliografía general se gestiona con biblatex (APA) + referencias.bib
+                # la bibliografía general se gestiona con biblatex (IEEE) + referencias.bib
                 out.append(r"\nocite{*}")
                 out.append(r"\printbibliography[heading=none]")
                 i = len(body_blocks)
@@ -403,7 +452,8 @@ def convert(docx_path: str, out_path: str):
             while i < len(body_blocks) and body_blocks[i][0] == "p" \
                     and body_blocks[i][1]["numid"]:
                 gm = body_blocks[i][1]
-                group.append((gm["numid"], gm["ilvl"], fmt_runs(runs_of(gm["el"]))))
+                # ítem con etiqueta en negrita vía \itemlabel{label}{:}{resto}
+                group.append((gm["numid"], gm["ilvl"], item_to_latex(gm["raw"])))
                 i += 1
             out.extend(render_list(group, formats, dec_state))
             continue
