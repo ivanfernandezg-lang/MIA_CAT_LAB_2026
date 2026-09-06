@@ -76,6 +76,12 @@
 - **Portada**: título principal ahora en _title case_ («Informe de Evaluación: Unidad de Ética en Investigación (Parte 1)») según la guía de titulación; autores ya en orden alfabético por apellido.
 - Compilado sin errores (14 págs.).
 
+## 2026-09-06 — Plantilla Beamer USACH (normas gráficas)
+
+- Creada `catedra/template/presentation/usach/` con `main.tex` (plantilla general para todas las tareas) + `README.md` + `img/` (imagotipos oficiales color/blanco/negro).
+- Diseño fiel al MNG 2024-2S y a la PPT oficial: banda gris `#394049` con imagotipo blanco en el pie, títulos grises con regla verde `#00A499`, bloques con paleta oficial, portadillas por sección, contraste WCAG AA.
+- Compilada y verificada (12 diapositivas de ejemplo, latexmk en `build/`).
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).

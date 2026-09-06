@@ -1,0 +1,174 @@
+% ---------------------------------------------------------------------------
+%  beamerthemeusach.sty  --  Tema Beamer institucional USACH
+%  v2.0 (2026-09-06)
+%
+%  Uso:   \usetheme[opciones]{usach}
+%  Opciones:
+%    sinprogreso     quita la barra de avance del pie
+%    logolamina      repite el imagotipo (reducido) en cada lamina de contenido
+%    sinportadillas  desactiva la portadilla automatica al iniciar cada seccion
+%    pei             habilita la paleta PEI 2030 como ciclo de colores pgfplots
+%
+%  Referencias normativas:
+%    - Manual de Normas Graficas USACH 2024-2S (colores, tipografia, imagotipo)
+%    - Guia para el formato de trabajo de titulacion, Bibliotecas USACH
+%    - Decreto exento 02968/2008 (datos obligatorios de portada)
+%    - WCAG 2.1 AA (contraste minimo 4.5:1 texto normal, 3:1 texto grande)
+% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeusach}[2026/09/06 v2.0 Tema Beamer USACH]
+\mode<presentation>
+
+\RequirePackage{graphicx}
+\RequirePackage{ragged2e}
+
+% --- Opciones ----------------------------------------------------------------
+\newif\ifusach@opt@progreso     \usach@opt@progresotrue
+\newif\ifusach@opt@logolamina   \usach@opt@logolaminafalse
+\newif\ifusach@opt@portadillas  \usach@opt@portadillastrue
+\newif\ifusach@opt@pei          \usach@opt@peifalse
+\newif\ifusach@opt@planos       \usach@opt@planosfalse
+\def\usach@mate{serif}
+
+\DeclareOptionBeamer{sinprogreso}{\usach@opt@progresofalse}
+\DeclareOptionBeamer{logolamina}{\usach@opt@logolaminatrue}
+\DeclareOptionBeamer{sinportadillas}{\usach@opt@portadillasfalse}
+\DeclareOptionBeamer{pei}{\usach@opt@peitrue}
+\DeclareOptionBeamer{bloquesplanos}{\usach@opt@planostrue}
+\DeclareOptionBeamer{matesans}{\def\usach@mate{sans}}
+\DeclareOptionBeamer{mateserif}{\def\usach@mate{serif}}
+\ProcessOptionsBeamer
+
+% --- Subtemas (el orden importa) --------------------------------------------
+\usecolortheme{usach}
+\usefonttheme{usach}
+\useinnertheme{usach}
+\useoutertheme{usach}
+
+\ifusach@opt@progreso\else\usach@progresofalse\fi
+\ifusach@opt@logolamina\usach@logolaminatrue\fi
+
+\ifusach@opt@portadillas
+  \AtBeginSection[]{\usachpaginaseccion}
+\fi
+
+% --- Ritmo vertical y medida -------------------------------------------------
+\setlength{\leftmargini}{0.62cm}
+\setlength{\leftmarginii}{0.52cm}
+\setlength{\leftmarginiii}{0.45cm}
+\setbeamertemplate{itemize/enumerate body begin}{\justifying}
+\setbeamertemplate{itemize/enumerate subbody begin}{\small}
+\newcommand{\usachaire}{\setlength{\itemsep}{0.55em}}
+
+% --- Ritmo de las ecuaciones (aire de paper) ---------------------------------
+\AtBeginDocument{%
+  \setlength{\abovedisplayskip}{0.95em plus 0.25em minus 0.2em}%
+  \setlength{\belowdisplayskip}{0.95em plus 0.25em minus 0.2em}%
+  \setlength{\abovedisplayshortskip}{0.55em plus 0.2em}%
+  \setlength{\belowdisplayshortskip}{0.75em plus 0.2em}%
+  \setlength{\jot}{0.55em}}
+
+% --- Enlaces -----------------------------------------------------------------
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=usachgris,
+  urlcolor=usachazultexto,
+  citecolor=usachverdetexto,
+  breaklinks=true}
+
+% --- Componentes -------------------------------------------------------------
+% Atribucion de fuente bajo figuras y tablas (exigida en trabajos USACH).
+\newcommand{\usachfuente}[1]{%
+  \par\vskip0.25em
+  {\usachcuerpo\fontsize{7.5}{9}\selectfont\color{usachgris70}Fuente: #1\par}}
+
+% Celda de cabecera de tabla: texto blanco sobre la fila gris.
+% Va con \textcolor y NO con \color: en columnas de parrafo (p, X, tabularx)
+% un \color al inicio de la celda deja una linea vacia arriba y hunde el texto
+% una linea respecto del resto de la cabecera.
+\newcommand{\usachcab}[1]{\textcolor{white}{#1}}
+
+% Cita textual destacada dentro de una lamina.
+\newcommand{\usachcita}[2]{%
+  \par\vskip0.4em
+  \usachpleca[usachgris20]{%
+    {\itshape #1\par}
+    \vskip0.3em{\usachcuerpo\fontsize{8}{10}\selectfont\color{usachgris70}#2\par}}%
+  \par\vskip0.4em}
+
+% Fila de datos destacados: \usachdatos{\usachdato{..}{..}}{\usachdato{..}{..}}...
+\newcommand{\usachdatos}[1]{%
+  \par\vskip0.3em\noindent\begin{minipage}{\linewidth}#1\end{minipage}\par\vskip0.3em}
+
+% --- Codigo fuente (listings) y pseudocodigo (algorithm2e) ------------------
+% Se aplican solo si el documento carga esos paquetes.
+\AtBeginDocument{%
+  \@ifpackageloaded{listings}{%
+    \lstdefinestyle{usach}{%
+      basicstyle=\ttfamily\fontsize{8}{9.6}\selectfont\color{usachtinta},
+      keywordstyle=\color{usachrojo}\bfseries,
+      commentstyle=\color{usachgris70}\itshape,
+      stringstyle=\color{usachverdetexto},
+      numberstyle=\ttfamily\fontsize{6.5}{8}\selectfont\color{usachgris70},
+      numbers=left, numbersep=0.9em,
+      backgroundcolor=\color{usachgris10},
+      frame=leftline, framerule=1.6pt, rulecolor=\color{usachrojo},
+      framexleftmargin=2.4em, framexrightmargin=0.6em, framextopmargin=0.4em,
+      framexbottommargin=0.4em,
+      xleftmargin=2.4em, aboveskip=0.9em, belowskip=0.7em,
+      breaklines=true, showstringspaces=false, columns=fixed,
+      keepspaces=true, basewidth={0.52em,0.48em}, tabsize=2, upquote=true}%
+    \lstset{style=usach}%
+  }{}%
+  \@ifpackageloaded{algorithm2e}{%
+    \SetAlCapFnt{\color{usachtinta}\usachtitular}%
+    \SetAlCapNameFnt{\color{usachgris}\usachcuerpo}%
+    \SetAlgoCaptionSeparator{.}%
+    \SetKwSty{usach@kwsty}%
+    \SetCommentSty{usach@comsty}%
+    \SetArgSty{textnormal}%
+    \SetAlgoInsideSkip{smallskip}%
+  }{}}
+\newcommand{\usach@kwsty}[1]{{\color{usachrojo}\bfseries #1}}
+\newcommand{\usach@comsty}[1]{{\color{usachgris70}\itshape #1}}
+
+% --- Paleta de datos (pgfplots) ---------------------------------------------
+\AtBeginDocument{%
+  \@ifpackageloaded{pgfplots}{%
+    \pgfplotsset{%
+      compat=newest,
+      usach/.style={
+        tick label style={font=\fontsize{7}{8}\selectfont,color=usachgris},
+        label style={font=\fontsize{8}{10}\selectfont,color=usachgris},
+        legend style={font=\fontsize{7.5}{9}\selectfont,draw=none,fill=none},
+        legend cell align=left,
+        legend image post style={line width=1.1pt},
+        axis x line*=bottom, axis y line*=left,
+        axis line style={color=usachgris70,line width=0.5pt},
+        tick style={color=usachgris70},
+        grid style={color=usachgris20,line width=0.4pt},
+        every axis plot/.append style={line width=1.1pt},
+        scaled ticks=false,
+        /pgf/number format/use comma,
+        /pgf/number format/1000 sep={\,}}}%
+    \ifusach@opt@pei
+      \pgfplotscreateplotcyclelist{usachciclo}{%
+        {usachrojo},{usachazultexto},{usachverdetexto},%
+        {usachpurpura},{usachnaranjo},{usachgris70}}%
+      \pgfplotscreateplotcyclelist{usachciclobarras}{%
+        {draw=usachrojo,fill=usachrojo},{draw=usachazultexto,fill=usachazultexto},%
+        {draw=usachverdetexto,fill=usachverdetexto},%
+        {draw=usachpurpura,fill=usachpurpura},{draw=usachnaranjo,fill=usachnaranjo},%
+        {draw=usachgris70,fill=usachgris70}}%
+    \else
+      \pgfplotscreateplotcyclelist{usachciclo}{%
+        {usachrojo},{usachgris},{usachgris70},{usachrojo,dashed},{usachgris,dashed}}%
+      \pgfplotscreateplotcyclelist{usachciclobarras}{%
+        {draw=usachrojo,fill=usachrojo},{draw=usachgris,fill=usachgris},%
+        {draw=usachgris70,fill=usachgris70},{draw=usachrojo,fill=usachrojo!45},%
+        {draw=usachgris,fill=usachgris!45}}%
+    \fi
+    \pgfplotsset{cycle list name=usachciclo}%
+  }{}}
+
+\mode<all>

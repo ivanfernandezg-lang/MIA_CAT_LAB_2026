@@ -1,0 +1,277 @@
+% ---------------------------------------------------------------------------
+%  beamerinnerthemeusach.sty
+%  Elementos internos: portada, portadillas de seccion, cierre, bloques,
+%  listas, figuras y componentes de datos.
+%
+%  Idea rectora: la "pleca" -- la barra vertical que en el imagotipo separa el
+%  blason del texto -- es el unico elemento estructural del sistema. Se repite
+%  a la izquierda de cada titulo (portada, portadilla, titulo de lamina) y vive
+%  en el margen, de modo que el texto siempre queda a ras de la caja de
+%  contenido. No hay mas adornos.
+% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeusach}[2026/09/06 v2.0 Tema interno USACH]
+\mode<presentation>
+
+\RequirePackage{tikz}
+\RequirePackage[most]{tcolorbox}
+% Permite cargar este subtema sin el tema maestro.
+\@ifundefined{ifusach@opt@planos}{\newif\ifusach@opt@planos}{}
+\RequirePackage{calc}
+
+% --- Metricas del sistema ----------------------------------------------------
+\newlength{\usachmargen}      \setlength{\usachmargen}{0.90cm}
+\newlength{\usachplecaancho}  \setlength{\usachplecaancho}{1.6pt}
+\newlength{\usachplecasep}    \setlength{\usachplecasep}{0.36cm}
+\newlength{\usachplecashift}  \setlength{\usachplecashift}{\usachplecaancho+\usachplecasep}
+\newlength{\usachlogoalto}    \setlength{\usachlogoalto}{1.00cm}
+% Area de resguardo del imagotipo (MNG: >= 1 caracter de la sigla).
+\newlength{\usachlogoaire}    \setlength{\usachlogoaire}{0.45\usachlogoalto}
+
+% --- Imagotipo ---------------------------------------------------------------
+% Reemplazar por los archivos oficiales del ZIP de normas graficas:
+%   \usachimagotipo{assets/Usach P2.png}          (positivo, fondo claro)
+%   \usachimagotipoblanco{assets/Usach PB.png}    (negativo, fondo oscuro)
+\newcommand{\usach@logo@pos}{assets/usach-horizontal.png}
+\newcommand{\usach@logo@neg}{assets/usach-horizontal-blanco.png}
+\newcommand{\usachimagotipo}[1]{\renewcommand{\usach@logo@pos}{#1}}
+\newcommand{\usachimagotipoblanco}[1]{\renewcommand{\usach@logo@neg}{#1}}
+
+% Respaldo tipografico: si falta el archivo oficial se compone el logotipo de
+% texto, nunca una version alterada del blason (MNG: marca indivisible).
+\newcommand{\usach@wordmark}[1]{%
+  \hbox{{\color{#1}\vrule width 1pt height 0.86\usachlogoalto}\hspace{0.22cm}%
+    \raisebox{0.06\usachlogoalto}{\color{#1}\usachcuerpo\fontsize{7.4}{8.6}\selectfont
+      \begin{tabular}{@{}l@{}}UNIVERSIDAD\\DE SANTIAGO\\DE CHILE\end{tabular}}}}
+
+\newcommand{\usachlogopos}{%
+  \IfFileExists{\usach@logo@pos}%
+    {\includegraphics[height=\usachlogoalto]{\usach@logo@pos}}%
+    {\usach@wordmark{usachtinta}}}
+\newcommand{\usachlogoneg}{%
+  \IfFileExists{\usach@logo@neg}%
+    {\includegraphics[height=\usachlogoalto]{\usach@logo@neg}}%
+    {\usach@wordmark{white}}}
+
+% --- Pleca -------------------------------------------------------------------
+% #1 opcional: color de la pleca. #2: contenido (parrafo completo).
+\newcommand{\usachpleca}[2][usachrojo]{%
+  \hbox{{\color{#1}\vrule width \usachplecaancho}\hspace{\usachplecasep}%
+    \begin{minipage}[t]{\dimexpr\linewidth-\usachplecashift\relax}\raggedright#2\end{minipage}}}
+
+% --- Metadatos institucionales ----------------------------------------------
+\newcommand{\usach@facultad}{}   \newcommand{\usachfacultad}[1]{\renewcommand{\usach@facultad}{#1}}
+\newcommand{\usach@depto}{}      \newcommand{\usachdepartamento}[1]{\renewcommand{\usach@depto}{#1}}
+\newcommand{\usach@programa}{}   \newcommand{\usachprograma}[1]{\renewcommand{\usach@programa}{#1}}
+\newcommand{\usach@asignatura}{} \newcommand{\usachasignatura}[1]{\renewcommand{\usach@asignatura}{#1}}
+\newcommand{\usach@profesor}{}   \newcommand{\usachprofesor}[1]{\renewcommand{\usach@profesor}{#1}}
+
+% Celda de ficha: etiqueta arriba, valor abajo. Se omite si el valor esta vacio.
+% #2 debe ser un unico macro (p. ej. \usach@programa) para poder testear vacio.
+\newcommand{\usach@ficha}[2]{%
+  \ifx#2\@empty\else
+    \begin{minipage}[t]{0.24\linewidth}
+      \hyphenpenalty=10000\exhyphenpenalty=10000\raggedright
+      {\color{usachgris40}\usachfichaetiqueta #1\par}
+      \vskip0.14em
+      {\color{white}\usachfichavalor #2\par}
+    \end{minipage}\hfill
+  \fi}
+
+% --- Superficie oscura -------------------------------------------------------
+% Envuelve un frame completo sobre fondo gris institucional.
+\newenvironment{usachlaminaoscura}[1][t]{%
+  \begingroup
+  \setbeamercolor{background canvas}{bg=usachnegativo}
+  \setbeamercolor{normal text}{fg=white,bg=usachnegativo}
+  \usebeamercolor[fg]{normal text}%
+  \hypersetup{linkcolor=white,urlcolor=usachgris20,citecolor=usachgris20}%
+  \begin{frame}[plain,noframenumbering,#1]%
+}{%
+  \end{frame}\endgroup}
+
+% --- Portada -----------------------------------------------------------------
+\newcommand{\usachportada}{%
+  \begin{usachlaminaoscura}
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north west,inner sep=0pt]
+        at ([shift={(\usachmargen,-0.72cm)}]current page.north west) {\usachlogoneg};
+      \fill[usachrojo] (current page.south west)
+        rectangle ([yshift=0.12cm]current page.south east);
+    \end{tikzpicture}%
+    \vspace*{\dimexpr\usachlogoalto+\usachlogoaire+0.55cm\relax}
+    \usachpleca[white]{%
+      \usebeamerfont{title}\usachtitular\color{white}\inserttitle\par
+      \ifx\insertsubtitle\@empty\else
+        \vskip0.45em{\usebeamerfont{subtitle}\color{usachgris20}\insertsubtitle\par}\fi
+      \vskip1.05em
+      {\usebeamerfont{author}\color{white}\insertauthor\par}%
+    }
+    \vfill
+    \hbox to \linewidth{%
+      \usach@ficha{Programa}{\usach@programa}%
+      \usach@ficha{Asignatura}{\usach@asignatura}%
+      \usach@ficha{Profesor}{\usach@profesor}%
+      \usach@ficha{Fecha}{\insertdate}%
+      \hspace*{0pt}}
+    \vskip0.5em
+    {\color{usachgris40}\usachfichaetiqueta
+      \usach@facultad\ifx\usach@facultad\@empty\else\ifx\usach@depto\@empty\else\ --- \fi\fi\usach@depto\par}
+    \vspace*{0.35cm}
+  \end{usachlaminaoscura}}
+
+% --- Portadilla de seccion ---------------------------------------------------
+% Izquierda: numero y nombre de la seccion. Derecha: indice con la seccion
+% activa en blanco y las demas en gris claro (5.8:1 sobre el fondo). No se usa
+% transparencia: en proyeccion desaparece.
+\newcommand{\usachpaginaseccion}{%
+  \begin{usachlaminaoscura}[c]
+    \begin{columns}[T,onlytextwidth]
+      \begin{column}{0.55\textwidth}
+        \usachpleca[white]{%
+          {\usachcuerpo\fontsize{9}{11}\selectfont\color{usachgris40}
+            Secci\'on \insertsectionnumber\par}
+          \vskip0.55em
+          {\usachtitular\fontsize{24}{27}\selectfont\color{white}\insertsectionhead\par}}
+      \end{column}
+      \begin{column}{0.40\textwidth}
+        \setbeamerfont{section in toc}{size=\fontsize{9.5}{14}\selectfont,series=\mdseries}
+        \setbeamertemplate{section in toc}{%
+          \leavevmode
+          \hbox to 0.42cm{{\color{usachrojo}\rule[0.28ex]{0.55ex}{0.55ex}}\hss}%
+          {\color{white}\inserttocsection}\par}
+        \setbeamertemplate{section in toc shaded}{%
+          \leavevmode\hbox to 0.42cm{\hss}%
+          {\color{usachgris40}\inserttocsection}\par}
+        \tableofcontents[currentsection,hideallsubsections,sectionstyle=show/shaded]
+      \end{column}
+    \end{columns}
+  \end{usachlaminaoscura}}
+
+% --- Lamina de afirmacion ----------------------------------------------------
+\newcommand{\usachdestacado}[1]{%
+  \begin{usachlaminaoscura}
+    \vfill
+    \usachpleca[white]{{\usachtitular\fontsize{20}{25}\selectfont\color{white}#1\par}}
+    \vfill
+  \end{usachlaminaoscura}}
+
+% --- Cierre ------------------------------------------------------------------
+\newcommand{\usachcierre}[2][Gracias]{%
+  \begin{usachlaminaoscura}
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=south east,inner sep=0pt]
+        at ([shift={(-\usachmargen,0.80cm)}]current page.south east) {\usachlogoneg};
+      \fill[usachrojo] (current page.south west)
+        rectangle ([yshift=0.12cm]current page.south east);
+    \end{tikzpicture}%
+    \vfill
+    \usachpleca[white]{%
+      {\usachtitular\fontsize{28}{32}\selectfont\color{white}#1\par}
+      \vskip0.8em
+      {\usachcuerpo\fontsize{10}{14}\selectfont\color{usachgris20}#2\par}}
+    \vspace*{1.6cm}
+  \end{usachlaminaoscura}}
+
+% --- Lamina con imagen a sangre ---------------------------------------------
+% \usachlaminaimagen[opacidad]{archivo}{texto}
+% La imagen cubre la lamina completa y se le aplica un velo gris institucional
+% para que el texto blanco mantenga contraste sobre cualquier fotografia.
+\newcommand{\usachlaminaimagen}[3][0.72]{%
+  \begingroup
+  \setbeamercolor{background canvas}{bg=usachnegativo}
+  \begin{frame}[plain,noframenumbering]
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=center,inner sep=0pt] at (current page.center)
+        {\includegraphics[width=\paperwidth,height=\paperheight]{#2}};
+      \fill[usachnegativo,opacity=#1] (current page.south west)
+        rectangle (current page.north east);
+      \fill[usachrojo] (current page.south west)
+        rectangle ([yshift=0.12cm]current page.south east);
+    \end{tikzpicture}%
+    \vfill
+    \usachpleca[white]{{\usachtitular\fontsize{20}{24}\selectfont\color{white}#3\par}}
+    \vspace*{1.1cm}
+  \end{frame}
+  \endgroup}
+
+% --- Dato destacado ----------------------------------------------------------
+% \usachdato{63 %}{cobertura de la muestra}
+\newcommand{\usachdato}[2]{%
+  \begin{minipage}[t]{\linewidth}
+    {\color{usachrojo}\rule{1.1cm}{1.6pt}\par}
+    \vskip0.35em
+    {\color{usachtinta}\usachcifra #1\par}
+    \vskip0.10em
+    {\color{usachgris70}\usachcuerpo\fontsize{8.5}{10.5}\selectfont #2\par}
+  \end{minipage}}
+
+% --- Bloques -----------------------------------------------------------------
+% Por defecto van elevados: esquinas de 4 pt y una sombra suave y corta
+% (2 pt de desplazamiento, 18 % de opacidad) que separa el bloque del fondo sin
+% ensuciarlo en proyeccion. El MNG prohibe sombras y degradados sobre el
+% IMAGOTIPO; no sobre los elementos de interfaz. Con la opcion 'bloquesplanos'
+% se vuelve a la version sin relieve.
+\newlength{\usachbloquearco} \setlength{\usachbloquearco}{4pt}
+
+\tcbset{usach@bloque/.style={%
+    enhanced, breakable=false, boxrule=0pt, arc=\usachbloquearco, outer arc=\usachbloquearco,
+    left=0.36cm, right=0.36cm, top=0.30cm, bottom=0.30cm,
+    toptitle=0.14cm, bottomtitle=0.14cm, titlerule=0pt,
+    fonttitle=\usebeamerfont{block title},
+    colback=usachgris10, coltext=usachgris,
+    before skip=0.60em, after skip=0.60em,
+    fuzzy shadow={0mm}{-0.9mm}{-0.3mm}{0.4mm}{usachgris!45}}}
+
+\ifusach@opt@planos
+  \tcbset{usach@bloque/.append style={no shadow, arc=0pt, outer arc=0pt}}
+\fi
+
+\newtcolorbox{usach@blk}[1]{usach@bloque, colbacktitle=usachgris,
+  coltitle=white, title={#1}}
+\newtcolorbox{usach@blkalert}[1]{usach@bloque, colbacktitle=usachrojo,
+  coltitle=white, title={#1}}
+\newtcolorbox{usach@blkexample}[1]{usach@bloque, colbacktitle=usachverdetexto,
+  coltitle=white, title={#1}}
+
+\setbeamertemplate{block begin}{\begin{usach@blk}{\insertblocktitle}\usebeamerfont{block body}}
+\setbeamertemplate{block end}{\end{usach@blk}}
+\setbeamertemplate{block alerted begin}{\begin{usach@blkalert}{\insertblocktitle}\usebeamerfont{block body}}
+\setbeamertemplate{block alerted end}{\end{usach@blkalert}}
+\setbeamertemplate{block example begin}{\begin{usach@blkexample}{\insertblocktitle}\usebeamerfont{block body}}
+\setbeamertemplate{block example end}{\end{usach@blkexample}}
+
+% Panel de formula destacada: la ecuacion que carga el argumento de la lamina.
+\newtcolorbox{usachformula}[1][]{%
+  enhanced, breakable=false, colback=usachgris05, colframe=usachrojo,
+  boxrule=0pt, leftrule=1.6pt, arc=\usachbloquearco, outer arc=\usachbloquearco,
+  sharp corners=west,
+  left=0.45cm, right=0.45cm, top=0.22cm, bottom=0.22cm,
+  before skip=0.70em, after skip=0.70em,
+  fuzzy shadow={0mm}{-0.9mm}{-0.3mm}{0.4mm}{usachgris!40},
+  #1}
+
+% Caja neutra sin titulo, para agrupar contenido cualquiera.
+\newtcolorbox{usachcaja}[1][]{usach@bloque, #1}
+
+% --- Listas ------------------------------------------------------------------
+\setbeamertemplate{itemize item}{\raisebox{0.18ex}{\rule{0.55ex}{0.55ex}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.4ex}{\rule{0.6ex}{0.9pt}}}
+\setbeamertemplate{itemize subsubitem}{\raisebox{0.35ex}{$\circ$}}
+\setbeamertemplate{enumerate item}{\usachtitular\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\insertenumlabel.\insertsubenumlabel}
+
+% --- Indice ------------------------------------------------------------------
+\setbeamertemplate{section in toc}{%
+  \leavevmode
+  \hbox to 0.62cm{{\color{usachrojo}\usachtitular\inserttocsectionnumber}\hss}%
+  \inserttocsection\par}
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\hskip0.62cm\hbox to 0.35cm{{\color{usachgris70}--}\hss}\inserttocsubsection\par}
+
+% --- Figuras, tablas y notas -------------------------------------------------
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{. }
+\setbeamertemplate{bibliography item}[text]
+
+\mode<all>

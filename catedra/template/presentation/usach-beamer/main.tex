@@ -1,0 +1,167 @@
+% ---------------------------------------------------------------------------
+%  Plantilla de presentacion -- Universidad de Santiago de Chile
+%  Tema: usach v2.0    Compilar: latexmk -pdf -outdir=build main.tex
+%  (xelatex/lualatex activan las fuentes corporativas si estan instaladas:
+%   latexmk -xelatex -outdir=build main.tex)
+% ---------------------------------------------------------------------------
+\documentclass[11pt,aspectratio=169]{beamer}
+
+% --- Idioma: babel-spanish si esta disponible; si no, ajustes manuales -------
+\IfFileExists{spanish.ldf}{%
+  \usepackage[spanish,es-noquoting,es-nodecimaldot]{babel}%
+}{%
+  \usepackage[T1]{fontenc}
+  \renewcommand{\figurename}{Figura}
+  \renewcommand{\tablename}{Tabla}
+  \renewcommand{\refname}{Referencias}
+}
+\usepackage[utf8]{inputenc}   % inofensivo en XeLaTeX/LuaLaTeX modernos
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{microtype}
+
+\usetheme{usach}              % opciones: sinprogreso, logolamina, sinportadillas, pei
+
+% --- Imagotipo oficial ------------------------------------------------------
+% Descargar el ZIP de imagotipos desde guiaweb.usach.cl y apuntar aqui:
+%   \usachimagotipo{assets/Usach P2.png}         % positivo (fondo claro)
+%   \usachimagotipoblanco{assets/Usach PB.png}   % negativo (fondo oscuro)
+
+% --- Metadatos --------------------------------------------------------------
+\title[Anomalías en telemetría]{Detección de anomalías en telemetría de medidores}
+\subtitle{Un modelo de series de tiempo para lecturas de consumo en terreno}
+\author{Iván Ahumada}
+\date{Septiembre de 2026}
+
+\usachfacultad{Facultad de Ingeniería}
+\usachdepartamento{Departamento de Ingeniería Informática}
+\usachprograma{Magíster en Ingeniería Informática}
+\usachasignatura{Computación Científica}
+\usachprofesor{Prof. Pablo Román}
+
+% Texto corto del pie (izquierda). Si se omite, se usa el titulo completo.
+\titlegraphic{}
+\institute[USACH]{Universidad de Santiago de Chile}
+
+\begin{document}
+
+\usachportada
+
+% --- Agenda ------------------------------------------------------------------
+\begin{frame}{Contenido}
+  \tableofcontents
+\end{frame}
+
+\section{Problema}
+
+\begin{frame}{Qué falla hoy}{Lecturas de terreno sin control de calidad automático}
+  \begin{itemize}\usachaire
+    \item El 8\,\% de las lecturas mensuales llega fuera del rango físico esperable.
+    \item La validación es manual y ocurre después de emitir la boleta.
+    \item Cada corrección posterior cuesta una revisita a terreno.
+  \end{itemize}
+
+  \vfill
+  \usachdatos{%
+    \begin{minipage}[t]{0.31\linewidth}\usachdato{8\,\%}{lecturas fuera de rango}\end{minipage}\hfill
+    \begin{minipage}[t]{0.31\linewidth}\usachdato{14 días}{demora media de detección}\end{minipage}\hfill
+    \begin{minipage}[t]{0.31\linewidth}\usachdato{1,7}{revisitas por corrección}\end{minipage}}
+\end{frame}
+
+\begin{frame}{Bloques del sistema}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Definición}
+        Una lectura es anómala si se aparta del consumo esperado del predio más
+        allá de tres desviaciones robustas.
+      \end{block}
+      \begin{exampleblock}{Resultado esperado}
+        Marcar la lectura antes del cierre del ciclo de facturación.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Restricción}
+        El modelo corre en el dispositivo del lector, sin conexión garantizada.
+      \end{alertblock}
+      \usachcita{La calidad del dato se define en el punto de captura, no en el
+      escritorio.}{Nota de terreno, cuadrilla norte}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Método}
+
+\usachdestacado{Si el dato se corrige en terreno, el ciclo de facturación no
+se vuelve a abrir.}
+
+\begin{frame}{Formulación}
+  Sea $y_t$ la lectura acumulada en el período $t$ y $\Delta y_t = y_t - y_{t-1}$
+  el consumo del período. El residuo robusto es
+  \[
+    r_t \;=\; \frac{\Delta y_t - \operatorname{med}(\Delta y)}{1{,}4826 \cdot \operatorname{MAD}(\Delta y)},
+  \]
+  y se marca la lectura cuando $|r_t| > 3$.
+
+  \begin{itemize}
+    \item La mediana y el MAD se recalculan con las últimas doce lecturas del predio.
+    \item El umbral es configurable por tipo de cliente.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Comparación de estrategias}
+  \begin{table}
+    \centering
+    \small
+    \begin{tabular}{@{}lccc@{}}
+      \toprule
+      Estrategia & Precisión & Recall & Latencia \\
+      \midrule
+      Rango fijo por tarifa      & 0,41 & 0,88 & inmediata \\
+      Residuo robusto (MAD)      & 0,79 & 0,84 & inmediata \\
+      Modelo estacional ajustado & 0,86 & 0,81 & 2 s \\
+      \bottomrule
+    \end{tabular}
+    \caption{Desempeño sobre 24 meses de lecturas etiquetadas.}
+  \end{table}
+  \usachfuente{elaboración propia a partir de la base de lecturas 2024--2026.}
+\end{frame}
+
+\section{Resultados}
+
+\begin{frame}{Lo que cambió}
+  \begin{itemize}\usachaire
+    \item La detección pasó de 14 días a la misma visita.
+    \item Las revisitas por corrección bajaron a 0,4 por lectura marcada.
+    \item El modelo cabe en 40\,kB y corre sin conexión.
+  \end{itemize}
+  \vfill
+  \begin{block}{Próximo paso}
+    Validar el umbral por tipo de cliente en la zona sur antes de extenderlo.
+  \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Referencias}
+  \begin{thebibliography}{9}
+    \bibitem{rousseeuw1993}
+      Rousseeuw, P. y Croux, C. (1993).
+      \newblock Alternatives to the median absolute deviation.
+      \newblock \emph{Journal of the American Statistical Association}, 88(424).
+    \bibitem{mng2024}
+      Universidad de Santiago de Chile (2024).
+      \newblock \emph{Manual de Normas Gráficas 2024-2S}.
+  \end{thebibliography}
+\end{frame}
+
+\usachcierre{ivan.ahumada@usach.cl \\ Departamento de Ingeniería Informática}
+
+\appendix
+
+\begin{frame}{Anexo: parámetros del modelo}
+  \begin{itemize}
+    \item Ventana móvil: 12 períodos.
+    \item Factor de consistencia: 1,4826 (normalidad asintótica).
+    \item Umbral por defecto: $|r_t| > 3$.
+  \end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,79 @@
+% ---------------------------------------------------------------------------
+%  beamerouterthemeusach.sty
+%  Cromo de la lamina: titulo con pleca en el margen, pie de pagina con
+%  progreso y numeracion. Sin encabezado, sin barra de navegacion, sin logo
+%  repetido (el imagotipo se usa en portada, portadillas y cierre, donde puede
+%  respetar el area de resguardo que exige el MNG).
+% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemeusach}[2026/09/06 v2.0 Tema externo USACH]
+\mode<presentation>
+
+\newif\ifusach@progreso  \usach@progresotrue
+\newif\ifusach@logolamina \usach@logolaminafalse
+
+\setbeamersize{text margin left=\usachmargen,text margin right=\usachmargen}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+% --- Titulo de lamina --------------------------------------------------------
+% Sin beamercolorbox: dentro de esa caja \linewidth no descuenta los margenes
+% y la pleca desbordaba la caja.
+\newlength{\usach@anchotitulo}
+\setlength{\usach@anchotitulo}{\dimexpr\paperwidth-2\usachmargen+\usachplecashift\relax}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \vskip1.95em
+  \hbox{\hskip\dimexpr\usachmargen-\usachplecashift\relax
+    \begin{minipage}[t]{\usach@anchotitulo}
+      \usebeamercolor[fg]{frametitle}%
+      \usachpleca{%
+        {\usebeamerfont{frametitle}\usachtitular\insertframetitle\par}%
+        \ifx\insertframesubtitle\@empty\else
+          \vskip0.20em
+          {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par}%
+        \fi}
+    \end{minipage}}%
+  \vskip0.30em
+  \ifusach@logolamina
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north east,inner sep=0pt]
+        at ([shift={(-\usachmargen,-0.70cm)}]current page.north east)
+        {\resizebox{2.4cm}{!}{\usachlogopos}};
+    \end{tikzpicture}%
+  \fi}
+
+% --- Pie de pagina -----------------------------------------------------------
+\newlength{\usach@avance}
+
+\newcommand{\usach@barraprogreso}{%
+  \setlength{\usach@avance}{0pt}%
+  \ifnum\inserttotalframenumber>0
+    \setlength{\usach@avance}{%
+      \dimexpr\paperwidth*\insertframenumber/\inserttotalframenumber\relax}%
+  \fi
+  \nointerlineskip
+  \hbox to \paperwidth{%
+    \rlap{\color{usachgris20}\rule{\paperwidth}{0.8pt}}%
+    \rlap{\color{usachrojo}\rule{\usach@avance}{0.8pt}}\hss}%
+  \nointerlineskip}
+
+\setbeamertemplate{footline}{%
+  \ifusach@progreso\usach@barraprogreso\fi
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.0ex,dp=1.5ex,
+      leftskip=\usachmargen,rightskip=\usachmargen]{footline}
+    \usebeamerfont{footline}%
+    \insertshorttitle
+    \hfill
+    \ifx\insertsectionhead\@empty\else\insertsectionhead\hfill\fi
+    {\usachtitular\color{usachgris}\insertframenumber}%
+  \end{beamercolorbox}}
+
+% --- Notas al pie dentro del cuerpo -----------------------------------------
+\setbeamertemplate{footnote}{%
+  \parindent 0em\noindent
+  \raggedright{\usebeamercolor[fg]{footnote mark}\insertfootnotemark}%
+  \footnotesize\insertfootnotetext\par}
+
+\mode<all>
