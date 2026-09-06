@@ -164,6 +164,22 @@ def item_to_latex(raw: str) -> str:
     return r"\itemlabel{" + esc_txt(label) + "}{:}{" + esc_txt(rest) + "}"
 
 
+# Ajustes de texto aplicados a los párrafos del cuerpo (sin tocar el Word).
+TEXT_TWEAKS = [
+    (
+        "transgresiones emergentes y sistémicas:",
+        "prácticas de investigación cuestionables (QRP, por sus siglas en inglés) "
+        "y otras transgresiones emergentes y sistémicas:",
+    ),
+]
+
+
+def apply_text_tweaks(s: str) -> str:
+    for old, new in TEXT_TWEAKS:
+        s = s.replace(old, new)
+    return s
+
+
 def cell_latex(tc) -> str:
     parts = []
     for p in tc.findall(qn("p")):
@@ -457,7 +473,7 @@ def convert(docx_path: str, out_path: str):
                 i += 1
             out.extend(render_list(group, formats, dec_state))
             continue
-        out.append(fmt_runs(runs_of(meta["el"])))
+        out.append(apply_text_tweaks(fmt_runs(runs_of(meta["el"]))))
         i += 1
 
     out.append(r"\end{document}")
