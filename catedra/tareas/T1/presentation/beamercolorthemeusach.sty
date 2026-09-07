@@ -1,0 +1,78 @@
+% ---------------------------------------------------------------------------
+%  beamercolorthemeusach.sty
+%  Paleta institucional USACH -- Manual de Normas Graficas 2024-2S
+%  Cada color declara su Pantone de origen. Los derivados marcados como
+%  "funcional" NO son colores institucionales: son oscurecimientos usados solo
+%  donde el color oficial no alcanza 4.5:1 sobre blanco (WCAG 2.1 AA).
+% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemeusach}[2026/09/06 v2.0 Tema de color USACH]
+\mode<presentation>
+
+\RequirePackage{xcolor}
+
+% --- Institucionales ---------------------------------------------------------
+\definecolor{usachrojo}{HTML}{C8102E}      % Pantone 186 C  -- 5.88:1 s/blanco
+\definecolor{usachgris}{HTML}{394049}      % Pantone 432 C  -- 10.48:1 s/blanco
+\definecolor{usachamarillo}{HTML}{EAAA00}  % Pantone 124 C  -- solo fondo/grafico
+\definecolor{usachpurpura}{HTML}{8C4799}   % Pantone 258 C  -- 6.04:1 s/blanco
+\definecolor{usachazul}{HTML}{498BCA}      % Pantone 279 C  -- solo grafico
+\definecolor{usachverde}{HTML}{00A499}     % Pantone 3272 C -- solo grafico
+\definecolor{usachnaranjo}{HTML}{E77500}   % Pantone 716 C  -- solo grafico
+
+% --- Derivados funcionales (accesibilidad) -----------------------------------
+\definecolor{usachazultexto}{HTML}{2E6BA8}   % 279 C oscurecido -- 5.55:1
+\definecolor{usachverdetexto}{HTML}{00776F}  % 3272 C oscurecido -- 5.43:1
+
+% --- Neutros del sistema -----------------------------------------------------
+\definecolor{usachtinta}{HTML}{22272E}   % titulares sobre blanco (13.9:1)
+\definecolor{usachgris70}{HTML}{6B7280}  % metadatos (4.83:1, solo >=12 pt)
+\definecolor{usachgris40}{HTML}{A9B2BB}  % etiquetas sobre fondo oscuro
+\definecolor{usachgris20}{HTML}{DDE1E5}  % reglas y separadores
+\definecolor{usachgris10}{HTML}{F2F4F5}  % fondo de bloques
+\definecolor{usachgris05}{HTML}{F8F9FA}  % fondo de paneles de formula
+\definecolor{usachnegativo}{HTML}{2F353D} % gris de portada (fondo oscuro)
+
+% --- Roles semanticos --------------------------------------------------------
+\setbeamercolor{normal text}{fg=usachgris,bg=white}
+\setbeamercolor{alerted text}{fg=usachrojo}
+\setbeamercolor{example text}{fg=usachverdetexto}
+\setbeamercolor{structure}{fg=usachrojo}
+
+\setbeamercolor{titulo}{fg=usachtinta}
+\setbeamercolor{frametitle}{fg=usachtinta,bg=}
+\setbeamercolor{framesubtitle}{fg=usachgris70,bg=}
+\setbeamercolor{footline}{fg=usachgris70,bg=}
+\setbeamercolor{pleca}{fg=usachrojo}
+
+% Superficie oscura (portada, portadillas, cierre, destacados)
+\setbeamercolor{usach fondo oscuro}{fg=white,bg=usachnegativo}
+\setbeamercolor{usach texto tenue}{fg=usachgris20}
+
+% Bloques: planos, sin sombra ni degradado (MNG: prohibidos sobre marca)
+\setbeamercolor{block title}{fg=white,bg=usachgris}
+\setbeamercolor{block body}{fg=usachgris,bg=usachgris10}
+\setbeamercolor{block title alerted}{fg=white,bg=usachrojo}
+\setbeamercolor{block body alerted}{fg=usachgris,bg=usachgris10}
+\setbeamercolor{block title example}{fg=white,bg=usachverdetexto}
+\setbeamercolor{block body example}{fg=usachgris,bg=usachgris10}
+
+\setbeamercolor{item}{fg=usachrojo}
+\setbeamercolor{itemize item}{fg=usachrojo}
+\setbeamercolor{itemize subitem}{fg=usachgris70}
+\setbeamercolor{itemize subsubitem}{fg=usachgris70}
+\setbeamercolor{enumerate item}{fg=usachrojo}
+\setbeamercolor{description item}{fg=usachtinta}
+
+\setbeamercolor{section in toc}{fg=usachtinta}
+\setbeamercolor{subsection in toc}{fg=usachgris}
+\setbeamercolor{caption name}{fg=usachrojo}
+\setbeamercolor{bibliography item}{fg=usachgris}
+\setbeamercolor{bibliography entry author}{fg=usachtinta}
+\setbeamercolor{bibliography entry title}{fg=usachgris}
+\setbeamercolor{bibliography entry location}{fg=usachgris70}
+\setbeamercolor{bibliography entry journal}{fg=usachgris70}
+\setbeamercolor{bibliography entry note}{fg=usachgris70}
+\setbeamercolor{button}{fg=white,bg=usachgris}
+
+\mode<all>

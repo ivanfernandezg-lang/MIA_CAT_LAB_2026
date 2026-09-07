@@ -1,0 +1,330 @@
+% ---------------------------------------------------------------------------
+%  T1 — Actividad 1 (Ética, parte 1)
+%  Presentación: "Ética en la Publicación Científica"
+%  Grupo 1 de Cátedra — Metodologías de Investigación Aplicada (MIA)
+%  Tema: usach (normas gráficas MNG 2024-2S)
+%  Compilar: latexmk -pdf -outdir=build main.tex
+% ---------------------------------------------------------------------------
+\documentclass[11pt,aspectratio=169,xcolor=table]{beamer}
+
+\IfFileExists{spanish.ldf}{%
+  \usepackage[spanish,es-noquoting,es-nodecimaldot]{babel}%
+}{%
+  \usepackage[T1]{fontenc}
+  \renewcommand{\figurename}{Figura}
+  \renewcommand{\tablename}{Tabla}
+}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx}
+\usepackage{microtype}
+
+\usetheme{usach}
+
+% --- Metadatos --------------------------------------------------------------
+\title[Ética en la publicación científica]{Ética en la Publicación Científica}
+\subtitle{De la manipulación individual de datos a la industrialización del fraude en informática}
+\author[G.~Ahumada · D.~Fernández · I.~Fernández · P.~Figueroa]{%
+  Gonzalo Ahumada · Diego Fernández · Iván Fernández · Pablo Figueroa}
+\date{Septiembre de 2026}
+
+\usachfacultad{Facultad de Ingeniería}
+\usachdepartamento{Departamento de Ingeniería Informática}
+\usachprograma{Magíster en Ingeniería Informática}
+\usachasignatura{Metodologías de Investigación Aplicada}
+\usachprofesor{Prof. Roberto Ibáñez González}
+
+\institute[USACH]{Universidad de Santiago de Chile}
+
+\begin{document}
+
+\usachportada
+\note{Buenos días. Somos el Grupo 1 de cátedra: Diego Fernández, Iván
+Fernández, Pablo Figueroa y quien les habla. Presentamos la primera
+evaluación de ética: dos casos reales centrados en la publicación como
+producto — el histórico de Jan Hendrik Schön y el contemporáneo de
+retracciones masivas en la ACM.}
+
+% --- Agenda ------------------------------------------------------------------
+\begin{frame}{Contenido}
+  \tableofcontents
+\end{frame}
+
+% =============================================================================
+\section{Marco normativo}
+% =============================================================================
+
+\begin{frame}{La publicación como producto de la investigación}{Tríada FFP y delimitación del análisis}
+  \begin{block}{Foco del análisis}
+    La publicación científica es el producto formal y acreditable de la
+    investigación: en ella se materializan la validez, la novedad y el rigor
+    de los hallazgos.
+  \end{block}
+  \begin{itemize}\usachaire
+    \item \textbf{Fabricación}: invención de datos o resultados inexistentes.
+    \item \textbf{Falsificación}: manipulación de procesos o eliminación de datos reales.
+    \item \textbf{Plagio}: apropiación de ideas, texto o código sin atribución.
+  \end{itemize}
+  \alert{Delimitación}: el foco es la \emph{publicación como producto}; se
+  excluyen las faltas contra seres vivos y humanos (segunda actividad).
+  \note{Basta con dos documentos clave: \emph{On Being a Scientist} y la
+  Declaración de Singapur. La tríada FFP resume la mala conducta clásica y
+  delimita nuestro análisis a la publicación como producto.}
+\end{frame}
+
+\begin{frame}{Deberes de Singapur y nuevos fraudes}{Del fraude artesanal al fraude industrializado}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.50\textwidth}
+      \textbf{Declaración de Singapur (deberes clave)}
+      \begin{itemize}
+        \item Resp.~4: custodia transparente de datos primarios.
+        \item Resp.~6: autoría con responsabilidad plena.
+        \item Resp.~8: arbitraje imparcial y riguroso.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \textbf{Presiones y nuevas modalidades}
+      \begin{itemize}
+        \item \emph{Publish or perish}: el volumen como incentivo perverso.
+        \item Fraude \alert{artesanal}: el científico que falsifica en soledad.
+        \item Fraude \alert{industrializado}: \emph{paper mills} que venden autorías.
+        \item Vigilancia comunitaria: Retraction Watch y PubPeer.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{Singapur exige custodia de datos, autoría solidaria y revisión por
+  pares rigurosa. Distinguimos el fraude artesanal clásico del fraude
+  industrializado que domina hoy la informática.}
+\end{frame}
+
+% =============================================================================
+\section{Caso 1: Jan Hendrik Schön}
+% =============================================================================
+
+\begin{frame}{El «prodigio» de Bell Laboratories}{Contexto y red de confianza ciega}
+  {\def\usachcifra{\usachtitular\fontsize{22}{24}\selectfont}
+  \usachdatos{%
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdato{8 días}{un paper de alto impacto}\end{minipage}\hfill
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdato{4 años}{período de publicación (1998–2001)}\end{minipage}\hfill
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdato{31 años}{candidato al Nobel}\end{minipage}\hfill
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdato{20}{coautores secundarios}\end{minipage}}}
+  \begin{itemize}\usachaire
+    \item Bell Labs (EE.~UU.) y Universidad de Konstanz (Alemania): física de
+      la materia condensada y nanotecnología.
+    \item Transistores monomoleculares y superconductividad en fulerenos, en
+      \emph{Science}, \emph{Nature} y APL.
+    \item Bertram Batlogg: coautor sénior de fama mundial que nunca presenció
+      una medición.
+    \item El \emph{efecto halo} de Bell Labs silenció todo escepticismo.
+  \end{itemize}
+  \note{Schön era la máxima promesa de la nanotecnología: un paper cada ocho
+  días y candidato al Nobel a los 31. Batlogg y el prestigio de Bell Labs
+  crearon una burbuja de confianza ciega.}
+\end{frame}
+
+\begin{frame}{Transgresiones: fabricar, falsificar y borrar}{«On Being a Scientist» y la Declaración de Singapur}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{En «On Being a Scientist» (p.~35)}
+        \begin{itemize}
+          \item Curvas generadas con fórmulas ideales + ruido artificial.
+          \item «Borré los archivos crudos por falta de espacio»; sin bitácoras.
+          \item Los chips revolucionarios «se dañaron y los boté a la basura».
+          \item Coautores sénior sin validar datos brutos.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Contravenciones a Singapur}
+        \begin{itemize}
+          \item Honestidad: adulteración para ventaja profesional.
+          \item Resp.~3: conclusiones sin evidencia empírica.
+          \item Resp.~4: sin registros reproducibles.
+          \item Resp.~6: sin corresponsabilidad de los firmantes.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+  \note{Schön no hacía ciencia experimental: graficaba funciones ideales con
+  ruido simulado. Cuando se le pidieron los datos crudos, alegó haberlos
+  borrado y haber botado los chips. Quiebre directo de honestidad y de la
+  Resp.~4 de Singapur.}
+\end{frame}
+
+\begin{frame}{El hallazgo del ruido gemelo}{Revelación y consecuencias históricas}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \textbf{La revelación (2002)}
+      \begin{itemize}
+        \item Años de réplicas fallidas en Cornell, Harvard, Princeton y Delft.
+        \item Sohn (Princeton) y McEuen (Cornell) cotejaron dos papers
+          distintos de Schön.
+        \item El ruido experimental era \alert{idéntico píxel por píxel}:
+          físicamente imposible.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \textbf{Comité Beasley y sanciones}
+      \begin{itemize}
+        \item Fraude confirmado en al menos 16 papers.
+        \item \emph{Science} retractó 8 y \emph{Nature} 7 artículos.
+        \item Despido inmediato de Bell Labs.
+        \item Doctorado revocado por Konstanz (ratificado en 2011).
+        \item Protocolos mundiales de conservación de datos crudos.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{No lo detectaron los revisores: lo detectó la comunidad al no poder
+  replicar. Dos gráficos de experimentos distintos compartían el mismo ruido
+  térmico, copiado píxel a píxel. El Comité Beasley confirmó el fraude y las
+  sanciones fueron históricas.}
+\end{frame}
+
+% =============================================================================
+\section{Caso 2: escándalo ACM}
+% =============================================================================
+
+\begin{frame}{ACM: paper mills y mercantilización de la autoría}{El ecosistema afectado}
+  {\def\usachcifra{\usachtitular\fontsize{19}{22}\selectfont}
+  \usachdatos{%
+    \begin{minipage}[t]{0.30\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdato{>320}{artículos retractados}\end{minipage}\hfill
+    \begin{minipage}[t]{0.30\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdato{\$500–3.000}{por firma de autoría}\end{minipage}\hfill
+    \begin{minipage}[t]{0.30\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdato{48 h}{aprobación sin revisión}\end{minipage}}}
+  \begin{itemize}\usachaire
+    \item ACM: la sociedad de computación más prestigiosa (Premio Turing);
+      actas ICPS afectadas (ICICN, ICISS) en 2021–2022.
+    \item \emph{Paper mills}: artículos «llave en mano» con autorías subastadas.
+    \item Incentivos perversos: bonos por publicar en Scopus/ACM.
+  \end{itemize}
+  \note{La ACM sufrió una modalidad nueva: fábricas de artículos que vendían
+  autorías por miles de dólares. Ya no es un investigador solitario: es una
+  industria ilícita organizada.}
+\end{frame}
+
+\begin{frame}{«Tortured phrases» y secuestro del peer review}{Cómo burlaron los filtros antiplagio}
+  \begin{table}
+    \centering\footnotesize
+    \begin{tabularx}{\textwidth}{@{}X X X@{}}
+      \toprule
+      \rowcolor{usachgris}
+      \usachcab{Término real} & \usachcab{Tortured phrase} & \usachcab{Contexto} \\
+      \midrule
+      Artificial Intelligence & Counterfeit Consciousness & Modelos de ML / IA \\
+      Deep Learning & Profound Learning & Redes neuronales \\
+      Cloud Computing & Haze Computing & Arquitecturas en la nube \\
+      Random Forest & Arbitrary Timberland & Clasificación supervisada \\
+      \bottomrule
+    \end{tabularx}
+    \caption{Ejemplos de parafraseo inverso algorítmico detectados.}
+  \end{table}
+  \usachfuente{Cabanac, Labbé y Magazinov (2021).}
+  \begin{itemize}
+    \item \emph{Text spinners} burlan Turnitin/iThenticate por sinónimos inversos.
+    \item \emph{Peer-review rings}: revisores ficticios que aprueban en 48 h.
+    \item Quiebre de Resp.~8 (arbitraje) y Resp.~6 (autoría comprada).
+  \end{itemize}
+  \note{Los parafraseadores automáticos no entienden la jerga: «Artificial
+  Intelligence» se volvió «Counterfeit Consciousness» y «Random Forest»,
+  «Arbitrary Timberland». Igual se aprobaron: los autores controlaban las
+  cuentas de revisión.}
+\end{frame}
+
+\begin{frame}{Minería de texto y sanciones ACM}{Cómo la propia computación desenmascaró el fraude}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{Los detectives digitales}
+      \begin{itemize}
+        \item Cabanac (U.~Toulouse III): \emph{Problematic Paper Screener}.
+        \item Labbé y Magazinov: detección de textos sintéticos.
+        \item Evidencias publicadas en PubPeer; cobertura de \emph{Nature} y
+          Retraction Watch.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Consecuencias}
+      \begin{itemize}
+        \item Abril 2022: retractación masiva de \alert{>320 artículos}.
+        \item Veto de publicación de 3 a 10 años.
+        \item Validó a Beall's List: el modelo predatorio penetró a la ACM.
+        \item \emph{Data poisoning}: papers falsos contaminan datasets de IA.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{Cabanac, Labbé y Magazinov programaron un detector de frases
+  torturadas; la presión de PubPeer y Retraction Watch forzó a la ACM a
+  retractar más de 320 artículos. Y esos papers falsos contaminan los datos
+  de entrenamiento de las IA.}
+\end{frame}
+
+% =============================================================================
+\section{Comparación y lecciones}
+% =============================================================================
+
+\begin{frame}{Schön vs. ACM}{La evolución del fraude científico en dos décadas}
+  \begin{table}
+    \centering\footnotesize
+    \begin{tabularx}{\textwidth}{@{}X X X@{}}
+      \toprule
+      \rowcolor{usachgris}
+      \usachcab{Dimensión} & \usachcab{Caso 1: Schön (física)} &
+      \usachcab{Caso 2: ACM (informática / IA)} \\
+      \midrule
+      Naturaleza & Artesanal e individual & Industrializada y sistémica \\
+      Mecanismo & Curvas ideales + ruido simulado & \emph{Text spinners} antiplagio \\
+      Falla & Confianza ciega en el prestigio & Control editorial tercerizado \\
+      Detección & Réplica fallida + ruido idéntico & Minería de texto y PubPeer \\
+      Norma rota & FFP + destrucción de bitácoras (Resp.~4) & Autoría comprada (Resp.~6) y arbitraje corrupto (Resp.~8) \\
+      \bottomrule
+    \end{tabularx}
+    \caption{Evolución del fraude: de la oficina individual a la red transnacional.}
+  \end{table}
+  \usachfuente{elaboración propia a partir de Beasley et al. (2002), Cabanac et al. (2021) y Retraction Watch (2022).}
+  \note{En dos décadas el fraude pasó del científico solitario al crimen
+  organizado. A Schön lo delató la imposibilidad de replicar; a la ACM, la
+  propia computación mediante minería de texto.}
+\end{frame}
+
+\usachdestacado{Del fraude artesanal al industrializado, la integridad
+científica es el único activo que valida nuestra labor.}
+
+\begin{frame}{Lecciones para el posgrado}{Investigación aplicada en informática}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Pilares innegociables}
+        \begin{itemize}
+          \item \textbf{Datos y código abiertos}: decir «perdí los datos» es
+            confesar mala praxis.
+          \item \textbf{Autoría solidaria}: no existe la autoría honoraria inocua.
+          \item \textbf{Peer review como deber moral}: sin bots ni acuerdos recíprocos.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Desafíos de la era IA}
+        \begin{itemize}
+          \item LLM como asistencia, nunca como generador de pseudo-conocimiento.
+          \item Vigilancia post-publicación: PubPeer y Retraction Watch.
+          \item Superar el \emph{publish or perish}: rigor antes que volumen.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \note{La reproducibilidad y los datos abiertos son un deber ético; la
+  autoría implica responsabilidad solidaria; y ante la masificación de la IA
+  debemos ser guardianes de la calidad epistemológica de los datos.}
+\end{frame}
+
+% --- Fuentes -----------------------------------------------------------------
+\begin{frame}{Fuentes y recursos consultados}
+  \begin{itemize}\usachaire
+    \item National Academy of Sciences. \emph{On Being a Scientist} (3.ª ed.) — caso Schön, p.~35.
+    \item World Conferences on Research Integrity. \emph{Declaración de Singapur} (2010).
+    \item Retraction Watch Database — reportes de retracción ACM y Bell Labs.
+    \item Cabanac, Labbé y Magazinov (2021). \emph{Tortured phrases: a dubious writing style emerging in science}.
+    \item Beall's List of Potential Predatory Journals and Publishers.
+  \end{itemize}
+\end{frame}
+
+\usachcierre[¿Preguntas y comentarios?]{Gracias — Grupo 1 de Cátedra}
+
+\end{document}

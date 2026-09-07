@@ -1,0 +1,107 @@
+% ---------------------------------------------------------------------------
+%  beamerfontthemeusach.sty
+%  Tipografia segun MNG 2024-2S:
+%    titulares  -> Bebas Neue Pro (condensada, alta)
+%    cuerpo     -> Nunito Sans / Atkinson Hyperlegible / Helvetica Neue LT
+%  Ninguna de esas familias esta en TeX Live. Estrategia de sustitucion:
+%    XeLaTeX/LuaLaTeX -> se usan las corporativas si estan instaladas en el
+%                        sistema; si no, TeX Gyre Heros (clon de Helvetica,
+%                        metricamente compatible con Helvetica Neue LT) y
+%                        TeX Gyre Heros Cn para titulares.
+%    pdfLaTeX         -> Nimbus Sans (clon Helvetica, paquete helvet).
+%  Escala tipografica modular 1.25 sobre base 11 pt.
+% ---------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerfontthemeusach}[2026/09/06 v2.0 Tema tipografico USACH]
+\mode<presentation>
+
+\RequirePackage{iftex}
+\RequirePackage{etoolbox}
+
+\newcommand{\usachtitular}{\sffamily\bfseries}   % display / titulares
+\newcommand{\usachcuerpo}{\sffamily}             % texto corrido
+
+\ifPDFTeX
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{textcomp}
+  \RequirePackage[scaled=0.96]{helvet}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  \RequirePackage{fontspec}
+  % --- cuerpo ---------------------------------------------------------------
+  \IfFontExistsTF{Nunito Sans}{%
+    \setsansfont{Nunito Sans}[Numbers={Lining,Proportional}]%
+  }{%
+    \IfFontExistsTF{Atkinson Hyperlegible}{%
+      \setsansfont{Atkinson Hyperlegible}%
+    }{%
+      \setsansfont{TeX Gyre Heros}[Scale=0.96]%
+    }%
+  }
+  \renewcommand{\familydefault}{\sfdefault}
+  % --- titulares ------------------------------------------------------------
+  \IfFontExistsTF{Bebas Neue Pro}{%
+    \newfontfamily\usachdisplayfont{Bebas Neue Pro}%
+    \renewcommand{\usachtitular}{\usachdisplayfont}%
+  }{%
+    \IfFontExistsTF{TeX Gyre Heros Cn}{%
+      \newfontfamily\usachdisplayfont{TeX Gyre Heros Cn}[BoldFont={TeX Gyre Heros Cn Bold}]%
+      \renewcommand{\usachtitular}{\usachdisplayfont\bfseries}%
+    }{}%
+  }
+\fi
+
+% --- Matematica -------------------------------------------------------------
+%  serif (por defecto): notacion con serif de texto academico -- Times con
+%    pdfLaTeX, Termes/Latin Modern Math con XeLaTeX/LuaLaTeX. Es la convencion
+%    de los papers: texto sans para la lamina, matematica serif.
+%  sans (opcion 'matesans'): la matematica toma la misma familia del texto.
+\providecommand{\usach@mate}{serif}
+\def\usach@mate@sans{sans}
+
+\ifx\usach@mate\usach@mate@sans
+  \IfFileExists{mathastext.sty}{%
+    \AtEndPreamble{\RequirePackage[italic,defaultmathsizes]{mathastext}}}{}
+\else
+  % Beamer sustituye la matematica por sans por defecto; hay que desactivarlo.
+  \usefonttheme[onlymath]{serif}
+  \ifPDFTeX
+    \IfFileExists{mathptmx.sty}{\AtEndPreamble{\RequirePackage{mathptmx}}}{}
+  \else
+    \AtEndPreamble{%
+      \RequirePackage{unicode-math}%
+      \IfFontExistsTF{TeX Gyre Termes Math}%
+        {\setmathfont{TeX Gyre Termes Math}}%
+        {\setmathfont{Latin Modern Math}}}
+  \fi
+\fi
+
+% --- Escala ------------------------------------------------------------------
+\setbeamerfont{title}{size=\fontsize{21}{24}\selectfont,series=\bfseries}
+\setbeamerfont{subtitle}{size=\fontsize{12.5}{15}\selectfont,series=\mdseries}
+\setbeamerfont{author}{size=\fontsize{10.5}{13}\selectfont}
+\setbeamerfont{institute}{size=\fontsize{9}{11}\selectfont}
+\setbeamerfont{date}{size=\fontsize{9}{11}\selectfont}
+
+\setbeamerfont{frametitle}{size=\fontsize{15}{17.5}\selectfont,series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\fontsize{10}{12}\selectfont,series=\mdseries}
+
+\setbeamerfont{normal text}{size=\normalsize}
+\setbeamerfont{block title}{size=\fontsize{10.5}{12.5}\selectfont,series=\bfseries}
+\setbeamerfont{block body}{size=\small}
+\setbeamerfont{footline}{size=\fontsize{7.5}{9}\selectfont}
+\setbeamerfont{caption}{size=\fontsize{8.5}{10.5}\selectfont}
+\setbeamerfont{caption name}{size=\fontsize{8.5}{10.5}\selectfont,series=\bfseries}
+\setbeamerfont{section in toc}{size=\fontsize{12}{16}\selectfont,series=\bfseries}
+\setbeamerfont{subsection in toc}{size=\fontsize{10}{13}\selectfont,series=\mdseries}
+\setbeamerfont{bibliography item}{size=\fontsize{8.5}{11}\selectfont}
+\setbeamerfont{bibliography entry author}{size=\fontsize{8.5}{11}\selectfont}
+\setbeamerfont{bibliography entry title}{size=\fontsize{8.5}{11}\selectfont,series=\mdseries}
+\setbeamerfont{bibliography entry note}{size=\fontsize{8.5}{11}\selectfont}
+
+% Etiquetas de metadatos y cifras destacadas
+\newcommand{\usachfichaetiqueta}{\fontsize{7.5}{9}\selectfont}
+\newcommand{\usachfichavalor}{\fontsize{9}{11}\selectfont}
+\newcommand{\usachcifra}{\usachtitular\fontsize{26}{28}\selectfont}
+
+\mode<all>
