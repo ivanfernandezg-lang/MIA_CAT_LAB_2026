@@ -5,17 +5,17 @@ Recursos oficiales de imagen institucional descargados desde la
 
 ## Estructura
 
-| Carpeta / archivo                                             | Contenido                                                                                                                                 |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `standards/MNG 2024 2S[M1].pdf`                               | Manual de Normas Gráficas oficial (16 págs.)                                                                                              |
-| `standards/Guía para el formato de trabajo de titulación.pdf` | Guía de formato de trabajos de titulación (Bibliotecas USACH)                                                                             |
-| `standards/imagotipos-principales/`                           | Set principal extraído: `Usach P1.png`, `Usach P2.png`, `Usach PB.png` (blanco), `Usach PN.png` (negro)                                   |
-| `standards/imagotipos-secundarios/`                           | Set secundario (versiones horizontales y variantes)                                                                                       |
-| `standards/imagotipos-av/`                                    | Set para audiovisual                                                                                                                      |
-| `presentation/`                                               | Plantillas PPT oficiales 16:9 (`Plantilla PPT 16-9 A/B.pptx`) y **plantilla Beamer** en `presentation/usach/` (con su propio `README.md`) |
-| `report/`                                                     | Plantillas Word oficiales (`Hoja-Carta-2023.docx`, `Hoja-Oficio-2023.docx`)                                                               |
-| `links`                                                       | Lista de URLs de todos los recursos                                                                                                       |
-| `analizar_plantillas.py`                                      | Script de análisis de los recursos                                                                                                        |
+| Carpeta / archivo                                             | Contenido                                                                                                                                                   |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `standards/MNG 2024 2S[M1].pdf`                               | Manual de Normas Gráficas oficial (16 págs.)                                                                                                                |
+| `standards/Guía para el formato de trabajo de titulación.pdf` | Guía de formato de trabajos de titulación (Bibliotecas USACH)                                                                                               |
+| `standards/imagotipos-principales/`                           | Set principal extraído: `Usach P1.png`, `Usach P2.png`, `Usach PB.png` (blanco), `Usach PN.png` (negro)                                                     |
+| `standards/imagotipos-secundarios/`                           | Set secundario (versiones horizontales y variantes)                                                                                                         |
+| `standards/imagotipos-av/`                                    | Set para audiovisual                                                                                                                                        |
+| `presentation/`                                               | Plantillas PPT oficiales 16:9 (`Plantilla PPT 16-9 A/B.pptx`) y **tema Beamer `usach-beamer/`** (v2.0, con `main.tex`, `galeria.tex` y `README.md` propios) |
+| `report/`                                                     | Plantillas Word oficiales (`Hoja-Carta-2023.docx`, `Hoja-Oficio-2023.docx`)                                                                                 |
+| `links`                                                       | Lista de URLs de todos los recursos                                                                                                                         |
+| `analizar_plantillas.py`                                      | Script de análisis de los recursos                                                                                                                          |
 
 > Las "SVG" (`PALETA DE COLORES 2023F.svg`, `Imagotipos USACH 2023.svg`)
 > descargadas son visores HTML del sitio; los colores oficiales están en el MNG
@@ -57,10 +57,10 @@ Contraste mínimo (WCAG AA): **4,5:1** texto normal, **3:1** texto grande.
   institucionales, portada en _title case_ y acentos verdes `#00A499`.
   Detalle en `catedra/tareas/T1/script/docx2tex.py` y en
   `.copilot/memoria/progreso-estudiante.md`.
-- ✅ **Plantilla Beamer**: `presentation/usach/` lista para todas las
-  tareas (banda gris + imagotipo blanco, títulos grises con regla verde,
-  bloques con paleta oficial, portadillas de sección). Compila con
-  `latexmk -pdf -outdir=build main.tex`.
+- ✅ **Tema Beamer `usach-beamer/`** (v2.0, del estudiante): plantilla
+  definitiva para todas las tareas, con imagotipos oficiales ya en `assets/`.
+  Compila con `latexmk -pdf -outdir=build main.tex` (la plantilla anterior
+  `usach/` fue retirada).
 
 ## Plan original (contexto histórico)
 

@@ -82,6 +82,13 @@
 - Diseño fiel al MNG 2024-2S y a la PPT oficial: banda gris `#394049` con imagotipo blanco en el pie, títulos grises con regla verde `#00A499`, bloques con paleta oficial, portadillas por sección, contraste WCAG AA.
 - Compilada y verificada (12 diapositivas de ejemplo, latexmk en `build/`).
 
+## 2026-09-06 — Tema Beamer usach-beamer (del estudiante) + imagotipos oficiales
+
+- El estudiante subió un tema Beamer propio en capas (`beamertheme/color/font/inner/outerthemeusach.sty`) con la "pleca" como único elemento estructural, paleta MNG + derivados WCAG, cadenas de tipografía por motor y componentes (`\usachportada`, `\usachdestacado`, `\usachcierre`, `\usachdato`, etc.).
+- Se retiró la plantilla anterior `presentation/usach/`.
+- Imagotipos **oficiales** copiados a `usach-beamer/assets/` y cableados: horizontal `Usach S1.png` (positivo) / `Usach SB.png` (negativo) por defecto; verticales `Usach P2.png` / `Usach PB.png` como alternativa.
+- `main.tex` y `galeria.tex` compilados y verificados (14 y 32 págs. respectivamente).
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).

@@ -29,11 +29,11 @@
 \newlength{\usachlogoaire}    \setlength{\usachlogoaire}{0.45\usachlogoalto}
 
 % --- Imagotipo ---------------------------------------------------------------
-% Reemplazar por los archivos oficiales del ZIP de normas graficas:
-%   \usachimagotipo{assets/Usach P2.png}          (positivo, fondo claro)
-%   \usachimagotipoblanco{assets/Usach PB.png}    (negativo, fondo oscuro)
-\newcommand{\usach@logo@pos}{assets/usach-horizontal.png}
-\newcommand{\usach@logo@neg}{assets/usach-horizontal-blanco.png}
+% Imagotipos OFICIALES del ZIP de normas graficas (MNG 2024-2S), copiados a
+% assets/: horizontal positivo/negativo por defecto (mejor lectura en 16:9).
+% Alternativa vertical (prioritaria segun MNG): Usach P2.png / Usach PB.png.
+\newcommand{\usach@logo@pos}{assets/Usach S1.png}
+\newcommand{\usach@logo@neg}{assets/Usach SB.png}
 \newcommand{\usachimagotipo}[1]{\renewcommand{\usach@logo@pos}{#1}}
 \newcommand{\usachimagotipoblanco}[1]{\renewcommand{\usach@logo@neg}{#1}}
 
