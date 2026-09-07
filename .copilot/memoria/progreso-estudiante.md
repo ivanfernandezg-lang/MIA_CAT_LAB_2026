@@ -89,6 +89,14 @@
 - Imagotipos **oficiales** copiados a `usach-beamer/assets/` y cableados: horizontal `Usach S1.png` (positivo) / `Usach SB.png` (negativo) por defecto; verticales `Usach P2.png` / `Usach PB.png` como alternativa.
 - `main.tex` y `galeria.tex` compilados y verificados (14 y 32 págs. respectivamente).
 
+## 2026-09-06 — Presentación T1 convertida a Beamer (PPTX → tema usach-beamer)
+
+- Convertida la presentación de la T1 (Ética) a `presentation/main.tex` con el tema `usach-beamer` (19 láminas): portada, 4 secciones, filas de cifras (`\usachdatos`), tablas con `\usachcab`/`\usachfuente`, notas `\note{}` con el guion del PPTX y cierre `\usachcierre`.
+- QA visual iterativo (renders con pymupdf): corregidos solapes en filas de cifras (Schön a 22 pt, descriptor corto; ACM a 19 pt con `$500–3.000`), `\raggedright` + `\hyphenpenalty=10000` en minipages.
+- **Versión minimalista** `presentation/main-minimalista.tex` (19 láminas, compila con latexmk): menos texto, viñetas con **iconos FontAwesome v4 en colores institucionales** (`fontawesome.sty`, pdflatex), datos destacados con icono (`\usachdatoi`), portadillas de sección con icono y agenda con iconos por sección (template `section in toc` redefinido). QA visual completo de las 19 láminas ✔.
+- **Lección clave del tema**: `beamerthemeusach.sty` hace `\AtBeginSection[]{\usachpaginaseccion}` → la portadilla de sección es AUTOMÁTICA. NO agregar portadillas manuales (se duplican). Para personalizarla: `\renewcommand{\usachpaginaseccion}{...}` en el preámbulo.
+- Los `.sty` del tema están copiados en `presentation/`; iconos FA v4 disponibles: `\faFlask`, `\faCopy`, `\faDatabase`, `\faTrophy`, `\faIndustry`, `\faBalanceScale`, etc.
+
 ## Siguientes pasos
 
 1. Subir el listado oficial de grupos de cátedra (para completar la tabla del grupo).

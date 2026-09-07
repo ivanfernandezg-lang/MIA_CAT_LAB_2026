@@ -1,0 +1,340 @@
+% ---------------------------------------------------------------------------
+%  T1 — Actividad 1 (Ética, parte 1)
+%  Presentación MINIMALISTA: "Ética en la Publicación Científica"
+%  Grupo 1 de Cátedra — Metodologías de Investigación Aplicada (MIA)
+%  Tema: usach (normas gráficas MNG 2024-2S) + iconos FontAwesome v4
+%  Compilar: latexmk -pdf -outdir=build main-minimalista.tex
+% ---------------------------------------------------------------------------
+\documentclass[11pt,aspectratio=169,xcolor=table]{beamer}
+
+\IfFileExists{spanish.ldf}{%
+  \usepackage[spanish,es-noquoting,es-nodecimaldot]{babel}%
+}{%
+  \usepackage[T1]{fontenc}
+  \renewcommand{\figurename}{Figura}
+  \renewcommand{\tablename}{Tabla}
+}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx}
+\usepackage{microtype}
+\usepackage{fontawesome}
+
+\usetheme{usach}
+
+% --- Agenda con icono por seccion (mismos colores que las portadillas) -------
+\setbeamertemplate{section in toc}{%
+  \leavevmode
+  \hbox to 0.62cm{{\color{usachrojo}\usachtitular\inserttocsectionnumber}\hss}%
+  {\ifcase\inserttocsectionnumber\relax
+     \color{usachverde}\faBook
+   \or\color{usachverde}\faBook
+   \or\color{usachnaranjo}\faFlask
+   \or\color{usachazul}\faIndustry
+   \or\color{usachpurpura}\faBalanceScale
+   \fi}%
+  \hskip0.45em
+  \inserttocsection\par}
+
+% --- Helpers minimalistas ----------------------------------------------------
+% Viñeta con icono: \iconitem[color]{icono}{Titulo}{detalle}
+\newcommand{\iconitem}[4][usachrojo]{%
+  \item[\textcolor{#1}{#2}] \textbf{#3} — #4}
+
+% Dato destacado con icono: \usachdatoi[color]{icono}{cifra}{detalle}
+\newcommand{\usachdatoi}[4][usachrojo]{%
+  \begin{minipage}[t]{\linewidth}
+    {\color{#1}\fontsize{15}{17}\selectfont #2\hspace{0.45em}%
+     \raisebox{0.45em}{\color{#1}\rule{0.85cm}{1.6pt}}\par}
+    \vskip0.35em
+    {\color{usachtinta}\usachcifra #3\par}
+    \vskip0.10em
+    {\color{usachgris70}\usachcuerpo\fontsize{8.5}{10.5}\selectfont #4\par}
+  \end{minipage}}
+
+% Portadilla de seccion minimalista: el tema inyecta \usachpaginaseccion
+% automaticamente en cada \section (AtBeginSection); la redefinimos sin el
+% TOC lateral para mantener la estetica minimalista.
+\renewcommand{\usachpaginaseccion}{%
+  \begin{usachlaminaoscura}[c]
+    \begin{columns}[T]
+      \begin{column}{0.14\textwidth}
+        {\color{usachverde}\fontsize{30}{34}\selectfont
+          \ifcase\insertsectionnumber\relax\faBook
+            \or\faBook\or\faFlask\or\faIndustry\or\faBalanceScale\fi}
+      \end{column}
+      \begin{column}{0.82\textwidth}
+        \usachpleca[white]{%
+          {\usachcuerpo\fontsize{9}{11}\selectfont\color{usachgris40}
+            Secci\'on \insertsectionnumber\par}
+          \vskip0.5em
+          {\usachtitular\fontsize{24}{27}\selectfont\color{white}\insertsectionhead\par}}
+      \end{column}
+    \end{columns}
+  \end{usachlaminaoscura}}
+
+% --- Metadatos --------------------------------------------------------------
+\title[Ética en la publicación científica]{Ética en la Publicación Científica}
+\subtitle{De la manipulación individual de datos a la industrialización del fraude}
+\author[G.~Ahumada · D.~Fernández · I.~Fernández · P.~Figueroa]{%
+  Gonzalo Ahumada · Diego Fernández · Iván Fernández · Pablo Figueroa}
+\date{Septiembre de 2026}
+
+\usachfacultad{Facultad de Ingeniería}
+\usachdepartamento{Departamento de Ingeniería Informática}
+\usachprograma{Magíster en Ingeniería Informática}
+\usachasignatura{Metodologías de Investigación Aplicada}
+\usachprofesor{Prof. Roberto Ibáñez González}
+
+\institute[USACH]{Universidad de Santiago de Chile}
+
+\begin{document}
+
+\usachportada
+\note{Somos el Grupo 1 de cátedra. Presentamos dos casos reales de ética en
+la publicación: Jan Hendrik Schön y las retracciones masivas de la ACM.}
+
+% --- Agenda ------------------------------------------------------------------
+\begin{frame}{Contenido}
+  \tableofcontents
+\end{frame}
+
+% =============================================================================
+\section{Marco normativo}
+% =============================================================================
+
+\begin{frame}{La publicación como producto}{Tríada FFP}
+  La publicación es el producto formal y acreditable de la investigación.
+  \begin{itemize}\usachaire
+    \iconitem[usachrojo]{\faFlask}{Fabricación}{inventar datos o resultados}
+    \iconitem[usachnaranjo]{\faPencilSquareO}{Falsificación}{manipular datos reales}
+    \iconitem[usachpurpura]{\faCopy}{Plagio}{apropiarse sin atribución}
+  \end{itemize}
+  \usachpleca[usachgris20]{Foco en la publicación como producto; se excluyen
+  las faltas contra personas.}
+  \note{Tríada FFP según \emph{On Being a Scientist} y la Declaración de
+  Singapur.}
+\end{frame}
+
+\begin{frame}{Singapur y presiones}{Deberes y riesgos}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{Deberes de Singapur}
+      \begin{itemize}\usachaire
+        \iconitem[usachverde]{\faDatabase}{Resp.~4}{custodia de datos}
+        \iconitem[usachverde]{\faUsers}{Resp.~6}{autoría responsable}
+        \iconitem[usachverde]{\faEye}{Resp.~8}{arbitraje riguroso}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Presiones y modalidades}
+      \begin{itemize}\usachaire
+        \iconitem[usachrojo]{\faLineChart}{\emph{Publish or perish}}{volumen como incentivo}
+        \iconitem[usachrojo]{\faUserSecret}{Artesanal}{falsificador solitario}
+        \iconitem[usachrojo]{\faIndustry}{Industrializado}{\emph{paper mills}}
+        \iconitem[usachrojo]{\faGlobe}{Vigilancia}{Retraction Watch y PubPeer}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{Singapur: custodia de datos, autoría solidaria y revisión por pares
+  rigurosa. El fraude evolucionó del individuo a la industria.}
+\end{frame}
+
+% =============================================================================
+\section{Caso 1: Jan Hendrik Schön}
+% =============================================================================
+
+\begin{frame}{El «prodigio» de Bell Labs}
+  {\def\usachcifra{\usachtitular\fontsize{22}{24}\selectfont}
+  \usachdatos{%
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachverde]{\faCalendarO}{8 días}{entre cada paper}\end{minipage}\hfill
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachazul]{\faFileTextO}{4 años}{publicando (1998–2001)}\end{minipage}\hfill
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachnaranjo]{\faTrophy}{31 años}{candidato al Nobel}\end{minipage}\hfill
+    \begin{minipage}[t]{0.23\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachpurpura]{\faUsers}{20}{coautores secundarios}\end{minipage}}}
+  \begin{itemize}\usachaire
+    \iconitem[usachrojo]{\faFlask}{Bell Labs + Konstanz}{física de la materia condensada}
+    \iconitem[usachrojo]{\faBook}{\emph{Science}, \emph{Nature} y APL}{transistores monomoleculares}
+    \iconitem[usachrojo]{\faUserSecret}{Efecto halo}{el prestigio silenció el escepticismo}
+  \end{itemize}
+  \note{Un paper cada ocho días y candidato al Nobel a los 31. El prestigio
+  de Bell Labs creó una burbuja de confianza ciega.}
+\end{frame}
+
+\begin{frame}{Fabricar, falsificar y borrar}{Transgresiones}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{Según «On Being a Scientist»}
+      \begin{itemize}\usachaire
+        \iconitem[usachrojo]{\faLineChart}{Curvas ideales}{fórmulas + ruido artificial}
+        \iconitem[usachrojo]{\faTrashO}{Datos «borrados»}{sin bitácoras; chips a la basura}
+        \iconitem[usachrojo]{\faUsers}{Coautores sénior}{sin validar datos brutos}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Contra Singapur}
+      \begin{itemize}\usachaire
+        \iconitem[usachnaranjo]{\faBan}{Honestidad}{adulteración por ventaja}
+        \iconitem[usachnaranjo]{\faDatabase}{Resp.~4}{sin registros reproducibles}
+        \iconitem[usachnaranjo]{\faUsers}{Resp.~6}{sin corresponsabilidad}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{No hacía ciencia experimental: graficaba funciones ideales con ruido
+  simulado y borró toda evidencia.}
+\end{frame}
+
+\begin{frame}{El ruido gemelo}{Revelación y sanciones}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{La revelación (2002)}
+      \begin{itemize}\usachaire
+        \iconitem[usachazul]{\faFlask}{Réplicas fallidas}{en cuatro laboratorios}
+        \iconitem[usachazul]{\faClone}{Ruido idéntico}{píxel por píxel: imposible}
+        \iconitem[usachazul]{\faSearch}{Sohn y McEuen}{cotejaron dos papers}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Comité Beasley}
+      \begin{itemize}\usachaire
+        \iconitem[usachrojo]{\faExclamationTriangle}{Fraude confirmado}{en al menos 16 papers}
+        \iconitem[usachrojo]{\faBan}{Retractaciones}{8 en \emph{Science}, 7 en \emph{Nature}}
+        \iconitem[usachrojo]{\faGraduationCap}{Doctorado revocado}{y despido de Bell Labs}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{Lo detectó la comunidad al no poder replicar: dos experimentos
+  distintos compartían el mismo ruido, copiado píxel a píxel.}
+\end{frame}
+
+% =============================================================================
+\section{Caso 2: escándalo ACM}
+% =============================================================================
+
+\begin{frame}{ACM: \emph{paper mills}}{Mercantilización de la autoría}
+  {\def\usachcifra{\usachtitular\fontsize{19}{22}\selectfont}
+  \usachdatos{%
+    \begin{minipage}[t]{0.30\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachrojo]{\faBan}{>320}{artículos retractados}\end{minipage}\hfill
+    \begin{minipage}[t]{0.30\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachverde]{\faMoney}{\$500–3.000}{por firma de autoría}\end{minipage}\hfill
+    \begin{minipage}[t]{0.30\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachazul]{\faClockO}{48 h}{aprobación sin revisión}\end{minipage}}}
+  \begin{itemize}\usachaire
+    \iconitem[usachrojo]{\faIndustry}{ACM e ICPS}{actas ICICN e ICISS afectadas}
+    \iconitem[usachrojo]{\faMoney}{Autorías subastadas}{incentivos por publicar en Scopus}
+  \end{itemize}
+  \note{La ACM, la sociedad de computación más prestigiosa, sufrió fábricas
+  de artículos que vendían autorías por miles de dólares.}
+\end{frame}
+
+\begin{frame}{«Tortured phrases»}{Cómo burlaron los filtros antiplagio}
+  \begin{table}
+    \centering\footnotesize
+    \begin{tabularx}{\textwidth}{@{}X X X@{}}
+      \toprule
+      \rowcolor{usachgris}
+      \usachcab{Término real} & \usachcab{Tortured phrase} & \usachcab{Contexto} \\
+      \midrule
+      Artificial Intelligence & Counterfeit Consciousness & Modelos de ML / IA \\
+      Deep Learning & Profound Learning & Redes neuronales \\
+      Cloud Computing & Haze Computing & Arquitecturas en la nube \\
+      Random Forest & Arbitrary Timberland & Clasificación supervisada \\
+      \bottomrule
+    \end{tabularx}
+    \caption{Ejemplos de parafraseo inverso algorítmico.}
+  \end{table}
+  \usachfuente{Cabanac, Labbé y Magazinov (2021).}
+  \begin{itemize}\usachaire
+    \iconitem[usachrojo]{\faRandom}{\emph{Text spinners}}{burlan Turnitin/iThenticate}
+    \iconitem[usachrojo]{\faUsers}{Revisores ficticios}{aprueban en 48 h}
+  \end{itemize}
+  \note{Los parafraseadores no entienden la jerga: «Artificial Intelligence»
+  se volvió «Counterfeit Consciousness» y aun así se aprobaron.}
+\end{frame}
+
+\begin{frame}{Minería de texto y sanciones}{La computación desenmascara el fraude}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{Detectives digitales}
+      \begin{itemize}\usachaire
+        \iconitem[usachazul]{\faCode}{Cabanac}{\emph{Problematic Paper Screener}}
+        \iconitem[usachazul]{\faSearch}{Labbé y Magazinov}{textos sintéticos}
+        \iconitem[usachazul]{\faNewspaperO}{PubPeer y \emph{Nature}}{presión pública}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Consecuencias}
+      \begin{itemize}\usachaire
+        \iconitem[usachrojo]{\faBan}{Abril 2022}{retractación masiva (>320)}
+        \iconitem[usachrojo]{\faTimesCircleO}{Veto}{3 a 10 años sin publicar}
+        \iconitem[usachrojo]{\faDatabase}{\emph{Data poisoning}}{papers falsos en datasets de IA}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{Cabanac, Labbé y Magazinov programaron un detector de frases
+  torturadas. La ACM retractó más de 320 artículos.}
+\end{frame}
+
+% =============================================================================
+\section{Comparación y lecciones}
+% =============================================================================
+
+\begin{frame}{Schön vs. ACM}{Dos décadas de fraude}
+  \begin{table}
+    \centering\footnotesize
+    \begin{tabularx}{\textwidth}{@{}X X X@{}}
+      \toprule
+      \rowcolor{usachgris}
+      \usachcab{Dimensión} & \usachcab{Schön (física)} & \usachcab{ACM (informática)} \\
+      \midrule
+      Naturaleza & Artesanal e individual & Industrializada y sistémica \\
+      Mecanismo & Curvas ideales + ruido simulado & \emph{Text spinners} antiplagio \\
+      Falla & Confianza ciega en el prestigio & Control editorial tercerizado \\
+      Detección & Réplica fallida + ruido idéntico & Minería de texto y PubPeer \\
+      Norma rota & FFP + Resp.~4 (bitácoras) & Resp.~6 (autoría) y Resp.~8 (arbitraje) \\
+      \bottomrule
+    \end{tabularx}
+    \caption{Del individuo a la red transnacional.}
+  \end{table}
+  \usachfuente{Beasley et al. (2002), Cabanac et al. (2021) y Retraction Watch (2022).}
+  \note{A Schön lo delató la imposibilidad de replicar; a la ACM, la propia
+  computación mediante minería de texto.}
+\end{frame}
+
+\usachdestacado{Del fraude artesanal al industrializado, la integridad
+científica es el único activo que valida nuestra labor.}
+
+\begin{frame}{Lecciones para el posgrado}{Informática aplicada}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \textbf{Pilares innegociables}
+      \begin{itemize}\usachaire
+        \iconitem[usachverde]{\faDatabase}{Datos y código abiertos}{«perdí los datos» confiesa mala praxis}
+        \iconitem[usachverde]{\faUsers}{Autoría solidaria}{no existe autoría honoraria inocua}
+        \iconitem[usachverde]{\faEye}{Arbitraje moral}{sin bots ni acuerdos recíprocos}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Desafíos de la era IA}
+      \begin{itemize}\usachaire
+        \iconitem[usachrojo]{\faCogs}{LLM como asistencia}{nunca pseudo-conocimiento}
+        \iconitem[usachrojo]{\faGlobe}{Vigilancia post-publicación}{PubPeer y Retraction Watch}
+        \iconitem[usachrojo]{\faBalanceScale}{Rigor antes que volumen}{superar el \emph{publish or perish}}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \note{Reproducibilidad, autoría solidaria y guardianes de la calidad
+  epistemológica de los datos.}
+\end{frame}
+
+% --- Fuentes -----------------------------------------------------------------
+\begin{frame}{Fuentes}
+  \begin{itemize}\usachaire
+    \iconitem[usachverde]{\faBook}{National Academy of Sciences}{\emph{On Being a Scientist} (3.ª ed.), p.~35}
+    \iconitem[usachverde]{\faBook}{WCRI}{\emph{Declaración de Singapur} (2010)}
+    \iconitem[usachverde]{\faBook}{Retraction Watch}{base de datos de retracciones}
+    \iconitem[usachverde]{\faBook}{Cabanac, Labbé y Magazinov (2021)}{\emph{Tortured phrases}}
+    \iconitem[usachverde]{\faBook}{Beall's List}{revistas predatorias}
+  \end{itemize}
+\end{frame}
+
+\usachcierre[¿Preguntas y comentarios?]{Gracias — Grupo 1 de Cátedra}
+
+\end{document}
