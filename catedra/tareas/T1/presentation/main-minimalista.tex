@@ -20,6 +20,8 @@
 \usepackage{booktabs,tabularx}
 \usepackage{microtype}
 \usepackage{fontawesome}
+\usepackage{tikz}
+\graphicspath{{images/}}
 
 \usetheme{usach}
 
@@ -52,6 +54,41 @@
     \vskip0.10em
     {\color{usachgris70}\usachcuerpo\fontsize{8.5}{10.5}\selectfont #4\par}
   \end{minipage}}
+
+% Retrato circular con nombre y rol: \usachfoto[color]{archivo}{Nombre}{Rol/afiliacion}
+% Si images/<archivo> no existe todavia, dibuja un avatar generico (no rompe la compilacion).
+\newcommand{\usachfoto}[4][usachrojo]{%
+  \begin{minipage}[t]{2.05cm}\centering
+    \IfFileExists{images/#2}{%
+      \begin{tikzpicture}
+        \begin{scope}
+          \clip (0,0) circle (0.8cm);
+          \node[inner sep=0pt] at (0,0)
+            {\includegraphics[width=1.8cm,height=1.8cm,keepaspectratio=false]{images/#2}};
+        \end{scope}
+        \draw[#1,line width=1.1pt] (0,0) circle (0.8cm);
+      \end{tikzpicture}%
+    }{%
+      \begin{tikzpicture}
+        \draw[fill=#1!12,draw=#1,line width=1.1pt] (0,0) circle (0.8cm);
+        \node[inner sep=0pt] at (0,0) {\textcolor{#1}{\fontsize{20}{20}\selectfont\faUser}};
+      \end{tikzpicture}%
+    }
+    \vskip0.22em
+    {\usachcuerpo\fontsize{7.5}{9}\selectfont\color{usachtinta}\textbf{#3}\par}
+    {\usachcuerpo\fontsize{6.5}{8}\selectfont\color{usachgris70}#4\par}
+  \end{minipage}}
+
+% Logo institucional con alto maximo: \usachlogo[alto]{archivo}{Texto alternativo}
+% Si images/<archivo> no existe todavia, dibuja una caja con el nombre (no rompe la compilacion).
+\newcommand{\usachlogo}[3][1.1cm]{%
+  \IfFileExists{images/#2}{%
+    \includegraphics[height=#1]{images/#2}%
+  }{%
+    \tikz\node[draw=usachgris20,fill=usachgris10,rounded corners=2pt,
+      minimum width=2.4cm,minimum height=#1,align=center,inner sep=3pt]
+      {\usachcuerpo\fontsize{7}{8}\selectfont\color{usachgris70}#3};
+  }}
 
 % Portadilla de seccion minimalista: el tema inyecta \usachpaginaseccion
 % automaticamente en cada \section (AtBeginSection); la redefinimos sin el
@@ -157,6 +194,16 @@ la publicación: Jan Hendrik Schön y las retracciones masivas de la ACM.}
     \iconitem[usachrojo]{\faBook}{\emph{Science}, \emph{Nature} y APL}{transistores monomoleculares}
     \iconitem[usachrojo]{\faUserSecret}{Efecto halo}{el prestigio silenció el escepticismo}
   \end{itemize}
+  \vskip0.35em
+  \begin{center}
+    \usachfoto[usachrojo]{schon.jpg}{Jan H. Schön}{Investigador principal}%
+    \hspace{1.6em}%
+    \usachfoto[usachrojo]{batlogg.jpg}{Bertram Batlogg}{Coautor sénior}%
+    \hspace{2.4em}%
+    \raisebox{0.5cm}{\usachlogo[0.8cm]{logo-bell-labs.png}{Bell Labs}}%
+    \hspace{1.2em}%
+    \raisebox{0.5cm}{\usachlogo[0.8cm]{logo-konstanz.png}{Universität Konstanz}}
+  \end{center}
   \note{Un paper cada ocho días y candidato al Nobel antes de los 35. El
   prestigio de Bell Labs creó una burbuja de confianza ciega.}
 \end{frame}
@@ -195,7 +242,14 @@ la publicación: Jan Hendrik Schön y las retracciones masivas de la ACM.}
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
-      \textbf{Comité Beasley}
+      \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.20\textwidth}
+          \usachfoto[usachrojo]{beasley.jpg}{M. Beasley}{Stanford}
+        \end{column}
+        \begin{column}{0.78\textwidth}
+          \textbf{Comité Beasley}
+        \end{column}
+      \end{columns}
       \begin{itemize}\usachaire
         \iconitem[usachrojo]{\faExclamationTriangle}{Fraude confirmado}{en al menos 16 papers}
         \iconitem[usachrojo]{\faBan}{Retractaciones}{10 en \emph{Science}, 7 en \emph{Nature}}
@@ -214,7 +268,8 @@ la publicación: Jan Hendrik Schön y las retracciones masivas de la ACM.}
 \begin{frame}{ACM: \emph{paper mills}}{Mercantilización de la autoría}
   {\def\usachcifra{\usachtitular\fontsize{19}{22}\selectfont}
   \usachdatos{%
-    \begin{minipage}[t]{0.40\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachrojo]{\faBan}{>320}{artículos retractados}\end{minipage}}}
+    \begin{minipage}[t]{0.40\linewidth}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000 \usachdatoi[usachrojo]{\faBan}{>320}{artículos retractados}\end{minipage}\hfill
+    \begin{minipage}[t]{0.30\linewidth}\centering\vspace{0.3em}\usachlogo[1.4cm]{logo-acm.jpg}{ACM}\end{minipage}}}
   \begin{itemize}\usachaire
     \iconitem[usachrojo]{\faIndustry}{ACM e ICPS}{actas de ICIMTech afectadas}
     \iconitem[usachrojo]{\faMoney}{Autorías subastadas}{incentivos por publicar en Scopus}
@@ -252,9 +307,21 @@ la publicación: Jan Hendrik Schön y las retracciones masivas de la ACM.}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.48\textwidth}
       \textbf{Detectives digitales}
+      \vskip0.3em
+      \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.31\textwidth}
+          \usachfoto[usachazul]{cabanac.jpg}{Cabanac}{U. Toulouse III}
+        \end{column}
+        \begin{column}{0.31\textwidth}
+          \usachfoto[usachazul]{labbe.jpg}{Labbé}{U. Grenoble Alpes}
+        \end{column}
+        \begin{column}{0.31\textwidth}
+          \usachfoto[usachazul]{magazinov.jpg}{Magazinov}{Yandex / Skoltech}
+        \end{column}
+      \end{columns}
+      \vskip0.4em
       \begin{itemize}\usachaire
-        \iconitem[usachazul]{\faCode}{Cabanac}{\emph{Problematic Paper Screener}}
-        \iconitem[usachazul]{\faSearch}{Labbé y Magazinov}{textos sintéticos}
+        \iconitem[usachazul]{\faCode}{\emph{Problematic Paper Screener}}{herramienta de minería de texto}
         \iconitem[usachazul]{\faNewspaperO}{PubPeer y \emph{Nature}}{presión pública}
       \end{itemize}
     \end{column}
