@@ -149,10 +149,18 @@
   \end{usachlaminaoscura}}
 
 % --- Lamina de afirmacion ----------------------------------------------------
-\newcommand{\usachdestacado}[1]{%
+% \usachdestacado[Titulo]{Frase destacada} -- el titulo es opcional
+% (retrocompatible con \usachdestacado{Frase} sin titulo).
+\newcommand{\usachdestacado}[2][]{%
   \begin{usachlaminaoscura}
     \vfill
-    \usachpleca[white]{{\usachtitular\fontsize{20}{25}\selectfont\color{white}#1\par}}
+    \usachpleca[white]{%
+      \def\usachdestacadotitulo{#1}%
+      \ifx\usachdestacadotitulo\empty\else
+        {\usachcuerpo\fontsize{11}{14}\selectfont\color{usachgris40}#1\par}
+        \vskip0.6em
+      \fi
+      {\usachtitular\fontsize{20}{25}\selectfont\color{white}#2\par}}
     \vfill
   \end{usachlaminaoscura}}
 

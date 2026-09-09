@@ -339,58 +339,17 @@ la publicación: Jan Hendrik Schön y las retracciones masivas de la ACM.}
 \end{frame}
 
 % =============================================================================
-\section{Comparación y lecciones}
+% Sin portadilla de sección aquí (ahorro de tiempo, límite de 10 min):
+\renewcommand{\usachpaginaseccion}{}
+\section{Conclusiones}
 % =============================================================================
 
-\begin{frame}{Schön vs. ACM}{Dos décadas de fraude}
-  \begin{table}
-    \centering\footnotesize
-    \begin{tabularx}{\textwidth}{@{}X X X@{}}
-      \toprule
-      \rowcolor{usachgris}
-      \usachcab{Dimensión} & \usachcab{Schön (física)} & \usachcab{ACM (informática)} \\
-      \midrule
-      Naturaleza & Artesanal e individual & Industrializada y sistémica \\
-      Mecanismo & Curvas ideales + ruido simulado & \emph{Text spinners} antiplagio \\
-      Falla & Confianza ciega en el prestigio & Control editorial tercerizado \\
-      Detección & Réplica fallida + ruido idéntico & Minería de texto y PubPeer \\
-      Norma rota & FFP + Resp.~1, 3, 4; Resp.~6 en debate & Resp.~1, 6 (autoría) y Resp.~8 (arbitraje) \\
-      \bottomrule
-    \end{tabularx}
-    \caption{Del individuo a la red transnacional.}
-  \end{table}
-  \usachfuente{Beasley et al. (2002), Cabanac et al. (2021) y Retraction Watch (2022).}
-  \note{A Schön lo delató la imposibilidad de replicar; a la ACM, la propia
-  computación mediante minería de texto.}
-\end{frame}
-
-\usachdestacado{Del fraude artesanal al industrializado, la integridad
+\usachdestacado[Conclusiones]{Del fraude artesanal al industrializado, la integridad
 científica es el único activo que valida nuestra labor.}
 
-\begin{frame}{Lecciones para el posgrado}{Informática aplicada}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}
-      \textbf{Pilares innegociables}
-      \begin{itemize}\usachaire
-        \iconitem[usachverde]{\faDatabase}{Datos y código abiertos}{«perdí los datos» confiesa mala praxis}
-        \iconitem[usachverde]{\faUsers}{Autoría solidaria}{no existe autoría honoraria inocua}
-        \iconitem[usachverde]{\faEye}{Arbitraje moral}{sin bots ni acuerdos recíprocos}
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Desafíos de la era IA}
-      \begin{itemize}\usachaire
-        \iconitem[usachrojo]{\faCogs}{LLM como asistencia}{nunca pseudo-conocimiento}
-        \iconitem[usachrojo]{\faGlobe}{Vigilancia post-publicación}{PubPeer y Retraction Watch}
-        \iconitem[usachrojo]{\faBalanceScale}{Rigor antes que volumen}{superar el \emph{publish or perish}}
-      \end{itemize}
-    \end{column}
-  \end{columns}
-  \note{Reproducibilidad, autoría solidaria y guardianes de la calidad
-  epistemológica de los datos.}
-\end{frame}
-
 % --- Fuentes -----------------------------------------------------------------
+\begingroup
+\renewcommand{\insertsectionhead}{}
 \begin{frame}{Fuentes}
   \begin{itemize}\usachaire
     \iconitem[usachverde]{\faBook}{National Academy of Sciences}{\emph{On Being a Scientist} (3.ª ed.), p.~35}
@@ -400,6 +359,7 @@ científica es el único activo que valida nuestra labor.}
     \iconitem[usachverde]{\faBook}{Beall's List}{revistas predatorias}
   \end{itemize}
 \end{frame}
+\endgroup
 
 \usachcierre[¿Preguntas y comentarios?]{Gracias}
 
