@@ -53,6 +53,12 @@
 \renewcommand{\arraystretch}{1.25}
 \newcommand{\itemlabel}[3]{\textbf{#1#2}~#3}
 
+% Evita que un título de sección quede solo al final de una página:
+% si no caben el título más algo de contenido debajo, salta de página antes.
+\usepackage{needspace}
+\let\oldsection\section
+\renewcommand{\section}[1]{\needspace{5\baselineskip}\oldsection{#1}}
+
 \begin{document}
 \thispagestyle{empty}
 \begin{center}
